@@ -1,4 +1,4 @@
-# Infectivity and transmission
+﻿# Infectivity and transmission
 
 
 The following parameters determine aspects of infectivity and disease transmission. For example,
@@ -19,4 +19,4 @@ modeled explicitly. See [vector-model-transmission](vector-model-transmission.md
     JSON format does not permit comments, but you can add "dummy" parameters to add contextual
     information to your files. Any keys that are not EMOD parameter names will be ignored by the
     model.
-{{ read_csv("csv/config-infectivity-malaria.csv") }}
+{{ read_csv("csv/config-infectivity-malaria.csv", keep_default_na=False) }}

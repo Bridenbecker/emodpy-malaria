@@ -1,4 +1,4 @@
-# AnimalFeedKill
+﻿# AnimalFeedKill
 
 
 The **AnimalFeedKill** intervention class imposes node-targeted mortality to a vector that
@@ -31,6 +31,6 @@ At a glance:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-animalfeedkill.csv") }}
+{{ read_csv("csv/campaign-animalfeedkill.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-node-animalfeedkill.json)

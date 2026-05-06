@@ -1,4 +1,4 @@
-# OutbreakIndividualMalariaGenetics
+﻿# OutbreakIndividualMalariaGenetics
 
 
 The **OutbreakIndividualMalariaGenetics** intervention class is an individual-level intervention
@@ -22,7 +22,7 @@ genetics are defined.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-outbreakindividualmalariagenetics.csv") }}
+{{ read_csv("csv/campaign-outbreakindividualmalariagenetics.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-individual-outbreakindividualmalariagenetics-1.json)
 

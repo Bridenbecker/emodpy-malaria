@@ -1,4 +1,4 @@
-# MosquitoRelease
+﻿# MosquitoRelease
 
 
 The **MosquitoRelease** intervention class adds mosquito release vector control programs to the simulation.
@@ -23,6 +23,6 @@ You can also release already-mated females to guarantee specific genomes in the 
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-mosquitorelease.csv") }}
+{{ read_csv("csv/campaign-mosquitorelease.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-node-mosquitorelease.json)

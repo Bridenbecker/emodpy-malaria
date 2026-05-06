@@ -1,4 +1,4 @@
-# Drugs and treatments
+﻿# Drugs and treatments
 
 
 The following parameters determine the efficacy of drugs and other treatments.
@@ -15,4 +15,4 @@ For more information on the drugs used to treat malaria, see [malaria-model-anti
     JSON format does not permit comments, but you can add "dummy" parameters to add contextual
     information to your files. Any keys that are not EMOD parameter names will be ignored by the
     model.
-{{ read_csv("csv/config-drugs-malaria.csv") }}
+{{ read_csv("csv/config-drugs-malaria.csv", keep_default_na=False) }}

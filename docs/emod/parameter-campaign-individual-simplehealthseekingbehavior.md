@@ -1,4 +1,4 @@
-# SimpleHealthSeekingBehavior
+﻿# SimpleHealthSeekingBehavior
 
 
 The **SimpleHealthSeekingBehavior** intervention class models the time delay that typically occurs
@@ -24,6 +24,6 @@ exponentially distributed delay and ultimately receives the specified interventi
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-simplehealthseekingbehavior.csv") }}
+{{ read_csv("csv/campaign-simplehealthseekingbehavior.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-individual-simplehealthseekingbehavior.json)

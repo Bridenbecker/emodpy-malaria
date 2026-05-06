@@ -1,4 +1,4 @@
-# ReportMicrosporidia
+﻿# ReportMicrosporidia
 
 
 The microsporidia report (ReportMicrosporidia.csv) tracks vector population counts broken down by
@@ -45,4 +45,4 @@ STATE_EGG, integer, "The number of eggs (male and female)."
 
 The following is an example of ReportMicrosporidia.csv.
 
-{{ read_csv("csv/report-microsporidia.csv") }}
+{{ read_csv("csv/report-microsporidia.csv", keep_default_na=False) }}

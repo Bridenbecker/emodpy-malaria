@@ -1,4 +1,4 @@
-# Scalars and multipliers
+﻿# Scalars and multipliers
 
 
 The following parameters scale or multiply values set in other areas of the configuration file or other
@@ -17,4 +17,4 @@ economic prosperity and available medical technology.
     JSON format does not permit comments, but you can add "dummy" parameters to add contextual
     information to your files. Any keys that are not EMOD parameter names will be ignored by the
     model.
-{{ read_csv("csv/config-scalars-malaria.csv") }}
+{{ read_csv("csv/config-scalars-malaria.csv", keep_default_na=False) }}

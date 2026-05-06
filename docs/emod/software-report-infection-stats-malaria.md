@@ -1,4 +1,4 @@
-# ReportInfectionStatsMalaria
+﻿# ReportInfectionStatsMalaria
 
 
 The malaria infection statistics report (ReportInfectionStatsMalaria.csv) provides per-infection
@@ -61,4 +61,4 @@ Gametocytes, integer, "The total number of mature gametocytes (male and female c
 
 The following is an example of ReportInfectionStatsMalaria.csv.
 
-{{ read_csv("csv/report-infection-stats-malaria.csv") }}
+{{ read_csv("csv/report-infection-stats-malaria.csv", keep_default_na=False) }}

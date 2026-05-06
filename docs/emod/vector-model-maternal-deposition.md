@@ -1,4 +1,4 @@
-# Maternal deposition
+﻿# Maternal deposition
 
 
 Maternal deposition models the transfer of Cas9 protein (not DNA) from mother to offspring. In
@@ -104,7 +104,7 @@ Cas9 sources. Each entry is evaluated independently.
     JSON format does not permit comments, but you can add "dummy" parameters to add contextual
     information to your files. Any keys that are not EMOD parameter names will be ignored by the
     model.
-{{ read_csv("csv/config-maternal-deposition-malaria.csv") }}
+{{ read_csv("csv/config-maternal-deposition-malaria.csv", keep_default_na=False) }}
 
 The following example shows a complete configuration including the gene, driver, and maternal
 deposition for an *An. gambiae* population with a classic gene drive and maternal Cas9

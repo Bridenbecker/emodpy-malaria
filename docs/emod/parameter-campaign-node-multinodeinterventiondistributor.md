@@ -1,4 +1,4 @@
-# MultiNodeInterventionDistributor
+﻿# MultiNodeInterventionDistributor
 
 
 The **MultiNodeInterventionDistributor** intervention class is a node-level intervention that
@@ -19,6 +19,6 @@ coordinators that were designed to distribute one intervention to instead distri
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-multinodeinterventiondistributor.csv") }}
+{{ read_csv("csv/campaign-multinodeinterventiondistributor.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-node-multinodeinterventiondistributor.json)

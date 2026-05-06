@@ -1,4 +1,4 @@
-# MultiEffectBoosterVaccine
+﻿# MultiEffectBoosterVaccine
 
 
 The **MultiEffectBoosterVaccine** intervention class is derived from
@@ -24,6 +24,6 @@ to the corresponding boost parameter. After distribution, the effect wanes, just
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-multieffectboostervaccine.csv") }}
+{{ read_csv("csv/campaign-multieffectboostervaccine.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-individual-multieffectboostervaccine.json)

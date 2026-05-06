@@ -337,4 +337,4 @@ Gene drivers are defined in the `Drivers` array within each species entry in
 `Vector_Species_Params`. The following table lists all parameters. Parameters marked as applying
 to specific driver types are ignored for other types.
 
-{{ read_csv("csv/config-gene-drives.csv") }}
+{{ read_csv("csv/config-gene-drives.csv", keep_default_na=False) }}

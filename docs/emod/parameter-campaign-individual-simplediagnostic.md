@@ -1,4 +1,4 @@
-# SimpleDiagnostic
+﻿# SimpleDiagnostic
 
 
 The **SimpleDiagnostic** intervention class identifies infected individuals, regardless of disease state, based on specified diagnostic sensitivity and specificity. Diagnostics are a key component of modern disease control efforts, whether used to identify high-risk individuals, infected individuals, or drug resistance. This intervention class distributes a specified intervention to a fraction of individuals who test positive.
@@ -16,6 +16,6 @@ The **SimpleDiagnostic** intervention class identifies infected individuals, reg
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-simplediagnostic.csv") }}
+{{ read_csv("csv/campaign-simplediagnostic.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-individual-simplediagnostic.json)

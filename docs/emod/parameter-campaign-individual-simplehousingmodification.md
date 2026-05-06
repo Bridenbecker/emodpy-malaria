@@ -1,4 +1,4 @@
-# SimpleHousingModification
+﻿# SimpleHousingModification
 
 
 The **SimpleHousingModification** intervention class implements a generic housing modification for
@@ -29,6 +29,6 @@ At a glance:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-simplehousingmodification.csv") }}
+{{ read_csv("csv/campaign-simplehousingmodification.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-individual-simplehousingmodification.json)

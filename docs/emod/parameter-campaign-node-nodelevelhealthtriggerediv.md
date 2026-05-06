@@ -1,4 +1,4 @@
-# NodeLevelHealthTriggeredIV
+﻿# NodeLevelHealthTriggeredIV
 
 
 The **NodeLevelHealthTriggeredIV** intervention class is a node-level intervention that distributes
@@ -49,6 +49,6 @@ Notes and tips for this intervention:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-nodelevelhealthtriggerediv.csv") }}
+{{ read_csv("csv/campaign-nodelevelhealthtriggerediv.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-node-nodelevelhealthtriggerediv.json)

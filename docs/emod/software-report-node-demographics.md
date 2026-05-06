@@ -1,4 +1,4 @@
-# ReportNodeDemographics
+﻿# ReportNodeDemographics
 
 
 The node demographics report (ReportNodeDemographics.csv) is a CSV-formatted report that provides
@@ -51,4 +51,4 @@ NodeProp = <Node Property Keys>, string, "For each possible Node Property, there
 
 The following is an example of ReportNodeDemographics.csv.
 
-{{ read_csv("csv/report-node-demographics.csv") }}
+{{ read_csv("csv/report-node-demographics.csv", keep_default_na=False) }}

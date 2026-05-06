@@ -1,4 +1,4 @@
-# Symptoms and diagnosis
+﻿# Symptoms and diagnosis
 
 
 The following parameters determine the characteristics of malaria diagnosis and symptoms as the
@@ -16,4 +16,4 @@ information on malaria diagnostics and symptoms.
     JSON format does not permit comments, but you can add "dummy" parameters to add contextual
     information to your files. Any keys that are not EMOD parameter names will be ignored by the
     model.
-{{ read_csv("csv/config-symptoms-malaria.csv") }}
+{{ read_csv("csv/config-symptoms-malaria.csv", keep_default_na=False) }}

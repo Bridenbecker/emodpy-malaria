@@ -1,4 +1,4 @@
-# Geography and environment
+﻿# Geography and environment
 
 
 The following parameters determine characteristics of the geography and environment of the simulation.
@@ -15,4 +15,4 @@ nodes in the simulation.
     JSON format does not permit comments, but you can add "dummy" parameters to add contextual
     information to your files. Any keys that are not EMOD parameter names will be ignored by the
     model.
-{{ read_csv("csv/config-env-malaria.csv") }}
+{{ read_csv("csv/config-env-malaria.csv", keep_default_na=False) }}

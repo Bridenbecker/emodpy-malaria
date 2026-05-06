@@ -1,4 +1,4 @@
-# BroadcastCoordinatorEventFromNode
+﻿# BroadcastCoordinatorEventFromNode
 
 
 
@@ -26,6 +26,6 @@ For more information, see [emod:dev-architecture-core](emod:dev-architecture-cor
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-broadcastcoordinatoreventfromnode.csv") }}
+{{ read_csv("csv/campaign-broadcastcoordinatoreventfromnode.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-node-broadcastcoordinatoreventfromnode.json)

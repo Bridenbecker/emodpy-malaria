@@ -1,4 +1,4 @@
-# CalendarEventCoordinator
+﻿# CalendarEventCoordinator
 
 
 The **CalendarEventCoordinator** coordinator class distributes individual-level interventions at a specified
@@ -18,6 +18,6 @@ for this event coordinator.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-calendareventcoordinator.csv") }}
+{{ read_csv("csv/campaign-calendareventcoordinator.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-event-calendareventcoordinator.json)

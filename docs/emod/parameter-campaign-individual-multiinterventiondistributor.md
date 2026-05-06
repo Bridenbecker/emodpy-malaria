@@ -1,4 +1,4 @@
-# MultiInterventionDistributor
+﻿# MultiInterventionDistributor
 
 
 The **MultiInterventionDistributor** intervention class allows you to input a list of
@@ -18,6 +18,6 @@ individuals.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-multiinterventiondistributor.csv") }}
+{{ read_csv("csv/campaign-multiinterventiondistributor.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-individual-multiinterventiondistributor.json)

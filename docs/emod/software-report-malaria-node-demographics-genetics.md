@@ -1,4 +1,4 @@
-# ReportNodeDemographicsMalariaGenetics
+﻿# ReportNodeDemographicsMalariaGenetics
 
 
 The malaria genetics node demographics report (ReportNodeDemographicsMalariaGenetics.csv) extends
@@ -72,4 +72,4 @@ OtherBarcodes, integer, The number of human infections whose barcode is not coun
 
 The following is an example of a ReportNodeDemographicsMalariaGenetics.csv
 
-{{ read_csv("csv/report-malaria-node-demographics-genetics.csv") }}
+{{ read_csv("csv/report-malaria-node-demographics-genetics.csv", keep_default_na=False) }}

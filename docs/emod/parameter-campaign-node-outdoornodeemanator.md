@@ -1,4 +1,4 @@
-# OutdoorNodeEmanator
+﻿# OutdoorNodeEmanator
 
 
 The **OutdoorNodeEmanator** intervention class implements node-level outdoor emanators against blood meal-seeking
@@ -51,6 +51,6 @@ At a glance:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-outdoornodeemanator.csv") }}
+{{ read_csv("csv/campaign-outdoornodeemanator.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-node-outdoornodeemanator.json)

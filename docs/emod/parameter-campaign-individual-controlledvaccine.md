@@ -1,4 +1,4 @@
-# ControlledVaccine
+﻿# ControlledVaccine
 
 
 The **ControlledVaccine** intervention class is a subclass of [parameter-campaign-individual-simplevaccine](parameter-campaign-individual-simplevaccine.md)
@@ -26,6 +26,6 @@ as each vaccine has a different value for **Intervention_Name**.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-controlledvaccine.csv") }}
+{{ read_csv("csv/campaign-controlledvaccine.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-individual-controlledvaccine.json)
