@@ -291,11 +291,11 @@ Genome positions used for drug resistance tracking are specified in
 `Malaria_Drug_Params` by adding a `Resistances` array to the drug entry. Each element of the
 array is a resistance object with the following parameters:
 
-```
-Drug_Resistant_String, string, —, "A string of nucleotide characters (``A``, ``C``, ``G``, ``T``, or ``*`` for wildcard) — one per position in ``Drug_Resistant_Genome_Locations``. The modifier is applied only if the parasite's genome matches all non-wildcard positions in this string."
-PKPD_C50_Modifier, float, 1.0, "Multiplied times ``Drug_PKPD_C50`` when the string matches. Values above 1.0 reduce drug potency; values below 1.0 increase it."
-Max_IRBC_Kill_Modifier, float, 1.0, "Multiplied times ``Max_Drug_IRBC_Kill`` when the string matches."
-```
+| Parameter | Data type | Default | Description |
+|-----------|-----------|---------|-------------|
+| `Drug_Resistant_String` | string | — | A string of nucleotide characters (`A`, `C`, `G`, `T`, or `*` for wildcard) — one per position in `Drug_Resistant_Genome_Locations`. The modifier is applied only if the parasite's genome matches all non-wildcard positions in this string. |
+| `PKPD_C50_Modifier` | float | 1.0 | Multiplied times `Drug_PKPD_C50` when the string matches. Values above 1.0 reduce drug potency; values below 1.0 increase it. |
+| `Max_IRBC_Kill_Modifier` | float | 1.0 | Multiplied times `Max_Drug_IRBC_Kill` when the string matches. |
 
 If a parasite's genome matches multiple resistance objects, the modifiers from each matching object
 are multiplied together. The following example configures Artemether with two resistance objects,
@@ -383,6 +383,9 @@ details.
 ## Configuration
 
 
+!!! seealso
+    [`set_parasite_genetics_params`][emodpy_malaria.malaria_config.set_parasite_genetics_params] sets up default values for all FPG configuration parameters. Most users should start with this function and adjust individual parameters as needed. The parameter descriptions in this section serve as a reference for understanding and modifying those values.
+
 FPG is enabled by setting `Malaria_Model` to
 `MALARIA_MECHANISTIC_MODEL_WITH_PARASITE_GENETICS` in config.json. All FPG-specific parameters
 are nested under the `Parasite_Genetics` key in config.json.
@@ -395,33 +398,33 @@ integer base-pair coordinates in the linearized *P. falciparum* genome — chrom
 concatenated end to end into a single coordinate space of 22,790,000 bp. The table below lists the
 length and position range of each chromosome.
 
-```
-1,"643,000","1 – 643,000"
-2,"947,000","643,001 – 1,590,000"
-3,"1,100,000","1,590,001 – 2,690,000"
-4,"1,200,000","2,690,001 – 3,890,000"
-5,"1,300,000","3,890,001 – 5,190,000"
-6,"1,400,000","5,190,001 – 6,590,000"
-7,"1,400,000","6,590,001 – 7,990,000"
-8,"1,300,000","7,990,001 – 9,290,000"
-9,"1,500,000","9,290,001 – 10,790,000"
-10,"1,700,000","10,790,001 – 12,490,000"
-11,"2,000,000","12,490,001 – 14,490,000"
-12,"2,300,000","14,490,001 – 16,790,000"
-13,"2,700,000","16,790,001 – 19,490,000"
-14,"3,300,000","19,490,001 – 22,790,000"
-```
+| Chromosome | Length (bp) | Position range |
+|------------|-------------|----------------|
+| 1 | 643,000 | 1 – 643,000 |
+| 2 | 947,000 | 643,001 – 1,590,000 |
+| 3 | 1,100,000 | 1,590,001 – 2,690,000 |
+| 4 | 1,200,000 | 2,690,001 – 3,890,000 |
+| 5 | 1,300,000 | 3,890,001 – 5,190,000 |
+| 6 | 1,400,000 | 5,190,001 – 6,590,000 |
+| 7 | 1,400,000 | 6,590,001 – 7,990,000 |
+| 8 | 1,300,000 | 7,990,001 – 9,290,000 |
+| 9 | 1,500,000 | 9,290,001 – 10,790,000 |
+| 10 | 1,700,000 | 10,790,001 – 12,490,000 |
+| 11 | 2,000,000 | 12,490,001 – 14,490,000 |
+| 12 | 2,300,000 | 14,490,001 – 16,790,000 |
+| 13 | 2,700,000 | 16,790,001 – 19,490,000 |
+| 14 | 3,300,000 | 19,490,001 – 22,790,000 |
 
 Positions are assigned to one of the following functional categories. No two parameters may share a
 position, and positions within a single parameter must be in ascending order.
 
-```
-Barcode_Genome_Locations, list of integers, "Genome positions of barcode SNP loci. The number of positions determines the required length of ``Barcode_String`` in ``OutbreakIndividualMalariaGenetics`` and in report filters. Can be empty if no barcode positions are tracked."
-Drug_Resistant_Genome_Locations, list of integers, "Genome positions of drug resistance loci. These locations and their allele values can be referenced in ``Malaria_Drug_Params.Resistances`` to modify drug efficacy based on parasite genotype."
-HRP_Genome_Locations, list of integers, "Genome positions of HRP (histidine-rich protein) loci. An allele value of ``A`` at a position indicates the HRP gene is present (functional); any other value (``C``, ``G``, ``T``) indicates the gene is deleted at that position. An infection is HRP-deleted only when all positions carry a non-``A`` allele. See the HRP2/3 Deletion section for details."
-MSP_Genome_Location, integer, "Genome position of the MSP locus. Only used when ``Var_Gene_Randomness_Type`` is ``FIXED_NEIGHBORHOOD`` or ``FIXED_MSP``."
-PfEMP1_Variants_Genome_Locations, list of integers, "Genome positions of PfEMP1 major epitope loci. Must define exactly 50 locations corresponding to the 50 PfEMP1 variants in each clonal infection's repertoire (see [Malaria infection and immune model](malaria-model-infection-immunity.md)). Only used when ``Var_Gene_Randomness_Type`` is ``FIXED_NEIGHBORHOOD``."
-```
+| Parameter | Data type | Description |
+|-----------|-----------|-------------|
+| `Barcode_Genome_Locations` | list of integers | Genome positions of barcode SNP loci. The number of positions determines the required length of `Barcode_String` in `OutbreakIndividualMalariaGenetics` and in report filters. Can be empty if no barcode positions are tracked. |
+| `Drug_Resistant_Genome_Locations` | list of integers | Genome positions of drug resistance loci. These locations and their allele values can be referenced in `Malaria_Drug_Params.Resistances` to modify drug efficacy based on parasite genotype. |
+| `HRP_Genome_Locations` | list of integers | Genome positions of HRP (histidine-rich protein) loci. An allele value of `A` at a position indicates the HRP gene is present (functional); any other value (`C`, `G`, `T`) indicates the gene is deleted at that position. An infection is HRP-deleted only when all positions carry a non-`A` allele. See the HRP2/3 Deletion section for details. |
+| `MSP_Genome_Location` | integer | Genome position of the MSP locus. Only used when `Var_Gene_Randomness_Type` is `FIXED_NEIGHBORHOOD` or `FIXED_MSP`. |
+| `PfEMP1_Variants_Genome_Locations` | list of integers | Genome positions of PfEMP1 major epitope loci. Must define exactly 50 locations corresponding to the 50 PfEMP1 variants in each clonal infection's repertoire (see [Malaria infection and immune model](malaria-model-infection-immunity.md)). Only used when `Var_Gene_Randomness_Type` is `FIXED_NEIGHBORHOOD`. |
 
 The total number of tracked positions — barcode + drug resistance + HRP (+ MSP and PfEMP1 if
 applicable) — directly affects simulation memory usage and runtime. More tracked positions require
@@ -430,46 +433,46 @@ more memory and increase simulation time.
 ### Antigen expression
 
 
-```
-Var_Gene_Randomness_Type, enum, ALL_RANDOM, "Controls how MSP and PfEMP1 major epitope antigens are assigned to each new infection. ``ALL_RANDOM``: MSP and PfEMP1 major epitope antigens are both randomly assigned for every infection, matching base model behavior. ``FIXED_MSP``: MSP is genome-determined; PfEMP1 major epitopes remain random. ``FIXED_NEIGHBORHOOD``: both MSP and PfEMP1 major epitopes are genome-determined. In all modes minor epitopes (the five nonspecific epitopes associated with each PfEMP1 variant; see [Malaria infection and immune model](malaria-model-infection-immunity.md)) are always randomly assigned."
-Neighborhood_Size_MSP, integer, 4, "When ``Var_Gene_Randomness_Type`` is ``FIXED_NEIGHBORHOOD`` or ``FIXED_MSP``, the number of adjacent MSP variants from which the strain's MSP value is drawn. Must not exceed ``Falciparum_MSP_Variants``."
-Neighborhood_Size_PfEMP1, integer, 10, "When ``Var_Gene_Randomness_Type`` is ``FIXED_NEIGHBORHOOD``, the number of adjacent PfEMP1 variants from which each epitope value is drawn. Must not exceed ``Falciparum_PfEMP1_Variants``."
-```
+| Parameter | Data type | Default | Description |
+|-----------|-----------|---------|-------------|
+| `Var_Gene_Randomness_Type` | enum | ALL_RANDOM | Controls how MSP and PfEMP1 major epitope antigens are assigned to each new infection. `ALL_RANDOM`: MSP and PfEMP1 major epitope antigens are both randomly assigned for every infection, matching base model behavior. `FIXED_MSP`: MSP is genome-determined; PfEMP1 major epitopes remain random. `FIXED_NEIGHBORHOOD`: both MSP and PfEMP1 major epitopes are genome-determined. In all modes minor epitopes (the five nonspecific epitopes associated with each PfEMP1 variant; see [Malaria infection and immune model](malaria-model-infection-immunity.md)) are always randomly assigned. |
+| `Neighborhood_Size_MSP` | integer | 4 | When `Var_Gene_Randomness_Type` is `FIXED_NEIGHBORHOOD` or `FIXED_MSP`, the number of adjacent MSP variants from which the strain's MSP value is drawn. Must not exceed `Falciparum_MSP_Variants`. |
+| `Neighborhood_Size_PfEMP1` | integer | 10 | When `Var_Gene_Randomness_Type` is `FIXED_NEIGHBORHOOD`, the number of adjacent PfEMP1 variants from which each epitope value is drawn. Must not exceed `Falciparum_PfEMP1_Variants`. |
 
 ### Transmission parameters
 
 
-```
-Sporozoites_Per_Oocyst_Distribution, enum, CONSTANT_DISTRIBUTION, "Distribution type for the number of sporozoites produced per oocyst. Follows standard EMOD distribution configuration."
-Sporozoite_Life_Expectancy, float, 10.0, "The number of days a sporozoite survives in the mosquito. The mortality rate is the inverse of this parameter."
-Num_Sporozoites_In_Bite_Fail, float, 12.0, "Negative binomial parameter (number of failures) for sporozoites transmitted per infectious bite."
-Probability_Sporozoite_In_Bite_Fails, float, 0.5, "Negative binomial parameter (probability of failure) for sporozoites transmitted per infectious bite."
-Num_Oocyst_From_Bite_Fail, float, 3.0, "Negative binomial parameter (number of failures) for oocysts formed per human-to-vector bite."
-Probability_Oocyst_From_Bite_Fails, float, 0.5, "Negative binomial parameter (probability of failure) for oocysts formed per human-to-vector bite."
-```
+| Parameter | Data type | Default | Description |
+|-----------|-----------|---------|-------------|
+| `Sporozoites_Per_Oocyst_Distribution` | enum | CONSTANT_DISTRIBUTION | Distribution type for the number of sporozoites produced per oocyst. Follows standard EMOD distribution configuration. |
+| `Sporozoite_Life_Expectancy` | float | 10.0 | The number of days a sporozoite survives in the mosquito. The mortality rate is the inverse of this parameter. |
+| `Num_Sporozoites_In_Bite_Fail` | float | 12.0 | Negative binomial parameter (number of failures) for sporozoites transmitted per infectious bite. |
+| `Probability_Sporozoite_In_Bite_Fails` | float | 0.5 | Negative binomial parameter (probability of failure) for sporozoites transmitted per infectious bite. |
+| `Num_Oocyst_From_Bite_Fail` | float | 3.0 | Negative binomial parameter (number of failures) for oocysts formed per human-to-vector bite. |
+| `Probability_Oocyst_From_Bite_Fails` | float | 0.5 | Negative binomial parameter (probability of failure) for oocysts formed per human-to-vector bite. |
 
 ### Recombination parameters
 
 
-```
-Crossover_Gamma_K, float, 2.0, "Shape parameter (k) of the gamma distribution for secondary inter-crossover distances during meiosis. The mean inter-crossover distance is k×θ cM and the variance is k×θ² cM². Output is in centimorgans converted internally to base pairs."
-Crossover_Gamma_Theta, float, 0.38, "Scale parameter (θ) of the gamma distribution for secondary inter-crossover distances during meiosis. The mean inter-crossover distance is k×θ cM and the variance is k×θ² cM²."
-```
+| Parameter | Data type | Default | Description |
+|-----------|-----------|---------|-------------|
+| `Crossover_Gamma_K` | float | 2.0 | Shape parameter (k) of the gamma distribution for secondary inter-crossover distances during meiosis. The mean inter-crossover distance is k×θ cM and the variance is k×θ² cM². Output is in centimorgans converted internally to base pairs. |
+| `Crossover_Gamma_Theta` | float | 0.38 | Scale parameter (θ) of the gamma distribution for secondary inter-crossover distances during meiosis. The mean inter-crossover distance is k×θ cM and the variance is k×θ² cM². |
 
 ### HRP protein dynamics
 
 
-```
-PfHRP2_Boost_Rate, float, 0.07, "Rate at which HRP2 protein accumulates from HRP-expressing IRBCs (pg per iRBC per day)."
-PfHRP2_Decay_Rate, float, 0.172, "Daily fractional decay of circulating HRP2 protein (corresponding to a half-life of approximately 3.67 days)."
-```
+| Parameter | Data type | Default | Description |
+|-----------|-----------|---------|-------------|
+| `PfHRP2_Boost_Rate` | float | 0.07 | Rate at which HRP2 protein accumulates from HRP-expressing IRBCs (pg per iRBC per day). |
+| `PfHRP2_Decay_Rate` | float | 0.172 | Daily fractional decay of circulating HRP2 protein (corresponding to a half-life of approximately 3.67 days). |
 
 ### Similarity to base model
 
 
-```
-Enable_FPG_Similarity_To_Base, boolean, false, "If true, FPG simulates the base MALARIA_SIM model: a person can acquire only one new infection per time step, and a vector is always considered infected once it acquires an infection. Provided for validation — allows direct comparison of FPG and base model output."
-```
+| Parameter | Data type | Default | Description |
+|-----------|-----------|---------|-------------|
+| `Enable_FPG_Similarity_To_Base` | boolean | false | If true, FPG simulates the base MALARIA_SIM model: a person can acquire only one new infection per time step, and a vector is always considered infected once it acquires an infection. Provided for validation — allows direct comparison of FPG and base model output. |
 
 ## Output reports
 
@@ -515,18 +518,18 @@ vector population, including details on oocysts and sporozoites.
 When FPG is enabled, InsetChart.json includes the following additional channels beyond the standard
 malaria channels:
 
-```
-Avg Num Vector Infs, "The average number of distinct oocyst and sporozoite cohorts currently present in infected vectors."
-Complexity of Infection, "The mean number of distinct parasite genomes per infected person (complexity of infection, COI). Distinct genomes are identified by barcode hashcode only — drug resistance, HRP, MSP, and PfEMP1 loci are not considered."
-Drug Resistant Fraction of All Infections, "The fraction of all active human infections that have a non-``A`` allele at any position in ``Drug_Resistant_Genome_Locations``."
-Drug Resistant Fraction of Infected People, "The fraction of currently infected people who have at least one infection with a non-``A`` allele at any position in ``Drug_Resistant_Genome_Locations``."
-HRP Deleted Fraction of All Infections, "The fraction of all active human infections that are HRP-deleted (all HRP loci carry a non-``A`` allele)."
-HRP Deleted Fraction of Infected People, "The fraction of currently infected people who have at least one HRP-deleted infection."
-Infected and Infectious Vectors, "The fraction of adult vectors that are infected (have acquired gametocytes but not yet produced sporozoites) or infectious (have sporozoites in salivary glands)."
-New Vector Infections, "The number of vectors that acquired new infections from human blood meals during this time step."
-Num Total Infections, "The total count of active human infections across all individuals in the simulation."
-PfHRP2 Prevalence, "The fraction of the population that would test positive on an HRP2-based rapid diagnostic test, based on whether circulating HRP2 exceeds ``Report_Detection_Threshold_PfHRP2``."
-```
+| Channel | Description |
+|---------|-------------|
+| Avg Num Vector Infs | The average number of distinct oocyst and sporozoite cohorts currently present in infected vectors. |
+| Complexity of Infection | The mean number of distinct parasite genomes per infected person (complexity of infection, COI). Distinct genomes are identified by barcode hashcode only — drug resistance, HRP, MSP, and PfEMP1 loci are not considered. |
+| Drug Resistant Fraction of All Infections | The fraction of all active human infections that have a non-`A` allele at any position in `Drug_Resistant_Genome_Locations`. |
+| Drug Resistant Fraction of Infected People | The fraction of currently infected people who have at least one infection with a non-`A` allele at any position in `Drug_Resistant_Genome_Locations`. |
+| HRP Deleted Fraction of All Infections | The fraction of all active human infections that are HRP-deleted (all HRP loci carry a non-`A` allele). |
+| HRP Deleted Fraction of Infected People | The fraction of currently infected people who have at least one HRP-deleted infection. |
+| Infected and Infectious Vectors | The fraction of adult vectors that are infected (have acquired gametocytes but not yet produced sporozoites) or infectious (have sporozoites in salivary glands). |
+| New Vector Infections | The number of vectors that acquired new infections from human blood meals during this time step. |
+| Num Total Infections | The total count of active human infections across all individuals in the simulation. |
+| PfHRP2 Prevalence | The fraction of the population that would test positive on an HRP2-based rapid diagnostic test, based on whether circulating HRP2 exceeds `Report_Detection_Threshold_PfHRP2`. |
 
 ## FPG Observational Model
 
@@ -558,3 +561,9 @@ and an IBx distributions JSON file with pairwise relatedness distributions.
 An end-to-end example of running FPG with EMOD and invoking the FPGObservationalModel via
 post-processing is provided in the emodpy-malaria repository at `examples-container/fpg_example`,
 where it is called from the `dtk_post_process.py` script after the simulation completes.
+
+## References
+
+- Marquart L, Butterworth A, McCarthy JS, Gatton ML. "Modelling the dynamics of *Plasmodium falciparum* histidine-rich protein 2 in human malaria to better understand malaria rapid diagnostic test performance." *Malaria Journal*. 2012;11:74.
+
+- Gardner MJ, et al. "Genome sequence of the human malaria parasite *Plasmodium falciparum*." *Nature*. 2002;419:498–511.
