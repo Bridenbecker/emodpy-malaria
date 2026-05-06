@@ -62,7 +62,15 @@ The following examples show how to target interventions based on a single proper
 
 This example restricts the intervention to urban individuals.
 
-[link](../json/model-targeted-interventions-1.json)
+```json
+{
+    "Property_Restrictions_Within_Node": [
+        {
+            "Place": "Urban"
+        }
+    ]
+}
+```
 
 ![howto-targeted-1.png](../figures/general/howto-targeted-1.png)
 
@@ -72,7 +80,15 @@ other property types.
 
 In this example, the intervention targets suburban individuals, regardless of their risk.
 
-[link](../json/model-targeted-interventions-2.json)
+```json
+{
+    "Property_Restrictions_Within_Node": [
+        {
+            "Place": "Suburban"
+        }
+    ]
+}
+```
 
 ![howto-targeted-2.png](../figures/general/howto-targeted-2.png)
 
@@ -84,7 +100,18 @@ as separate objects in the array.
 
 In this example, the intervention targets both rural and urban individuals.
 
-[link](../json/model-targeted-interventions-3.json)
+```json
+{
+    "Property_Restrictions_Within_Node": [
+        {
+            "Place": "Rural"
+        },
+        {
+            "Place": "Urban"
+        }
+    ]
+}
+```
 
 ![howto-targeted-3.png](../figures/general/howto-targeted-3.png)
 
@@ -97,7 +124,16 @@ key/value pairs in the same object. This is an AND combination.
 In this example, a intervention is targeted at low risk, suburban individuals. Individuals must have
 both property values.
 
-[link](../json/model-targeted-interventions-4.json)
+```json
+{
+    "Property_Restrictions_Within_Node": [
+        {
+            "Risk": "Low",
+            "Place": "Suburban"
+        }
+    ]
+}
+```
 
 ![howto-targeted-4.png](../figures/general/howto-targeted-4.png)
 
@@ -110,7 +146,18 @@ is an OR combination.
 
 In this example, the intervention is targeted at individuals who are either low risk or suburban.
 
-[link](../json/model-targeted-interventions-5.json)
+```json
+{
+    "Property_Restrictions_Within_Node": [
+        {
+            "Risk": "Low"
+        },
+        {
+            "Place": "Suburban"
+        }
+    ]
+}
+```
 
 ![howto-targeted-5.png](../figures/general/howto-targeted-5.png)
 
@@ -126,7 +173,18 @@ you to configure multiple campaign events to cover each segment of the populatio
 
 In this example, the intervention is targeted at urban individuals who are also age 0 to 5.
 
-[link](../json/model-targeted-interventions-6.json)
+```json
+{
+    "Property_Restrictions_Within_Node": [
+        {
+            "Place": "Urban"
+        }
+    ],
+    "Target_Demographic": "ExplicitAgeRanges",
+    "Target_Age_Min": 0,
+    "Target_Age_Max": 5
+}
+```
 
 ![howto-targeted-6.png](../figures/general/howto-targeted-6.png)
 
@@ -138,7 +196,24 @@ parameter.
 In this example, the intervention is targeted at individuals 0-5 who are low risk, 5-13 who are
 medium risk, or 13-125 who are high risk.
 
-[link](../json/model-targeted-interventions-7.json)
+```json
+{
+    "Property_Restrictions_Within_Node": [
+        {
+            "Risk": "LOW",
+            "Age_Bin": "Age_Bin_Property_From_0_To_5"
+        },
+        {
+            "Risk": "MEDIUM",
+            "Age_Bin": "Age_Bin_Property_From_5_To_13"
+        },
+        {
+            "Risk": "HIGH",
+            "Age_Bin": "Age_Bin_Property_From_13_To_125"
+        }
+    ]
+}
+```
 
 The following graphs show the property reports for a HINT simulation with both age and
 accessibility properties in which transmission is lower for hard-to-access individuals and there are an equal number of "easy" and "hard" to access individuals. The first graph shows the effect of targeting
