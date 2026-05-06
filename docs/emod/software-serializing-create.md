@@ -16,19 +16,27 @@ smaller populations will create smaller serialized files.
 
 The following configuration parameters must be set to create serialized files:
 
-```
-Serialized_Population_Writing_Type, enum, NONE, "The type of serialization to perform. NONE for no serialization; TIME to use the definition from Serialization_Times; and TIMESTEP to use definition from Serialization_Time_Steps."
-Serialization_Times, array of floats, [], "The list of times at which to save the serialized state to file. 0 indicates the initial state before simulation, 'n' indicates the time to serialize in terms of start time and step size, rounded up to the nearest timestep.  Time is in term of days."
-Serialization_Time_Steps, array of integers, [], "The list of timesteps after which to save the serialized state to file. 0 indicates the initial state before simulation, n indicates after the nth timestep.  "
-Serialization_Mask_Node_Write, integer, 0, "A bitmask that defines what is NOT written to the file. O implies write everything to the file, 16 implies do NOT write larval habitats to the file."
-Serialization_Precision, enum, REDUCED, "REDUCED is used to reduce the size of the serialized file. FULL give more floating point precision but creates larger files.  FULL precision is needed if you want the continuing simulation to be exactly the same as if you didn't start from a serialized file."
-```
+| Parameter | Data type | Default | Description |
+|---|---|---|---|
+| `Serialized_Population_Writing_Type` | enum | NONE | The type of serialization to perform. NONE for no serialization; TIME to use the definition from Serialization_Times; and TIMESTEP to use definition from Serialization_Time_Steps. |
+| `Serialization_Times` | array of floats | [] | The list of times at which to save the serialized state to file. 0 indicates the initial state before simulation, 'n' indicates the time to serialize in terms of start time and step size, rounded up to the nearest timestep. Time is in terms of days. |
+| `Serialization_Time_Steps` | array of integers | [] | The list of timesteps after which to save the serialized state to file. 0 indicates the initial state before simulation, n indicates after the nth timestep. |
+| `Serialization_Mask_Node_Write` | integer | 0 | A bitmask that defines what is NOT written to the file. 0 implies write everything to the file, 16 implies do NOT write larval habitats to the file. |
+| `Serialization_Precision` | enum | REDUCED | REDUCED is used to reduce the size of the serialized file. FULL gives more floating point precision but creates larger files. FULL precision is needed if you want the continuing simulation to be exactly the same as if you didn't start from a serialized file. |
 
 ### Example JSON
 
 The following example will save the population on day 50 and day 100.
 
-[link](../json/software-serializing-create-1.json)
+```json
+{
+    "Serialized_Population_Reading_Type": "NONE",
+    "Serialized_Population_Writing_Type": "TIME",
+    "Serialization_Times": [50, 100],
+    "Serialization_Mask_Node_Write": 0,
+    "Serialization_Precision": "REDUCED"
+}
+```
 
 ## Starting from
 
@@ -43,13 +51,13 @@ parameters. If you do not specify an accurate path and filename, EMOD generates 
 
 The following configuration parameters must be set to create serialized files:
 
-```
-Serialized_Population_Reading_Type, enum, NONE, "Set to READ to enable reading from a serialized population file, set to NONE otherwise."
-Serialized_Population_Path, string, empty string, "The root path for the serialized population files."
-Serialized_Population_Filenames, array of strings, [],  "An array of filenames with serialized population data. The number of filenames must match the number of cores used for the simulation.  The path to the files is defined in **Serialized_Population_path**."
-Serialization_Mask_Node_Read, integer, 0, "This is a bitmask to control what data is loaded.  0 implies loading all of the data in the serialized file.  16 implies that we do not load the larval habitat data from the serialized file and use the parameters in the configuration file instead."
-Enable_Random_Generator_From_Serialized_Population, boolean, 0, "Determines if the random number generator should be extracted from a serialized population file. Enabling this (set to 1) starts a simulation from this file with the exact same random number stream and location in that stream as when the file was serialized."
-```
+| Parameter | Data type | Default | Description |
+|---|---|---|---|
+| `Serialized_Population_Reading_Type` | enum | NONE | Set to READ to enable reading from a serialized population file, set to NONE otherwise. |
+| `Serialized_Population_Path` | string | empty string | The root path for the serialized population files. |
+| `Serialized_Population_Filenames` | array of strings | [] | An array of filenames with serialized population data. The number of filenames must match the number of cores used for the simulation. The path to the files is defined in **Serialized_Population_Path**. |
+| `Serialization_Mask_Node_Read` | integer | 0 | A bitmask to control what data is loaded. 0 implies loading all of the data in the serialized file. 16 implies that we do not load the larval habitat data from the serialized file and use the parameters in the configuration file instead. |
+| `Enable_Random_Generator_From_Serialized_Population` | boolean | 0 | Determines if the random number generator should be extracted from a serialized population file. Enabling this (set to 1) starts a simulation from this file with the exact same random number stream and location in that stream as when the file was serialized. |
 
 ### Example JSON
 
@@ -57,7 +65,15 @@ Enable_Random_Generator_From_Serialized_Population, boolean, 0, "Determines if t
 In this example a population is loaded from file ./my_files/state-00050.dtk. Everything saved in the file is read
 ("Serialization_Mask_Node_Read": 0).
 
-[link](../json/software-serializing-create-2.json)
+```json
+{
+    "Serialized_Population_Writing_Type": "NONE",
+    "Serialized_Population_Reading_Type": "READ",
+    "Serialized_Population_Path": ".",
+    "Serialized_Population_Filenames": ["state-00050.dtk"],
+    "Serialization_Mask_Node_Read": 0
+}
+```
 
 ## Using larval habitats in the configuration file when reading from a serialized file
 

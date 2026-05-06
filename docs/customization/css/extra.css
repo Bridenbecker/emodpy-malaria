@@ -4,3 +4,15 @@ div.md-copyright__highlight
     flex-direction: row;
     gap: 2em;
 }
+
+/* Keep all non-description columns at minimum width */
+.md-typeset table td:not(:last-child),
+.md-typeset table th:not(:last-child) {
+    white-space: nowrap;
+}
+
+/* Ensure description column is wide enough to push table beyond the viewport, triggering scroll */
+.md-typeset table td:last-child,
+.md-typeset table th:last-child {
+    min-width: 400px;
+}
