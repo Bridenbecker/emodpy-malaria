@@ -1,4 +1,4 @@
-# ReportAntibodies
+﻿# ReportAntibodies
 
 
 The antibodies report (ReportAntibodiesCapacity.csv or ReportAntibodiesConcentration.csv)  is a csv-formatted report that
@@ -64,6 +64,6 @@ PfEMP1_X, float, "There will be m number of columns named 'PfEMP1_0' to 'PfEMP1_
 
 The following are examples of ReportAntibodiesConcentration.csv and ReportAntibodiesCapacity.csv files.
 
-{{ read_csv("csv/report-antibodies-capacity.csv") }}
+{{ read_csv("csv/report-antibodies-capacity.csv", keep_default_na=False) }}
 
-{{ read_csv("csv/report-antibodies-concentration.csv") }}
+{{ read_csv("csv/report-antibodies-concentration.csv", keep_default_na=False) }}

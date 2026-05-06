@@ -1,4 +1,4 @@
-# Microsporidia Infection Model
+﻿# Microsporidia Infection Model
 
 
 The model extends the standard VECTOR_SIM model to track endosymbiont infections and their
@@ -166,7 +166,7 @@ Microsporidia strains are configured within the **Vector_Species_Params** sectio
     JSON format does not permit comments, but you can add "dummy" parameters to add contextual
     information to your files. Any keys that are not EMOD parameter names will be ignored by the
     model.
-{{ read_csv("csv/config-vector-microsporidia-malaria.csv") }}
+{{ read_csv("csv/config-vector-microsporidia-malaria.csv", keep_default_na=False) }}
 
 The following example shows a two-strain microsporidia configuration for *Anopheles gambiae*.
 

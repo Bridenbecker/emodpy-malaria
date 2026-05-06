@@ -1,4 +1,4 @@
-# PropertyValueChanger
+﻿# PropertyValueChanger
 
 
 The **PropertyValueChanger** intervention class assigns new individual property values to
@@ -23,6 +23,6 @@ does not need to be enabled to use this intervention. To instead change node pro
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-propertyvaluechanger.csv") }}
+{{ read_csv("csv/campaign-propertyvaluechanger.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-individual-propertyvaluechanger.json)

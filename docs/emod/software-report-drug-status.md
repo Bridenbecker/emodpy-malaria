@@ -1,4 +1,4 @@
-# ReportDrugStatus
+﻿# ReportDrugStatus
 
 
 
@@ -50,4 +50,4 @@ NumRemainingDoses, integer, The number of remaining doses the individual will re
 
 The following is an example of ReportDrugStatus.csv.
 
-{{ read_csv("csv/report-malaria-drug-status.csv") }}
+{{ read_csv("csv/report-malaria-drug-status.csv", keep_default_na=False) }}

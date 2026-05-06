@@ -1,4 +1,4 @@
-# MalariaChallenge
+﻿# MalariaChallenge
 
 
 The **MalariaChallenge** intervention class is a node-level intervention similar to
@@ -18,6 +18,6 @@ malaria challenges by either tracking numbers of sporozoites or infectious mosqu
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-malariachallenge.csv") }}
+{{ read_csv("csv/campaign-malariachallenge.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-node-malariachallenge.json)

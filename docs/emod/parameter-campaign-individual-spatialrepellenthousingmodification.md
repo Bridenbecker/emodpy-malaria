@@ -1,4 +1,4 @@
-# SpatialRepellentHousingModification
+﻿# SpatialRepellentHousingModification
 
 
 The **SpatialRepellentHousingModification** intervention class is a housing modification utilizing
@@ -39,6 +39,6 @@ At a glance:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-spatialrepellenthousingmodification.csv") }}
+{{ read_csv("csv/campaign-spatialrepellenthousingmodification.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-individual-spatialrepellenthousingmodification.json)

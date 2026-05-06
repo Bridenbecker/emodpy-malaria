@@ -1,4 +1,4 @@
-# IndividualImmunityChanger
+﻿# IndividualImmunityChanger
 
 
 The **IndividualImmunityChanger** intervention class acts essentially as a
@@ -24,6 +24,6 @@ by the immunity waning parameters in the configuration file.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-individualimmunitychanger.csv") }}
+{{ read_csv("csv/campaign-individualimmunitychanger.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-individual-individualimmunitychanger.json)

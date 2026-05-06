@@ -1,4 +1,4 @@
-# MigrateFamily
+﻿# MigrateFamily
 
 
 The **MigrateFamily** intervention class tells family groups of residents of the targeted node to go
@@ -19,6 +19,6 @@ start until all residents are at the *home node*.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-migratefamily.csv") }}
+{{ read_csv("csv/campaign-migratefamily.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-node-migratefamily.json)

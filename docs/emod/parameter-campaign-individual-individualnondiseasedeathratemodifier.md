@@ -1,4 +1,4 @@
-# IndividualNonDiseaseDeathRateModifier
+﻿# IndividualNonDiseaseDeathRateModifier
 
 
 The **IndividualNonDiseaseDeathRateModifier** intervention class provides a method of modifying 
@@ -20,6 +20,6 @@ can be designated, and linear interpolation will be used to calculate values bet
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-individualnondiseasedeathratemodifier.csv") }}
+{{ read_csv("csv/campaign-individualnondiseasedeathratemodifier.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-individual-individualnondiseasedeathratemodifier.json)

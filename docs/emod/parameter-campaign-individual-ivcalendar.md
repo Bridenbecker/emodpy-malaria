@@ -1,4 +1,4 @@
-# IVCalendar
+﻿# IVCalendar
 
 
 The **IVCalendar** intervention class contains a list of ages when an individual will receive the
@@ -22,6 +22,6 @@ may also be distributed directly to individuals.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-ivcalendar.csv") }}
+{{ read_csv("csv/campaign-ivcalendar.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-individual-ivcalendar.json)

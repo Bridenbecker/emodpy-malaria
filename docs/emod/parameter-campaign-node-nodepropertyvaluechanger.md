@@ -1,4 +1,4 @@
-# NodePropertyValueChanger
+﻿# NodePropertyValueChanger
 
 
 The **NodePropertyValueChanger** intervention class sets a given node property to a new value. You can
@@ -21,6 +21,6 @@ node-level intervention functions in a similar manner as the individual-level in
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-nodepropertyvaluechanger.csv") }}
+{{ read_csv("csv/campaign-nodepropertyvaluechanger.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-node-nodepropertyvaluechanger.json)

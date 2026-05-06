@@ -1,4 +1,4 @@
-# AdherentDrug
+﻿# AdherentDrug
 
 
 The **AdherentDrug** class is an individual-level intervention that extends
@@ -21,6 +21,6 @@ from the person's system, and can lengthen the duration that a feeding mosquito 
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-adherentdrug.csv") }}
+{{ read_csv("csv/campaign-adherentdrug.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-individual-adherentdrug.json)

@@ -1,4 +1,4 @@
-# Larval habitat
+﻿# Larval habitat
 
 
 The following parameters determine mosquito larval development related to habitat and climate. For
@@ -16,4 +16,4 @@ broadly are described in [parameter-configuration-vector-lifecycle](parameter-co
     JSON format does not permit comments, but you can add "dummy" parameters to add contextual
     information to your files. Any keys that are not EMOD parameter names will be ignored by the
     model.
-{{ read_csv("csv/config-larval-malaria.csv") }}
+{{ read_csv("csv/config-larval-malaria.csv", keep_default_na=False) }}

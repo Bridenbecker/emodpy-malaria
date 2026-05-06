@@ -1,4 +1,4 @@
-# SimpleBoosterVaccine
+﻿# SimpleBoosterVaccine
 
 
 The **SimpleBoosterVaccine** intervention class is derived from [parameter-campaign-individual-simplevaccine](parameter-campaign-individual-simplevaccine.md)
@@ -26,6 +26,6 @@ intended to mimic biological priming and boosting.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-simpleboostervaccine.csv") }}
+{{ read_csv("csv/campaign-simpleboostervaccine.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-individual-simpleboostervaccine.json)

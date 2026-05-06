@@ -1,4 +1,4 @@
-# UsageDependentBednet
+﻿# UsageDependentBednet
 
 
 The **UsageDependentBednet** intervention class is similar to [parameter-campaign-individual-simplebednet](parameter-campaign-individual-simplebednet.md),
@@ -44,6 +44,6 @@ At a glance:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-usagedependentbednet.csv") }}
+{{ read_csv("csv/campaign-usagedependentbednet.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-individual-usagedependentbednet.json)

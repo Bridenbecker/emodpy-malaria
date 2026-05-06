@@ -1,4 +1,4 @@
-# Mortality and survival
+﻿# Mortality and survival
 
 
 The following parameter determine mortality and survival characteristics of the disease being modeled
@@ -19,4 +19,4 @@ parasite counts lead to severe malaria and mortality.
     information to your files. Any keys that are not EMOD parameter names will be ignored by the
     model.
 
-{{ read_csv("csv/config-mortality-malaria.csv") }}
+{{ read_csv("csv/config-mortality-malaria.csv", keep_default_na=False) }}

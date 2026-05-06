@@ -1,4 +1,4 @@
-# CommunityHealthWorkerEventCoordinator
+﻿# CommunityHealthWorkerEventCoordinator
 
 
 The **CommunityHealthWorkerEventCoordinator** coordinator class is used to model a health care worker's ability
@@ -20,6 +20,6 @@ of drugs  and node-level interventions could be spraying houses with insecticide
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-communityhealthworkereventcoordinator.csv") }}
+{{ read_csv("csv/campaign-communityhealthworkereventcoordinator.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-event-communityhealthworkereventcoordinator.json)

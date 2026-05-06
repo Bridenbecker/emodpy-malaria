@@ -1,4 +1,4 @@
-# ImportPressure
+﻿# ImportPressure
 
 
 The **ImportPressure** intervention class extends **Outbreak** by importing infected individuals
@@ -20,6 +20,6 @@ created with the specified **Antigen**, **Genome**, and **Import_Age**.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-importpressure.csv") }}
+{{ read_csv("csv/campaign-importpressure.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-node-importpressure.json)

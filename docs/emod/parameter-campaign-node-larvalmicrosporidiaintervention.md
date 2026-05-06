@@ -1,4 +1,4 @@
-# LarvalMicrosporidiaIntervention
+﻿# LarvalMicrosporidiaIntervention
 
 
 The **LarvalMicrosporidiaIntervention** is a node-level intervention that mimics
@@ -89,6 +89,6 @@ At a glance:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-larvalmicrosporidiaintervention.csv") }}
+{{ read_csv("csv/campaign-larvalmicrosporidiaintervention.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-node-larvalmicrosporidiaintervention.json)

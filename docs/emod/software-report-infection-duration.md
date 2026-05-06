@@ -1,4 +1,4 @@
-# ReportInfectionDuration
+﻿# ReportInfectionDuration
 
 
 The infection duration report (ReportInfectionDuration.csv) records one row each time an infection
@@ -39,4 +39,4 @@ InfectionDuration, float, "The duration in days of the infection that cleared."
 
 The following is an example of ReportInfectionDuration.csv.
 
-{{ read_csv("csv/report-infection-duration.csv") }}
+{{ read_csv("csv/report-infection-duration.csv", keep_default_na=False) }}

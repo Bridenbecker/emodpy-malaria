@@ -1,4 +1,4 @@
-# Vector life cycle
+﻿# Vector life cycle
 
 
 The following parameters determine the characteristics of the vector life cycle. Set the vector species
@@ -17,4 +17,4 @@ climate are described in [parameter-configuration-larval](parameter-configuratio
     JSON format does not permit comments, but you can add "dummy" parameters to add contextual
     information to your files. Any keys that are not EMOD parameter names will be ignored by the
     model.
-{{ read_csv("csv/config-vector-lifecycle-malaria.csv") }}
+{{ read_csv("csv/config-vector-lifecycle-malaria.csv", keep_default_na=False) }}

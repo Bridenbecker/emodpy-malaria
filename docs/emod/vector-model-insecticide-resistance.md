@@ -1,4 +1,4 @@
-# Insecticide resistance
+﻿# Insecticide resistance
 
 
 EMOD models insecticide resistance as a genome-dependent modification of insecticide
@@ -77,7 +77,7 @@ Insecticides are defined in the `Insecticides` array in config.json, at the same
     JSON format does not permit comments, but you can add "dummy" parameters to add contextual
     information to your files. Any keys that are not EMOD parameter names will be ignored by the
     model.
-{{ read_csv("csv/config-insecticides-malaria.csv") }}
+{{ read_csv("csv/config-insecticides-malaria.csv", keep_default_na=False) }}
 
 Example:
 ```json

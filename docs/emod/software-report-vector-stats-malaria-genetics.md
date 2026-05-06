@@ -1,4 +1,4 @@
-# ReportVectorStatsMalariaGenetics
+﻿# ReportVectorStatsMalariaGenetics
 
 
 The vector statistics and malaria genetics report (ReportVectorStatsMalariaGenetics.csv) is a
@@ -120,4 +120,4 @@ OtherBarcodes, integer, "The number of vectors with sporozoites having a barcode
 The following is an examples of a ReportVectorStats.csv file.
 
 
-{{ read_csv("csv/report-vector-stats-malaria-genetics.csv") }}
+{{ read_csv("csv/report-vector-stats-malaria-genetics.csv", keep_default_na=False) }}

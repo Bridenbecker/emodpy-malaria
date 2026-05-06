@@ -1,4 +1,4 @@
-# BroadcastEventToOtherNodes
+﻿# BroadcastEventToOtherNodes
 
 
 The **BroadcastEventToOtherNodes** intervention class allows events to be sent from one node to
@@ -26,6 +26,6 @@ demographics file, and use the Haversine Formula for calculating the great-circl
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-broadcasteventtoothernodes.csv") }}
+{{ read_csv("csv/campaign-broadcasteventtoothernodes.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-individual-broadcasteventtoothernodes.json)

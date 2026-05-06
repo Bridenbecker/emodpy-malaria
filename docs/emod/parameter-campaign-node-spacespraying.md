@@ -1,4 +1,4 @@
-# SpaceSpraying
+﻿# SpaceSpraying
 
 
 The **SpaceSpraying** intervention class implements node-level vector control by spraying pesticides
@@ -34,6 +34,6 @@ At a glance:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-spacespraying.csv") }}
+{{ read_csv("csv/campaign-spacespraying.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-node-spacespraying.json)

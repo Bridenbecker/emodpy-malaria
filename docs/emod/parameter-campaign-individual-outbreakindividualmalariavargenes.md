@@ -1,4 +1,4 @@
-# OutbreakIndividualMalariaVarGenes
+﻿# OutbreakIndividualMalariaVarGenes
 
 
 The **OutbreakIndividualMalariaVarGenes** intervention class is an individual-level intervention
@@ -21,6 +21,6 @@ to FALCIPARUM_FIXED_STRAIN.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-outbreakindividualmalariavargenes.csv") }}
+{{ read_csv("csv/campaign-outbreakindividualmalariavargenes.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-individual-outbreakindividualmalariavargenes.json)

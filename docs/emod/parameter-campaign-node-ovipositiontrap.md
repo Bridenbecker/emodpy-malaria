@@ -1,4 +1,4 @@
-# OvipositionTrap
+﻿# OvipositionTrap
 
 
 The **OvipositionTrap** intervention class utilizes an oviposition trap to collect host-seeking mosquitoes, and
@@ -45,6 +45,6 @@ At a glance:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-ovipositiontrap.csv") }}
+{{ read_csv("csv/campaign-ovipositiontrap.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-node-ovipositiontrap.json)

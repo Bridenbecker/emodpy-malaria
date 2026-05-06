@@ -1,4 +1,4 @@
-# Demographics parameters
+﻿# Demographics parameters
 
 
 The parameters described in this reference section can be added to the JSON (JavaScript Object Notation) formatted demographics file to determine the demographics of the population within
@@ -71,7 +71,7 @@ This generates a **NodeID** that is a 4-byte unsigned integer; the first two byt
 longitude of the node and the second two bytes represent the latitude. To reserve 0 to be used as a
 null value, 1 is added to the **NodeID** as part of the final calculation.
 
-{{ read_csv("csv/demo-metadata-malaria.csv") }}
+{{ read_csv("csv/demo-metadata-malaria.csv", keep_default_na=False) }}
 
 
 ## NodeProperties and IndividualProperties
@@ -96,7 +96,7 @@ that assign properties to individuals in a simulation.
 
 [Individual and node properties](model-properties.md) provides more guidance.
 
-{{ read_csv("csv/demo-properties-malaria.csv") }}
+{{ read_csv("csv/demo-properties-malaria.csv", keep_default_na=False) }}
 
 
 ## NodeAttributes
@@ -106,7 +106,7 @@ The **NodeAttributes** section contains parameters that add or modify informatio
 regarding the location, migration, habitat, and population of node. Some **NodeAttributes**
 depend on values set in the configuration parameters.
 
-{{ read_csv("csv/demo-nodeattributes-malaria.csv") }}
+{{ read_csv("csv/demo-nodeattributes-malaria.csv", keep_default_na=False) }}
 
 
 ## IndividualAttributes
@@ -119,7 +119,7 @@ configured using a simple flag system of three parameters or a complex system of
 many more parameters. The following table contains the parameters that can be used with either
 distribution system.
 
-{{ read_csv("csv/demo-individualattributes-malaria.csv") }}
+{{ read_csv("csv/demo-individualattributes-malaria.csv", keep_default_na=False) }}
 
 
 ### Simple distributions
@@ -130,7 +130,7 @@ and the other two are used to further define the distribution. For example, if y
 to a uniform distribution, the initial ages of individuals in the simulation will be evenly
 distributed between some minimum and maximum value as defined by the other two parameters.
 
-{{ read_csv("csv/demo-simpledistro-malaria.csv") }}
+{{ read_csv("csv/demo-simpledistro-malaria.csv", keep_default_na=False) }}
 
 
 ### Complex distributions
@@ -142,4 +142,4 @@ linear distribution. The distribution is configured using arrays of axes (such a
 values at points along each of these axes. This allows you to have different distributions for
 different groups in the population.
 
-{{ read_csv("csv/demo-complexdistro-malaria.csv") }}
+{{ read_csv("csv/demo-complexdistro-malaria.csv", keep_default_na=False) }}

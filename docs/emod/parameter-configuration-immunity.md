@@ -1,4 +1,4 @@
-# Immunity
+﻿# Immunity
 
 
 The following parameters determine the immune system response for the disease being modeled, including
@@ -14,4 +14,4 @@ waning immunity after an infection clears.
     JSON format does not permit comments, but you can add "dummy" parameters to add contextual
     information to your files. Any keys that are not EMOD parameter names will be ignored by the
     model.
-{{ read_csv("csv/config-immunity-malaria.csv") }}
+{{ read_csv("csv/config-immunity-malaria.csv", keep_default_na=False) }}

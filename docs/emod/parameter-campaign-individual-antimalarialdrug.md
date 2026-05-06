@@ -1,4 +1,4 @@
-# AntimalarialDrug
+﻿# AntimalarialDrug
 
 
 The **AntimalarialDrug** intervention is used to apply drug-based control efforts to malaria
@@ -20,6 +20,6 @@ behave.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-antimalarialdrug.csv") }}
+{{ read_csv("csv/campaign-antimalarialdrug.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-individual-antimalarialdrug.json)

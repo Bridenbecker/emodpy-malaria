@@ -1,4 +1,4 @@
-# VectorSurveillanceEventCoordinator
+﻿# VectorSurveillanceEventCoordinator
 
 
 The **VectorSurveillanceEventCoordinator** coordinator class samples the vector population
@@ -22,6 +22,6 @@ is controlled by trigger events: the coordinator begins sampling when an event f
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-vectorsurveillanceeventcoordinator.csv") }}
+{{ read_csv("csv/campaign-vectorsurveillanceeventcoordinator.csv", keep_default_na=False) }}
 
 [link](../json/parameter-campaign-event-vectorsurveillanceeventcoordinator.json)
