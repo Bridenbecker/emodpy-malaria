@@ -8,8 +8,6 @@ If you need assistance, you can contact support for help with solving issues. Yo
 Institute for Disease Modeling (IDM) support at idmsupport@gatesfoundation.org. When submitting the issue, please include any error
 information. 
 
-See [emod:dev-debugging-overview](emod:dev-debugging-overview.md) for troubleshooting issues when attempting to build Eradication.exe or Eradication binary for Linux.
-
 ## Exceptions
 
 

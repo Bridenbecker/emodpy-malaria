@@ -13,6 +13,9 @@ report produces a three-file ensemble: **infIndexRecursive-genomes-df.csv**, **v
 **roots.npy**. This report is intended for simulations where **Malaria_Model** is set to
 MALARIA_MECHANISTIC_MODEL_WITH_PARASITE_GENETICS.
 
+!!! seealso
+    [FPG model](malaria-model-fpg.md) — For an overview of the FPG model, genome configuration, and the full FPG workflow.
+
 ## Output files
 
 
@@ -25,25 +28,44 @@ MALARIA_MECHANISTIC_MODEL_WITH_PARASITE_GENETICS.
   in the **recursive_nid** column of infIndexRecursive-genomes-df.csv. The row index into this
   array corresponds to the genome index values in **recursive_nid**.
 
-### Configuration
+## Configuration
 
 
 To generate this report, configure the following parameters in the custom_reports.json file:
 
-```
-Start_Day,"float","0","3.40282e+38","0","The day of the simulation to start collecting data."
-End_Day,"float","0","3.40282e+38","3.40282e+38","The day of the simulation to stop collecting data. If you want data collected on a specific day, enter that day plus 1."
-Node_IDs_Of_Interest,"array of integers","1","2.14748e+09","[]","Data will be collected for the nodes in this list. Empty list implies all nodes."
-Min_Age_Years,"float","0","125","0","Minimum age in years of people to include in the report."
-Max_Age_Years,"float","0","125","125","Maximum age in years of people to include in the report."
-Must_Have_IP_Key_Value,"string","NA","NA","(empty string)","A Key:Value pair that the individual must have in order to be included. Empty string means to not include IPs in the selection criteria."
-Must_Have_Intervention,"string","NA","NA","(empty string)","The name of the intervention that the person must have in order to be included. Empty string means to not include interventions in the selection criteria."
-Minimum_Parasite_Density,"float","0","3.40282e+38","1.0","The minimum parasite density (asexual parasites per microliter of blood) that an infection must have to be included. A non-zero value filters out hepatocyte-stage infections and those with only gametocytes."
-Sampling_Period,"float","1","3.40282e+38","1","The number of days between sampling the population. Data is collected on days Start_Day, Start_Day + Sampling_Period, Start_Day + 2*Sampling_Period, and so on."
-Include_Genome_IDs,"boolean","NA","NA","0","If true (1), an additional genome_ids column is appended to the CSV output containing EMOD's internal ID for the genome of each infection's parasite. This ID can be used to cross-reference genome data with other EMOD reports that include genome IDs."
-```
+| Parameter | Data type | Min | Max | Default | Description |
+| --- | --- | --- | --- | --- | --- |
+| `Start_Day` | float | 0 | 3.40282e+38 | 0 | The day of the simulation to start collecting data. |
+| `End_Day` | float | 0 | 3.40282e+38 | 3.40282e+38 | The day of the simulation to stop collecting data. If you want data collected on a specific day, enter that day plus 1. |
+| `Node_IDs_Of_Interest` | array of integers | 1 | 2.14748e+09 | [] | Data will be collected for the nodes in this list. Empty list implies all nodes. |
+| `Min_Age_Years` | float | 0 | 125 | 0 | Minimum age in years of people to include in the report. |
+| `Max_Age_Years` | float | 0 | 125 | 125 | Maximum age in years of people to include in the report. |
+| `Must_Have_IP_Key_Value` | string | NA | NA | (empty string) | A Key:Value pair that the individual must have in order to be included. Empty string means to not include IPs in the selection criteria. |
+| `Must_Have_Intervention` | string | NA | NA | (empty string) | The name of the intervention that the person must have in order to be included. Empty string means to not include interventions in the selection criteria. |
+| `Minimum_Parasite_Density` | float | 0 | 3.40282e+38 | 1.0 | The minimum parasite density (asexual parasites per microliter of blood) that an infection must have to be included. A non-zero value filters out hepatocyte-stage infections and those with only gametocytes. |
+| `Sampling_Period` | float | 1 | 3.40282e+38 | 1 | The number of days between sampling the population. Data is collected on days Start_Day, Start_Day + Sampling_Period, Start_Day + 2*Sampling_Period, and so on. |
+| `Include_Genome_IDs` | boolean | NA | NA | 0 | If true (1), an additional genome_ids column is appended to the CSV output containing EMOD's internal ID for the genome of each infection's parasite. This ID can be used to cross-reference genome data with other EMOD reports that include genome IDs. |
 
-[link](../json/software-report-fpg-output-observational-model.json)
+```json
+{
+    "Reports": [
+        {
+            "class": "ReportFpgOutputForObservationalModel",
+            "Start_Day": 3650,
+            "End_Day": 4381,
+            "Node_IDs_Of_Interest": [1, 3],
+            "Min_Age_Years": 0,
+            "Max_Age_Years": 5,
+            "Must_Have_IP_Key_Value": "Accessibility:YES",
+            "Must_Have_Intervention": "AntimalarialDrug",
+            "Minimum_Parasite_Density": 1.0,
+            "Sampling_Period": 30.4166667,
+            "Include_Genome_IDs": 0
+        }
+    ],
+    "Use_Defaults": 1
+}
+```
 
 This example collects data after running for 10 years and collects it for the next 2 years. It only
 collects data from nodes 1 and 3 for children 5 and under who have accessibility to healthcare and are
@@ -61,31 +83,31 @@ report collects data only on days strictly less than End_Day; it must be set one
 desired collection day to include it.
 
 
-### Output file: infIndexRecursive-genomes-df.csv
+## Output file: infIndexRecursive-genomes-df.csv
 
 
 Each row of the report represents one infected person sampled at a given time step. Only individuals
 with at least one infection meeting the **Minimum_Parasite_Density** threshold are included.
 The report contains the following columns:
 
-```
-population, integer, The external ID of the node the person is currently in.
-year, integer, "The year of the data starting at zero. Used as a label for the time bin of data."
-month, integer, "A value from 0 to 11 that, together with the year column, specifies the time bin of data."
-infIndex, integer, A unique identifier for this row of data; an increasing integer with each row.
-day, float, "The day of the simulation in EMOD. The year and month values correspond to this day. For example, if day is 715, then year=1 and month=11."
-count, (not used), This column is not used.
-age_day, float, The age of the person in days.
-fever_status, integer, "0 = no fever, 1 = has fever (clinical disease symptoms present)."
-recursive_nid, array of integers, "A quoted list of genome indices — one per qualifying infection the person has — where each value is the row index into variants.npy and roots.npy for that infection's genome data (e.g., ""[0,1,2]""). The entries in recursive_nid, infection_ids, bite_ids, and genome_ids are parallel arrays: the i-th entry in each refers to the same infection."
-recursive_count, integer, "The number of active infections meeting the Minimum_Parasite_Density threshold; equals the number of entries in recursive_nid."
-IndividualID, integer, The unique ID of the person in EMOD.
-infection_ids, array of integers, "A quoted list of unique EMOD infection IDs, one per qualifying infection. Entries are in the same order as recursive_nid."
-bite_ids, array of integers, "A quoted list of bite IDs, one per qualifying infection, identifying the mosquito bite that initiated each infection. Entries are in the same order as recursive_nid."
-genome_ids, array of integers, "(Optional) A quoted list of EMOD's internal genome IDs, one per qualifying infection. Entries are in the same order as recursive_nid. Only present when Include_Genome_IDs is set to true (1)."
-```
+| Column | Data type | Description |
+| --- | --- | --- |
+| `population` | integer | The external ID of the node the person is currently in. |
+| `year` | integer | The year of the data starting at zero. Used as a label for the time bin of data. |
+| `month` | integer | A value from 0 to 11 that, together with the year column, specifies the time bin of data. |
+| `infIndex` | integer | A unique identifier for this row of data; an increasing integer with each row. |
+| `day` | float | The day of the simulation in EMOD. The year and month values correspond to this day. For example, if day is 715, then year=1 and month=11. |
+| `count` | (not used) | This column is not used. |
+| `age_day` | float | The age of the person in days. |
+| `fever_status` | integer | 0 = no fever, 1 = has fever (clinical disease symptoms present). |
+| `recursive_nid` | array of integers | A quoted list of genome indices — one per qualifying infection the person has — where each value is the row index into variants.npy and roots.npy for that infection's genome data (e.g., "[0,1,2]"). The entries in recursive_nid, infection_ids, bite_ids, and genome_ids are parallel arrays: the i-th entry in each refers to the same infection. |
+| `recursive_count` | integer | The number of active infections meeting the Minimum_Parasite_Density threshold; equals the number of entries in recursive_nid. |
+| `IndividualID` | integer | The unique ID of the person in EMOD. |
+| `infection_ids` | array of integers | A quoted list of unique EMOD infection IDs, one per qualifying infection. Entries are in the same order as recursive_nid. |
+| `bite_ids` | array of integers | A quoted list of bite IDs, one per qualifying infection, identifying the mosquito bite that initiated each infection. Entries are in the same order as recursive_nid. |
+| `genome_ids` | array of integers | (Optional) A quoted list of EMOD's internal genome IDs, one per qualifying infection. Entries are in the same order as recursive_nid. Only present when Include_Genome_IDs is set to true (1). |
 
-### Example
+## Example
 
 
 The following is an example of infIndexRecursive-genomes-df.csv:

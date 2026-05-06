@@ -16,7 +16,16 @@ This report is available for `VECTOR_SIM` and `MALARIA_SIM` simulations.
 To generate this report, add the following to the custom_reports.json file. This report has no
 configurable parameters beyond the class name.
 
-[link](../json/software-report-microsporidia.json)
+```json
+{
+    "Reports": [
+        {
+            "class": "ReportMicrosporidia"
+        }
+    ],
+    "Use_Defaults": 1
+}
+```
 
 ## Output file data
 
@@ -25,20 +34,20 @@ The output file is named `ReportMicrosporidia.csv`. One row is written per time 
 per species, and per microsporidia strain. A row with `MicrosporidiaStrain` = `NoMicrosporidia`
 is included for each species and represents vectors not carrying any microsporidia strain.
 
-```
-Time, float, "The simulation time in days when the data was collected."
-NodeID, integer, "The external ID of the node that the data is being collected for."
-Species, string, "The name of the vector species."
-MicrosporidiaStrain, string, "The name of the microsporidia strain. A value of ``NoMicrosporidia`` indicates vectors not infected with any strain."
-VectorPopulation, integer, "The total number of adult female vectors in this species/strain group (STATE_INFECTIOUS + STATE_INFECTED + STATE_ADULT)."
-STATE_INFECTIOUS, integer, "The number of adult female vectors that are infectious."
-STATE_INFECTED, integer, "The number of adult female vectors that are infected but not yet infectious."
-STATE_ADULT, integer, "The number of uninfected adult female vectors."
-STATE_MALE, integer, "The number of adult male vectors."
-STATE_IMMATURE, integer, "The number of immature vectors (male and female)."
-STATE_LARVA, integer, "The number of larvae (male and female)."
-STATE_EGG, integer, "The number of eggs (male and female)."
-```
+| Parameter | Data type | Description |
+| --- | --- | --- |
+| `Time` | float | The simulation time in days when the data was collected. |
+| `NodeID` | integer | The external ID of the node that the data is being collected for. |
+| `Species` | string | The name of the vector species. |
+| `MicrosporidiaStrain` | string | The name of the microsporidia strain. A value of `NoMicrosporidia` indicates vectors not infected with any strain. |
+| `VectorPopulation` | integer | The total number of adult female vectors in this species/strain group (STATE_INFECTIOUS + STATE_INFECTED + STATE_ADULT). |
+| `STATE_INFECTIOUS` | integer | The number of adult female vectors that are infectious. |
+| `STATE_INFECTED` | integer | The number of adult female vectors that are infected but not yet infectious. |
+| `STATE_ADULT` | integer | The number of uninfected adult female vectors. |
+| `STATE_MALE` | integer | The number of adult male vectors. |
+| `STATE_IMMATURE` | integer | The number of immature vectors (male and female). |
+| `STATE_LARVA` | integer | The number of larvae (male and female). |
+| `STATE_EGG` | integer | The number of eggs (male and female). |
 
 ## Example
 
