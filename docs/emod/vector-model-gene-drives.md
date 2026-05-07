@@ -73,7 +73,7 @@ at the cut site:
   longer be cut, preventing future drive conversion at that locus.
 - **No change**: The cut fails entirely.
 
-![Classic gene drive system. A drive mosquito mates with a wild-type mosquito; in the offspring germline, the Cas9 and gRNA cut the wild-type chromosome at the target site and homology-directed repair copies the complete construct. Possible alleles in offspring: wild type (no copy), complete construct (successful copy), or resistant (non-homologous end joining creates a mutated target site the drive can no longer recognize). From Leung et al. (2022), [doi:10.1186/s12936-022-04242-2][leung-2022].](../figures/vector-genetics/classic-gene-drive.png){ style="width: 40%;" }
+![Classic gene drive system. A drive mosquito mates with a wild-type mosquito; in the offspring germline, the Cas9 and gRNA cut the wild-type chromosome at the target site and homology-directed repair copies the complete construct. Possible alleles in offspring: wild type (no copy), complete construct (successful copy), or resistant (non-homologous end joining creates a mutated target site the drive can no longer recognize). From Leung et al. (2022), [doi:10.1186/s12936-022-04242-2][leung-2022].](../figures/vector-genetics/classic-gene-drive.png){ style="width: 30%;" }
 
 *Classic gene drive system. A drive mosquito mates with a wild-type mosquito; in the offspring germline, the Cas9 and gRNA cut the wild-type chromosome at the target site and homology-directed repair copies the complete construct. Possible alleles in offspring: wild type (no copy), complete construct (successful copy), or resistant (non-homologous end joining creates a mutated target site the drive can no longer recognize). From Leung et al. (2022), [doi:10.1186/s12936-022-04242-2][leung-2022].*
 
@@ -119,7 +119,7 @@ it does not require heterozygosity at the driven locus. For each driven locus, t
 `Allele_To_Replace` must exist in the other gamete. If one of these conditions is not met for
 a particular locus, nothing happens at that locus, but other loci can still be driven.
 
-![Integral gene drive system. Driver and effector are on separate loci, each with their own gRNA, allowing each to be copied independently. Possible alleles at each locus: wild type, the introduced construct, resistant (drive can no longer recognize the target site), or loss-of-function (lethal mutation at an essential gene target site). From Leung et al. (2022), [doi:10.1186/s12936-022-04242-2][leung-2022].](../figures/vector-genetics/integral-gene-drive.png){ style="width: 40%;" }
+![Integral gene drive system. Driver and effector are on separate loci, each with their own gRNA, allowing each to be copied independently. Possible alleles at each locus: wild type, the introduced construct, resistant (drive can no longer recognize the target site), or loss-of-function (lethal mutation at an essential gene target site). From Leung et al. (2022), [doi:10.1186/s12936-022-04242-2][leung-2022].](../figures/vector-genetics/integral-gene-drive.png){ style="width: 30%;" }
 
 *Integral gene drive system. Driver and effector are on separate loci, each with their own gRNA, allowing each to be copied independently. Possible alleles at each locus: wild type, the introduced construct, resistant (drive can no longer recognize the target site), or loss-of-function (lethal mutation at an essential gene target site). From Leung et al. (2022), [doi:10.1186/s12936-022-04242-2][leung-2022].*
 

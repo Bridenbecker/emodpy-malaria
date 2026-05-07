@@ -1,4 +1,4 @@
-﻿# Waning effect classes
+# Waning effect classes
 
 
 The following classes are nested within interventions (both individual-level and node-level) to

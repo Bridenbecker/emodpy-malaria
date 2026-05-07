@@ -9,6 +9,10 @@ The malaria transmission model does not use many of the parameters provided by t
 type. Instead, *gametocyte* abundances and *cytokine* mediated infectiousness are
 modeled explicitly. See [vector-model-transmission](vector-model-transmission.md) for more information.
 
+!!! seealso
+    [malaria-model-fpg](malaria-model-fpg.md)
+        For `Max_Individual_Infections` and other transmission parameters as used in FPG simulations.
+
 !!! note
     Parameters are case-sensitive. For Boolean parameters, set to 1 for true or 0 for false.
     Minimum, maximum, or default values of "NA" indicate that those values are not applicable for

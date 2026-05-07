@@ -6,6 +6,10 @@ that extends the [parameter-campaign-individual-outbreakindividual](parameter-ca
 to specify parasite genetics for the infection. This class is only used when the configuration
 parameter **Malaria_Model** is set to MALARIA_MECHANISTIC_MODEL_WITH_PARASITE_GENETICS.
 
+!!! seealso
+    [malaria-model-fpg](malaria-model-fpg.md)
+        For the full FPG workflow, including genome configuration, seeding modes, recombination, and output reports.
+
 The parameter **Create_Nucleotide_Sequence_From** (see table below) determines how the parasite
 genetics are defined.
 
