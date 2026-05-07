@@ -19,14 +19,62 @@ do not control the overall duration of an intervention and are not assigned prob
 See the example below that uses a mix of different waning effect classes and the tables below that
 describe all parameters that can be used with each waning effect class.
 
-[link](../json/parameter-campaign-waningeffects-1.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 1,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 1.0,
+                "Number_Repetitions": -1,
+                "Timesteps_Between_Repetitions": 60,
+                "Intervention_Config": {
+                    "class": "SimpleBednet",
+                    "Cost_To_Consumer": 5,
+                    "Usage_Config": {
+                        "class": "WaningEffectRandomBox",
+                        "Initial_Effect": 1.0,
+                        "Expected_Discard_Time": 60
+                    },
+                    "Blocking_Config": {
+                        "class": "WaningEffectExponential",
+                        "Decay_Time_Constant": 150,
+                        "Initial_Effect": 0.5
+                    },
+                    "Killing_Config": {
+                        "class": "WaningEffectConstant",
+                        "Initial_Effect": 1.0
+                    }
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```
 
 ## WaningEffectBox
 
 
 The efficacy is held at a constant rate until it drops to zero after the user-defined duration.
 
-[link](../json/parameter-campaign-waningeffects-2.json)
+```json
+{
+    "Intervention_Config": {
+        "Blocking_Config": {
+            "Box_Duration": 3650,
+            "Initial_Effect": 0,
+            "class": "WaningEffectBox"
+        }
+    }
+}
+```
 
 {{ read_csv("csv/campaign-waningeffectbox.csv", keep_default_na=False) }}
 
@@ -35,7 +83,18 @@ The efficacy is held at a constant rate until it drops to zero after the user-de
 
 The initial efficacy is held for a specified duration, then the efficacy decays at an exponential rate where the current effect is equal to **Initial_Effect** - dt/**Decay_Time_Constant**.
 
-[link](../json/parameter-campaign-waningeffects-3.json)
+```json
+{
+    "Intervention_Config": {
+        "Reduction_Config": {
+            "class": "WaningEffectBoxExponential",
+            "Box_Duration": 100,
+            "Decay_Time_Constant": 150,
+            "Initial_Effect": 0.1
+        }
+    }
+}
+```
 
 {{ read_csv("csv/campaign-waningeffectboxexponential.csv", keep_default_na=False) }}
 
@@ -44,7 +103,29 @@ The initial efficacy is held for a specified duration, then the efficacy decays 
 
 The **WaningEffectCombo** class is used within individual-level interventions and allows for specifiying a list of effects when the intervention only has one **WaningEffect** defined. These effects can be added or multiplied.
 
-[link](../json/parameter-campaign-waningeffects-4.json)
+```json
+{
+    "class": "WaningEffectCombo",
+    "Add_Effects": 1,
+    "Expires_When_All_Expire": 0,
+    "Effect_List": [
+        {
+            "class": "WaningEffectMapLinear",
+            "Initial_Effect": 1.0,
+            "Expire_At_Durability_Map_End": 1,
+            "Durability_Map": {
+                "Times": [0.0, 1.0, 2.0],
+                "Values": [0.2, 0.4, 0.6]
+            }
+        },
+        {
+            "class": "WaningEffectBox",
+            "Initial_Effect": 0.5,
+            "Box_Duration": 5.0
+        }
+    ]
+}
+```
 
 {{ read_csv("csv/campaign-waningeffectconstant.csv", keep_default_na=False) }}
 
@@ -53,7 +134,17 @@ The **WaningEffectCombo** class is used within individual-level interventions an
 
 The efficacy is held at a constant rate.
 
-[link](../json/parameter-campaign-waningeffects-5.json)
+```json
+{
+    "Intervention_Config": {
+        "class": "SimpleBednet",
+        "Killing_Config": {
+            "class": "WaningEffectConstant",
+            "Initial_Effect": 1.0
+        }
+    }
+}
+```
 
 {{ read_csv("csv/campaign-waningeffectconstant.csv", keep_default_na=False) }}
 
@@ -62,7 +153,18 @@ The efficacy is held at a constant rate.
 
 The efficacy decays at an exponential rate where the current effect is equal to **Initial_Effect** - dt/**Decay_Time_Constant**.
 
-[link](../json/parameter-campaign-waningeffects-6.json)
+```json
+{
+    "Intervention_Config": {
+        "class": "SimpleBednet",
+        "Blocking_Config": {
+            "class": "WaningEffectExponential",
+            "Decay_Time_Constant": 150,
+            "Initial_Effect": 0.5
+        }
+    }
+}
+```
 
 {{ read_csv("csv/campaign-waningeffectexponential.csv", keep_default_na=False) }}
 
@@ -77,7 +179,21 @@ from 1 and increasing.
 If the example below were used in **AdherentDrug**, the probability that the person took the first
 dose would be 40%, 30% for the second dose, and so on.
 
-[link](../json/parameter-campaign-waningeffects-7.json)
+```json
+{
+    "Intervention_Config": {
+        "class": "AdherentDrug",
+        "Waning_Config": {
+            "class": "WaningEffectMapCount",
+            "Initial_Effect": 1.0,
+            "Durability_Map": {
+                "Times": [1.0, 2.0, 3.0, 4.0],
+                "Values": [0.4, 0.3, 0.2, 0.1]
+            }
+        }
+    }
+}
+```
 
 {{ read_csv("csv/campaign-waningeffectmapcount.csv", keep_default_na=False) }}
 
@@ -91,7 +207,23 @@ be used unless the intervention expires. If the time since start is less than th
 map, the efficacy will be zero. This can be used to define the shape of a curve whose magnitude is
 defined by the **Initial_Effect** multiplier.
 
-[link](../json/parameter-campaign-waningeffects-8.json)
+```json
+{
+    "Intervention_Config": {
+        "class": "ControlledVaccine",
+        "Waning_Config": {
+            "class": "WaningEffectMapLinear",
+            "Reference_Timer": 0,
+            "Initial_Effect": 1.0,
+            "Expire_At_Durability_Map_End": 1,
+            "Durability_Map": {
+                "Times": [0, 120, 240, 360],
+                "Values": [0.7, 0.8, 1.0, 0.0]
+            }
+        }
+    }
+}
+```
 
 {{ read_csv("csv/campaign-waningeffectmaplinear.csv", keep_default_na=False) }}
 
@@ -101,7 +233,16 @@ defined by the **Initial_Effect** multiplier.
 Similar to **WaningEffectMapLinear**, except that the efficacy decays based on the age of the
 individual who owns the intervention instead of the time since the start of the intervention.
 
-[link](../json/parameter-campaign-waningeffects-9.json)
+```json
+{
+    "class": "WaningEffectMapLinearAge",
+    "Initial_Effect": 1,
+    "Durability_Map": {
+        "Times": [1, 2, 5, 7],
+        "Values": [1, 0.75, 0.5, 0.25]
+    }
+}
+```
 
 {{ read_csv("csv/campaign-waningeffectmaplinearage.csv", keep_default_na=False) }}
 
@@ -112,7 +253,23 @@ Similar to **WaningEffectMapLinear**, except that the map will repeat itself eve
 is, the time since start will reset to zero once it reaches 365.  This allows you to simulate
 seasonal effects.
 
-[link](../json/parameter-campaign-waningeffects-10.json)
+```json
+{
+    "Intervention_Config": {
+        "class": "UsageDependentBednet",
+        "Usage_Config_List": [
+            {
+                "class": "WaningEffectMapLinearSeasonal",
+                "Initial_Effect": 1.0,
+                "Durability_Map": {
+                    "Times": [0.0, 20.0, 21.0, 30.0, 31.0, 365.0],
+                    "Values": [1.0, 1.0, 0.0, 0.0, 1.0, 1.0]
+                }
+            }
+        ]
+    }
+}
+```
 
 {{ read_csv("csv/campaign-waningeffectmaplinearseasonal.csv", keep_default_na=False) }}
 
@@ -123,7 +280,23 @@ Similar to **WaningEffectMapLinear**, except that the data is assumed to be cons
 time/value points (no interpolation). If the time since start falls between two points, the efficacy
 of the earlier time point is used.
 
-[link](../json/parameter-campaign-waningeffects-11.json)
+```json
+{
+    "Intervention_Config": {
+        "class": "SimpleVaccine",
+        "Waning_Config": {
+            "class": "WaningEffectMapPiecewise",
+            "Initial_Effect": 1.0,
+            "Reference_Timer": 0,
+            "Expire_At_Durability_Map_End": 0,
+            "Durability_Map": {
+                "Times": [10, 30, 50],
+                "Values": [0.9, 0.1, 0.6]
+            }
+        }
+    }
+}
+```
 
 {{ read_csv("csv/campaign-waningeffectmappiecewise.csv", keep_default_na=False) }}
 
@@ -134,6 +307,18 @@ The efficacy is held at a constant rate until it drops to zero after a user-defi
 duration is randomly selected from an exponential distribution where **Expected_Discard_Time** is
 the mean.
 
-[link](../json/parameter-campaign-waningeffects-12.json)
+```json
+{
+    "Intervention_Config": {
+        "class": "SimpleBednet",
+        "Cost_To_Consumer": 5,
+        "Usage_Config": {
+            "class": "WaningEffectRandomBox",
+            "Initial_Effect": 1.0,
+            "Expected_Discard_Time": 60
+        }
+    }
+}
+```
 
 {{ read_csv("csv/campaign-waningeffectrandombox.csv", keep_default_na=False) }}

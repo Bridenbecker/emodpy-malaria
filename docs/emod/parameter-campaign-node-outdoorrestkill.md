@@ -32,4 +32,29 @@ example that follows shows one potential configuration.
 
 {{ read_csv("csv/campaign-outdoorrestkill.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-node-outdoorrestkill.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Nodeset_Config": {"class": "NodeSetAll"},
+            "Start_Day": 120,
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Intervention_Config": {
+                    "class": "OutdoorRestKill",
+                    "Cost_To_Consumer": 1.0,
+                    "Insecticide_Name": "carbamate",
+                    "Killing_Config": {
+                        "Box_Duration": 100,
+                        "Decay_Time_Constant": 150,
+                        "Initial_Effect": 0.75,
+                        "class": "WaningEffectBoxExponential"
+                    }
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

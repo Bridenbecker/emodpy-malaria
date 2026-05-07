@@ -31,4 +31,32 @@ example that follows shows one potential configuration.
 
 {{ read_csv("csv/campaign-simpleindividualrepellent.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-simpleindividualrepellent.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 120,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 0.5,
+                "Intervention_Config": {
+                    "class": "SimpleIndividualRepellent",
+                    "Cost_To_Consumer": 10.0,
+                    "Repelling_Config": {
+                        "class": "WaningEffectBoxExponential",
+                        "Box_Duration": 100,
+                        "Decay_Time_Constant": 150,
+                        "Initial_Effect": 0.8
+                    }
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

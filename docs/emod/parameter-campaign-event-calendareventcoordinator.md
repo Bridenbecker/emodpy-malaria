@@ -20,4 +20,41 @@ example that follows shows one potential configuration.
 
 {{ read_csv("csv/campaign-calendareventcoordinator.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-event-calendareventcoordinator.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Event_Name": "High-risk vaccination",
+            "Start_Day": 1,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "CalendarEventCoordinator",
+                "Demographic_Coverage": 1,
+                "Property_Restrictions": [
+                    "Risk:High"
+                ],
+                "Number_Repetitions": 1,
+                "Timesteps_Between_Repetitions": 0,
+                "Target_Demographic": "Everyone",
+                "Target_Residents_Only": 1,
+                "Distribution_Times": [100, 200, 400, 800, 1200],
+                "Distribution_Coverages": [0.01, 0.05, 0.1, 0.2, 1.0],
+                "Intervention_Config": {
+                    "class": "SimpleVaccine",
+                    "Cost_To_Consumer": 0,
+                    "Vaccine_Take": 1,
+                    "Vaccine_Type": "AcquisitionBlocking",
+                    "Waning_Config": {
+                        "class": "WaningEffectBox",
+                        "Initial_Effect": 1,
+                        "Box_Duration": 1825
+                    }
+                }
+            }
+        }
+    ]
+}
+```

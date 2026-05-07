@@ -38,4 +38,43 @@ example that follows shows one potential configuration.
 
 {{ read_csv("csv/campaign-multiinsecticidespacespraying.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-node-multiinsecticidespacespraying.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 100,
+            "Nodeset_Config": {"class": "NodeSetAll"},
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Intervention_Config": {
+                    "class": "MultiInsecticideSpaceSpraying",
+                    "Cost_To_Consumer": 1.0,
+                    "Spray_Coverage": 1.0,
+                    "Insecticides": [
+                        {
+                            "Insecticide_Name": "pyrethroid_homo",
+                            "Killing_Config": {
+                                "Box_Duration": 100,
+                                "Decay_Time_Constant": 150,
+                                "Initial_Effect": 0.1,
+                                "class": "WaningEffectBoxExponential"
+                            }
+                        },
+                        {
+                            "Insecticide_Name": "carbamate_homo",
+                            "Killing_Config": {
+                                "Box_Duration": 100,
+                                "Decay_Time_Constant": 150,
+                                "Initial_Effect": 0.1,
+                                "class": "WaningEffectBoxExponential"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

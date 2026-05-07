@@ -28,4 +28,62 @@ example that follows shows one potential configuration.
 
 {{ read_csv("csv/campaign-broadcasteventtoothernodes.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-broadcasteventtoothernodes.json)
+```json
+{
+    "Use_Defaults": 1,
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Event_Name": "Broadcast to Other Households If Person Infected",
+            "Start_Day": 0,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Demographic_Coverage": 1,
+                "Intervention_Config": {
+                    "class": "NodeLevelHealthTriggeredIV",
+                    "Trigger_Condition_List": ["NewClinicalCase"],
+                    "Blackout_Event_Trigger": "Blackout",
+                    "Blackout_Period": 0.0,
+                    "Blackout_On_First_Occurrence": 0,
+                    "Actual_IndividualIntervention_Config": {
+                        "class": "BroadcastEventToOtherNodes",
+                        "Event_Trigger": "VaccinateNeighbors",
+                        "Include_My_Node": 1,
+                        "Node_Selection_Type": "DISTANCE_AND_MIGRATION",
+                        "Max_Distance_To_Other_Nodes_Km": 1
+                    }
+                }
+            }
+        },
+        {
+            "class": "CampaignEvent",
+            "Event_Name": "Get Vaccinated If Neighbor Infected",
+            "Start_Day": 0,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Demographic_Coverage": 1,
+                "Intervention_Config": {
+                    "class": "NodeLevelHealthTriggeredIV",
+                    "Trigger_Condition_List": ["VaccinateNeighbors"],
+                    "Blackout_Event_Trigger": "Blackout",
+                    "Blackout_Period": 0.0,
+                    "Blackout_On_First_Occurrence": 0,
+                    "Actual_IndividualIntervention_Config": {
+                        "class": "AntimalarialDrug",
+                        "Cost_To_Consumer": 10,
+                        "Dosing_Type": "FullTreatmentParasiteDetect",
+                        "Drug_Type": "Chloroquine",
+                        "Dont_Allow_Duplicates": 1
+                    }
+                }
+            }
+        }
+    ]
+}
+```

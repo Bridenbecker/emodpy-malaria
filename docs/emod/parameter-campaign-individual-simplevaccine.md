@@ -26,4 +26,33 @@ example that follows shows one potential configuration.
 
 {{ read_csv("csv/campaign-simplevaccine.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-simplevaccine.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 60,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 0.5,
+                "Intervention_Config": {
+                    "class": "SimpleVaccine",
+                    "Cost_To_Consumer": 10.0,
+                    "Vaccine_Take": 1,
+                    "Vaccine_Type": "AcquisitionBlocking",
+                    "Waning_Config": {
+                        "class": "WaningEffectBox",
+                        "Box_Duration": 3650,
+                        "Initial_Effect": 1
+                    }
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

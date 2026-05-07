@@ -53,4 +53,36 @@ example that follows shows one potential configuration.
 
 {{ read_csv("csv/campaign-indoorindividualemanator.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-indoorindividualemanator.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 540,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 0.8,
+                "Intervention_Config": {
+                    "class": "IndoorIndividualEmanator",
+                    "Cost_To_Consumer": 8,
+                    "Repelling_Config": {
+                        "class": "WaningEffectBox",
+                        "Box_Duration": 3650,
+                        "Initial_Effect": 0
+                    },
+                    "Killing_Config": {
+                        "class": "WaningEffectBox",
+                        "Box_Duration": 3650,
+                        "Initial_Effect": 0.5
+                    }
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

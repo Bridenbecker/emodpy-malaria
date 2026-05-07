@@ -28,8 +28,52 @@ example that follows shows one potential configuration.
 
 {{ read_csv("csv/campaign-outbreakindividualmalariagenetics.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-outbreakindividualmalariagenetics-1.json)
+```json
+{
+    "class": "OutbreakIndividualMalariaGenetics",
+    "Create_Nucleotide_Squence_From": "BARCODE_STRING",
+    "Barcode_String": "ACGTACGTACGTACGTACGTACGT",
+    "Drug_Resistant_String": "AAT"
+}
+```
 
-[link](../json/parameter-campaign-individual-outbreakindividualmalariagenetics-2.json)
+```json
+{
+    "class": "OutbreakIndividualMalariaGenetics",
+    "Create_Nucleotide_Squence_From": "ALLELE_FREQUENCIES",
+    "Barcode_Allele_Frequencies_Per_Genome_Location": [
+        [1.0, 0.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0, 0.0],
+        [0.0, 0.0, 0.0, 1.0],
+        [0.5, 0.5, 0.0, 0.0],
+        [0.0, 0.5, 0.5, 0.0],
+        [0.0, 0.0, 0.5, 0.5],
+        [0.25, 0.25, 0.25, 0.25],
+        [0.1, 0.2, 0.3, 0.4],
+        [0.4, 0.3, 0.2, 0.1]
+    ],
+    "Drug_Resistant_Allele_Frequencies_Per_Genome_Location": [
+        [1.0, 0.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0, 0.0]
+    ]
+}
+```
 
-[link](../json/parameter-campaign-individual-outbreakindividualmalariagenetics-3.json)
+```json
+{
+    "class": "OutbreakIndividualMalariaGenetics",
+    "Create_Nucleotide_Squence_From": "NUCLEOTIDE_SEQUENCE",
+    "Barcode_String": "ACGTACGTACGTACGTACGTACGT",
+    "Drug_Resistant_String": "AAT",
+    "MSP_Variant_Value": 11,
+    "PfEMP1_Variants_Values": [
+        1, 74, 147, 220, 293, 366, 439, 512, 585, 658,
+        731, 804, 877, 950, 23, 96, 169, 242, 315, 388,
+        461, 534, 607, 680, 753, 826, 899, 972, 45, 118,
+        191, 264, 337, 410, 483, 556, 629, 702, 775, 848,
+        921, 994, 67, 140, 213, 286, 359, 432, 505, 578
+    ]
+}
+```

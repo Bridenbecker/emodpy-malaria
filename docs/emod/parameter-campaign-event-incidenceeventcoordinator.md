@@ -19,4 +19,10 @@ example that follows shows one potential configuration.
 
 {{ read_csv("csv/campaign-incidenceeventcoordinator.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-event-incidenceeventcoordinator.json)
+```json
+{
+    "class": "IncidenceEventCoordinator",
+    "Number_Repetitions": 3,
+    "Timesteps_Between_Repetitions": 6
+}
+```

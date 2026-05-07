@@ -23,4 +23,26 @@ example that follows shows one potential configuration.
 
 {{ read_csv("csv/campaign-nodepropertyvaluechanger.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-node-nodepropertyvaluechanger.json)
+```json
+{
+    "Use_Defaults": 1,
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 40,
+            "Nodeset_Config": {"class": "NodeSetAll"},
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Node_Property_Restrictions": [{"InterventionStatus": "VACCINATING"}],
+                "Intervention_Config": {
+                    "class": "NodePropertyValueChanger",
+                    "Target_NP_Key_Value": "InterventionStatus:STOP_VACCINATING",
+                    "Daily_Probability": 1.0,
+                    "Maximum_Duration": 0,
+                    "Revert": 0
+                }
+            }
+        }
+    ]
+}
+```

@@ -22,4 +22,54 @@ example that follows shows one potential configuration.
 
 {{ read_csv("csv/campaign-delayedintervention.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-delayedintervention.json)
+```json
+{
+    "Use_Defaults": 1,
+    "Campaign_Name": "Initial Seeding",
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Event_Name": "Outbreak",
+            "Start_Day": 1,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 1.0,
+                "Intervention_Config": {
+                    "class": "DelayedIntervention",
+                    "Delay_Period_Distribution": "CONSTANT_DISTRIBUTION",
+                    "Delay_Period_Constant": 25,
+                    "Actual_IndividualIntervention_Configs": [
+                        {"class": "OutbreakIndividual", "Outbreak_Source": "PrevalenceIncrease"}
+                    ]
+                }
+            }
+        },
+        {
+            "class": "CampaignEvent",
+            "Event_Name": "Outbreak",
+            "Start_Day": 50,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 1.0,
+                "Intervention_Config": {
+                    "class": "DelayedIntervention",
+                    "Delay_Period_Distribution": "UNIFORM_DISTRIBUTION",
+                    "Delay_Period_Min": 15,
+                    "Delay_Period_Max": 30,
+                    "Actual_IndividualIntervention_Configs": [
+                        {"class": "OutbreakIndividual", "Outbreak_Source": "PrevalenceIncrease"}
+                    ]
+                }
+            }
+        }
+    ]
+}
+```

@@ -21,4 +21,38 @@ example that follows shows one potential configuration.
 
 {{ read_csv("csv/campaign-broadcastevent.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-broadcastevent.json)
+```json
+{
+    "class": "CampaignEvent",
+    "Start_Day": 0,
+    "Nodeset_Config": {
+        "class": "NodeSetAll"
+    },
+    "Event_Coordinator_Config": {
+        "class": "StandardInterventionDistributionEventCoordinator",
+        "Target_Demographic": "ExplicitAgeRanges",
+        "Target_Age_Min": 0,
+        "Target_Age_Max": 5,
+        "Demographic_Coverage": 0.03,
+        "Intervention_Config": {
+            "class": "MultiInterventionDistributor",
+            "Intervention_List": [
+                {
+                    "class": "SimpleBednet",
+                    "Bednet_Type": "ITN",
+                    "Cost_To_Consumer": 3.75,
+                    "Blocking_Rate": 0.9,
+                    "Killing_Rate": 0.6,
+                    "Durability_Time_Profile": "DECAYDURABILITY",
+                    "Primary_Decay_Time_Constant": 1460,
+                    "Secondary_Decay_Time_Constant": 730
+                },
+                {
+                    "class": "BroadcastEvent",
+                    "Broadcast_Event": "Received_ITN"
+                }
+            ]
+        }
+    }
+}
+```

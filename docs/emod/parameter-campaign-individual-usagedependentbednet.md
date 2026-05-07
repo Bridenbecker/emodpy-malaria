@@ -46,4 +46,51 @@ example that follows shows one potential configuration.
 
 {{ read_csv("csv/campaign-usagedependentbednet.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-usagedependentbednet.json)
+```json
+{
+    "Events": [
+        {
+            "class": "UsageDependentBednet",
+            "Cost_To_Consumer": 5,
+            "Repelling_Config": {
+                "class": "WaningEffectConstant",
+                "Initial_Effect": 0.0
+            },
+            "Blocking_Config": {
+                "class": "WaningEffectConstant",
+                "Initial_Effect": 1.0
+            },
+            "Killing_Config": {
+                "class": "WaningEffectConstant",
+                "Initial_Effect": 0.5
+            },
+            "Usage_Config_List": [
+                {
+                    "class": "WaningEffectMapLinearAge",
+                    "Initial_Effect": 1.0,
+                    "Durability_Map": {
+                        "Times":  [  0.0, 12.99, 13.0, 125.0],
+                        "Values": [  0.0,  0.0,   1.0,   1.0]
+                    }
+                },
+                {
+                    "class": "WaningEffectMapLinearSeasonal",
+                    "Initial_Effect": 1.0,
+                    "Durability_Map": {
+                        "Times":  [  0.0, 20.0, 21.0, 30.0, 31.0, 365.0],
+                        "Values": [  1.0,  1.0,  0.0,  0.0,  1.0,   1.0]
+                    }
+                }
+            ],
+            "Received_Event": "Bednet_Got_New_One",
+            "Using_Event": "Bednet_Using",
+            "Discard_Event": "Bednet_Discarded",
+            "Expiration_Period_Distribution": "DUAL_EXPONENTIAL_DISTRIBUTION",
+            "Expiration_Period_Mean_1": 60,
+            "Expiration_Period_Mean_2": 50,
+            "Expiration_Period_Proportion_1": 1.0
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

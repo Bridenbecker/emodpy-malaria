@@ -25,4 +25,46 @@ example that follows shows one potential configuration.
 
 {{ read_csv("csv/campaign-multieffectvaccine.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-multieffectvaccine.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 1,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "ExplicitAgeRanges",
+                "Target_Age_Min": 12,
+                "Target_Age_Max": 100,
+                "Demographic_Coverage": 1,
+                "Property_Restrictions": ["Accessibility:VaccineTake"],
+                "Intervention_Config": {
+                    "class": "MultiEffectVaccine",
+                    "Cost_To_Consumer": 20,
+                    "Vaccine_Take": 1,
+                    "Vaccine_Type": "Generic",
+                    "Acquire_Config": {
+                        "class": "WaningEffectExponential",
+                        "Initial_Effect": 0.9,
+                        "Decay_Time_Constant": 7300
+                    },
+                    "Transmit_Config": {
+                        "class": "WaningEffectExponential",
+                        "Initial_Effect": 0.9,
+                        "Decay_Time_Constant": 7300
+                    },
+                    "Mortality_Config": {
+                        "class": "WaningEffectExponential",
+                        "Initial_Effect": 1.0,
+                        "Decay_Time_Constant": 7300
+                    }
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

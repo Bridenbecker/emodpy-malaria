@@ -46,4 +46,45 @@ example that follows shows one potential configuration.
 
 {{ read_csv("csv/campaign-simplebednet.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-simplebednet.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 1460,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 0.7,
+                "Intervention_Config": {
+                    "class": "SimpleBednet",
+                    "Cost_To_Consumer": 3.75,
+                    "Repelling_Config": {
+                        "class": "WaningEffectExponential",
+                        "Initial_Effect": 0.1,
+                        "Decay_Time_Constant": 730
+                    },
+                    "Killing_Config": {
+                        "class": "WaningEffectExponential",
+                        "Initial_Effect": 0.6,
+                        "Decay_Time_Constant": 1460
+                    },
+                    "Blocking_Config": {
+                        "class": "WaningEffectExponential",
+                        "Initial_Effect": 0.9,
+                        "Decay_Time_Constant": 730
+                    },
+                    "Usage_Config": {
+                        "class": "WaningEffectConstant",
+                        "Initial_Effect": 1.0
+                    }
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

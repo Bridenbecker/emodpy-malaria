@@ -38,4 +38,16 @@ example that follows shows one potential configuration.
 
 {{ read_csv("csv/campaign-indoorspacespraying.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-node-indoorspacespraying.json)
+```json
+{
+    "class": "IndoorSpaceSpraying",
+    "Insecticide_Name": "pyrethroid",
+    "Spray_Coverage": 0.9,
+    "Killing_Config": {
+        "class": "WaningEffectBoxExponential",
+        "Box_Duration": 100,
+        "Decay_Time_Constant": 150,
+        "Initial_Effect": 1
+    }
+}
+```

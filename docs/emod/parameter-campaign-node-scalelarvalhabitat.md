@@ -38,4 +38,27 @@ example that follows shows one potential configuration.
 
 {{ read_csv("csv/campaign-scalelarvalhabitat.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-node-scalelarvalhabitat.json)
+```json
+{
+    "Use_Defaults": 1,
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Nodeset_Config": {"class": "NodeSetAll"},
+            "Start_Day": 730,
+            "Event_Coordinator_Config": {
+                "Intervention_Config": {
+                    "Larval_Habitat_Multiplier": {
+                        "LarvalHabitatMultiplier": [
+                            {"Factor": 0.05, "Habitat": "CONSTANT", "Species": "Gambiae"},
+                            {"Factor": 0.05, "Habitat": "TEMPORARY_RAINFALL", "Species": "ALL_SPECIES"}
+                        ]
+                    },
+                    "class": "ScaleLarvalHabitat"
+                },
+                "class": "StandardInterventionDistributionEventCoordinator"
+            }
+        }
+    ]
+}
+```

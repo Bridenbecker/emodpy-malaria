@@ -20,7 +20,28 @@ example that follows shows one potential configuration.
 
 {{ read_csv("csv/campaign-campaignevent.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-event-campaignevent-1.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Event_Name": "Individual outbreak",
+            "Start_Day": 1,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 1.0,
+                "Intervention_Config": {
+                    "class": "OutbreakIndividual"
+                }
+            }
+        }
+    ]
+}
+```
 
 
 ## Nodeset_Config classes
@@ -33,7 +54,13 @@ The following classes determine in which nodes the event will occur.
 
 The event will occur in all nodes in the simulation. This class has no associated parameters. For example,
 
-[link](../json/parameter-campaign-event-campaignevent-2.json)
+```json
+{
+    "Nodeset_Config": {
+        "class": "NodeSetAll"
+    }
+}
+```
 
 ### NodeSetNodeList
 
