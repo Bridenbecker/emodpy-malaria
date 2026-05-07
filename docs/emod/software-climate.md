@@ -13,11 +13,10 @@ strictly  informational and some of which are used by EMOD. However, the informa
 still be important to understand the provenance and meaning of the data.
 
 In a second section, the **NodeOffsets** parameter contains a list of hex-encoded 16-byte values
-used to find the data for each given node (the **NodeID**).They are not 16-byte offsets, but
+used to find the data for each given node (the **NodeID**). They are not 16-byte offsets, but
 instead, two 8-byte hex-encoded character strings. This encoding includes the source **NodeID**. You
 can map the binary data to its corresponding source **NodeID** by using the **NodeOffset**
 information.
-
 
 The binary file contains the climate data in a sequential stream. In other words, it presents
 all the data for the first node, then all the data for the second node, all the way through to the
@@ -43,32 +42,42 @@ going to be constructing your own climate files, we advise you to do the same.
 
 The following parameters in the metadata section are informational:
 
-```
-DateCreated, string, The day the file was created.
-Author, string, The author of the file.
-OriginalDataYears, string, The years from which the original data was derived.
-StartDayOfYear, string, The day of the year representing the first day in the climate file.
-DataProvenance, string, The source of the data.
-```
+| Parameter | Data type | Description |
+| --- | --- | --- |
+| `DateCreated` | string | The day the file was created. |
+| `Author` | string | The author of the file. |
+| `OriginalDataYears` | string | The years from which the original data was derived. |
+| `StartDayOfYear` | string | The day of the year representing the first day in the climate file. |
+| `DataProvenance` | string | The source of the data. |
 
 The following parameters in the metadata section are used by EMOD:
 
-```
-IdReference, string, "A unique, user-selected string that indicates the method used for generating **NodeID** values in the input file. For more information, see [Input files](software-inputs.md)."
-NodeCount, integer, The number of nodes to expect in this file.
-DatavalueCount, integer, The number of data values per node. The number must be the same across every node in the binary file.
-UpdateResolution, enum, "The time resolution of the climate file. Available values are:
-
-* CLIMATE_UPDATE_YEAR
-* CLIMATE_UPDATE_MONTH
-* CLIMATE_UPDATE_WEEK
-* CLIMATE_UPDATE_DAY
-* CLIMATE_UPDATE_HOUR"
-```
+| Parameter | Data type | Description |
+| --- | --- | --- |
+| `IdReference` | string | A unique, user-selected string that indicates the method used for generating **NodeID** values in the input file. For more information, see [Input files](software-inputs.md). |
+| `NodeCount` | integer | The number of nodes to expect in this file. |
+| `DatavalueCount` | integer | The number of data values per node. The number must be the same across every node in the binary file. |
+| `UpdateResolution` | enum | The time resolution of the climate file. Available values are CLIMATE_UPDATE_YEAR, CLIMATE_UPDATE_MONTH, CLIMATE_UPDATE_WEEK, CLIMATE_UPDATE_DAY, CLIMATE_UPDATE_HOUR. |
 
 An example of climate by data metadata is as follows:
 
-[link](../json/software-climate-1.json)
+```json
+{
+    "Metadata": {
+        "DateCreated": "Sun Sep 25 19:02:09 2011",
+        "Tool": "createclimateheader.py",
+        "Author": "authorName",
+        "IdReference": "Gridded world grump2.5arcmin",
+        "NodeCount": 1,
+        "DatavalueCount": 3650,
+        "UpdateResolution": "CLIMATE_UPDATE_DAY",
+        "OriginalDataYears": "1990-1993",
+        "StartDayOfYear": "January 1",
+        "DataProvenance": "47 consecutive months of data were used to generate one average year of data that is repeated for 10 years"
+    },
+    "NodeOffsets": "144B07A400000000"
+}
+```
 
 ### Binary file
 
@@ -83,7 +92,7 @@ The binary format is as follows:
 ## Climate by Koppen
 
 
-The Koppen_ classification system is one of the most widely used climate classification systems. The
+The [Koppen](https://en.wikipedia.org/wiki/K%C3%B6ppen_climate_classification) classification system is one of the most widely used climate classification systems. The
 Koppen classification system makes the assumption that native vegetation is the best expression of
 climate.
 
@@ -93,34 +102,45 @@ climate.
 
 The following parameters in the metadata section are informational:
 
-```
-DateCreated, string, The day the file was created.
-Author, string, The author of the file.
-DataProvenance, string, The source of the data.
-Tool, string, The script used to create the file.
-```
+| Parameter | Data type | Description |
+| --- | --- | --- |
+| `DateCreated` | string | The day the file was created. |
+| `Author` | string | The author of the file. |
+| `DataProvenance` | string | The source of the data. |
+| `Tool` | string | The script used to create the file. |
 
 The following parameters in the metadata section are used by EMOD:
 
-```
-IdReference, string, "A unique, user-selected string that indicates the method used for generating **NodeID** values in the input file. For more information, see [Input files](software-inputs.md)."
-NodeCount, integer, The number of nodes to expect in this file.
-```
+| Parameter | Data type | Description |
+| --- | --- | --- |
+| `IdReference` | string | A unique, user-selected string that indicates the method used for generating **NodeID** values in the input file. For more information, see [Input files](software-inputs.md). |
+| `NodeCount` | integer | The number of nodes to expect in this file. |
 
 An example of climate by Koppen metadata is as follows:
 
-[link](../json/software-climate-2.json)
+```json
+{
+    "Metadata": {
+        "DateCreated": "Sun Sep 25 19:08:52 2011",
+        "Tool": "createclimateheader.py",
+        "Author": "authorName",
+        "IdReference": "Gridded world grump2.5arcmin",
+        "NodeCount": 2,
+        "DataProvenance": "Köppen-Geiger Classification System from http://koeppen-geiger.vu-wien.ac.at/"
+    },
+    "NodeOffsets": "157D075200000000157E07520000000"
+}
+```
 
 ### Binary file
 
 
 The binary file parameters use the naming convention below to store the data.
 
-```
-KoppenIndexX, "integer, 4 bytes", "The Koppen Index value, with X running from 1 to the maximum number of nodes."
-```
+| Parameter | Data type | Description |
+| --- | --- | --- |
+| `KoppenIndexX` | integer, 4 bytes | The Koppen Index value, with X running from 1 to the maximum number of nodes. |
 
 The binary format is as follows:
 
 ![climate-by-koppen-binary.jpg](../figures/file-structure/climate-by-koppen-binary.jpg)
-

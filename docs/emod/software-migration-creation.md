@@ -19,7 +19,7 @@ migration rates based on age and/or gender (human only).
 
 For regional migration, you may want to set up migration such that if a node is not part of the
 network, the migration of individuals to and from that node considers the closest road hub city. You
-can do this by constructing a Voronoi_ tiling based on road hubs, with each non-hub connected to
+can do this by constructing a [Voronoi](https://en.wikipedia.org/wiki/Voronoi_diagram) tiling based on road hubs, with each non-hub connected to
 the hub of its tile.
 
 
@@ -88,23 +88,65 @@ This will create both the metadata and binary file needed by EMOD.
 
 The following parameters are used in the JSON file for migration file generation.  
 
-```
-IdReference, string, The metadata identifier used to generate the NodeID associated with each node in a simulation. The values for IdReference and NodeID must be the same across all input files used in a simulation.
-Interpolation_Type, enum, The method by which to interpolate the age dependent rate data. Accepted values are LINEAR_INTERPOLATION and PIECEWISE_CONSTANT.
-Gender_Data_Type, enum, Whether age data is provided for each gender separately or is the same for both. Accepted values are ONE_FOR_BOTH_GENDERS and ONE_FOR_EACH_GENDER. 
-Ages_Years, array, An array that defines the age bins by which to separate the population and define migration rates. The first value defines the upper bound of a bin starting at zero. 
-Node_Data, JSON object, The structure that contains the migration rate data for each node. 
-From_Node_ID, integer, The origin node for which to define migration rate. 
-Rate_Data, array, The structure that contains migration rate data for a single destination node.  
-To_Node_ID, integer, The destination node for which to define migration rate. 
-Avg_Num_Trips_Per_Day_Both, array, The array that lists the average number of trips per day for each age bin  defined in **Ages_Years** (male and female). Used when **Gender_Data_Type** is set to ONE_FOR_BOTH_GENDERS.
-Avg_Num_Trips_Per_Day_Female, array, The array that lists the average number of trips per day for each female age bin defined in **Ages_Years**. Used when **Gender_Data_Type** is set to ONE_FOR_EACH_GENDER.
-Avg_Num_Trips_Per_Day_Male, array, The array that lists the average number of trips per day for each male age bin defined in **Ages_Years**. Used when **Gender_Data_Type** is set to ONE_FOR_EACH_GENDER.
-```
+| Parameter | Data type | Description |
+| --- | --- | --- |
+| `IdReference` | string | The metadata identifier used to generate the NodeID associated with each node in a simulation. The values for IdReference and NodeID must be the same across all input files used in a simulation. |
+| `Interpolation_Type` | enum | The method by which to interpolate the age dependent rate data. Accepted values are LINEAR_INTERPOLATION and PIECEWISE_CONSTANT. |
+| `Gender_Data_Type` | enum | Whether age data is provided for each gender separately or is the same for both. Accepted values are ONE_FOR_BOTH_GENDERS and ONE_FOR_EACH_GENDER. |
+| `Ages_Years` | array | An array that defines the age bins by which to separate the population and define migration rates. The first value defines the upper bound of a bin starting at zero. |
+| `Node_Data` | JSON object | The structure that contains the migration rate data for each node. |
+| `From_Node_ID` | integer | The origin node for which to define migration rate. |
+| `Rate_Data` | array | The structure that contains migration rate data for a single destination node. |
+| `To_Node_ID` | integer | The destination node for which to define migration rate. |
+| `Avg_Num_Trips_Per_Day_Both` | array | The array that lists the average number of trips per day for each age bin defined in **Ages_Years** (male and female). Used when **Gender_Data_Type** is set to ONE_FOR_BOTH_GENDERS. |
+| `Avg_Num_Trips_Per_Day_Female` | array | The array that lists the average number of trips per day for each female age bin defined in **Ages_Years**. Used when **Gender_Data_Type** is set to ONE_FOR_EACH_GENDER. |
+| `Avg_Num_Trips_Per_Day_Male` | array | The array that lists the average number of trips per day for each male age bin defined in **Ages_Years**. Used when **Gender_Data_Type** is set to ONE_FOR_EACH_GENDER. |
 
 ### Example files
 
 
-[link](../json/software-migration-creation-1.json)
+```json
+{
+    "IdReference": "ABC",
+    "Interpolation_Type": "PIECEWISE_CONSTANT",
+    "Gender_Data_Type": "ONE_FOR_EACH_GENDER",
+    "Ages_Years": [14.99, 15, 45, 75, 105],
+    "Node_Data": [{
+        "From_Node_ID": 1,
+        "Rate_Data": [{
+            "To_Node_ID": 2,
+            "Avg_Num_Trips_Per_Day_Male": [0.0, 0.1, 0.2, 0.3, 0.0],
+            "Avg_Num_Trips_Per_Day_Female": [0.0, 0.3, 0.2, 0.1, 0.0]
+        }]
+    }, {
+        "From_Node_ID": 2,
+        "Rate_Data": [{
+            "To_Node_ID": 1,
+            "Avg_Num_Trips_Per_Day_Male": [0.0, 0.2, 0.5, 0.3, 0.0],
+            "Avg_Num_Trips_Per_Day_Female": [0.0, 0.5, 0.3, 0.2, 0.0]
+        }]
+    }]
+}
+```
 
-[link](../json/software-migration-creation-2.json)
+```json
+{
+    "IdReference": "ABC",
+    "Interpolation_Type": "PIECEWISE_CONSTANT",
+    "Gender_Data_Type": "ONE_FOR_BOTH_GENDERS",
+    "Ages_Years": [14.99, 15, 45, 75, 105],
+    "Node_Data": [{
+        "From_Node_ID": 1,
+        "Rate_Data": [{
+            "To_Node_ID": 2,
+            "Avg_Num_Trips_Per_Day_Both": [0.0, 0.1, 0.2, 0.3, 0.0]
+        }]
+    }, {
+        "From_Node_ID": 2,
+        "Rate_Data": [{
+            "To_Node_ID": 1,
+            "Avg_Num_Trips_Per_Day_Both": [0.0, 0.2, 0.5, 0.3, 0.0]
+        }]
+    }]
+}
+```

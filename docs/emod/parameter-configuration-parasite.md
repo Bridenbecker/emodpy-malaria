@@ -5,6 +5,10 @@ The following parameters determine the dynamics of the *Plasmodium falciparum* p
 including dynamics within the host and human population. For more information, see
 [malaria-model-infection-immunity](malaria-model-infection-immunity.md).
 
+!!! seealso
+    [malaria-model-fpg](malaria-model-fpg.md)
+        For the `Parasite_Genetics` parameters that configure the Full Parasite Genetics (FPG) model.
+
 !!! note
     Parameters are case-sensitive. For Boolean parameters, set to 1 for true or 0 for false.
     Minimum, maximum, or default values of "NA" indicate that those values are not applicable for
