@@ -40,56 +40,72 @@ still be important to understand the provenance and meaning of the data.
 
 The following parameters can be included in the simple migration metadata file:
 
-```
-Author, string, The author of the file.
-DatavalueCount, integer, "(Used by EMOD.) The number of outbound data values per node (max 100). The number must be the same across every node in the binary file."
-DateCreated, string, The day the file was created.
-IdReference, string, "(Used by EMOD.) A unique, user-selected string that indicates the method used by EMOD for generating **NodeID** values in the input files. For more information, see [Input files](software-inputs.md)."
-NodeCount, integer, (Used by EMOD.) The number of nodes to expect in this file.
-NodeOffsets, string, "(Used by EMOD.) A string that is **NodeCount** $\\times$ 16 characters long. For each node, the first 8 characters are the origin **NodeID** in hexadecimal. The second 8 characters are the byte offset in hex to the location in the binary file where the destination **NodeIDs** and migration rates appear."
-Tool, string, The script used to create the file.
-```
+| Parameter | Data type | Description |
+| --- | --- | --- |
+| `Author` | string | The author of the file. |
+| `DatavalueCount` | integer | (Used by EMOD.) The number of outbound data values per node (max 100). The number must be the same across every node in the binary file. |
+| `DateCreated` | string | The day the file was created. |
+| `IdReference` | string | (Used by EMOD.) A unique, user-selected string that indicates the method used by EMOD for generating **NodeID** values in the input files. For more information, see [Input files](software-inputs.md). |
+| `NodeCount` | integer | (Used by EMOD.) The number of nodes to expect in this file. |
+| `NodeOffsets` | string | (Used by EMOD.) A string that is **NodeCount** × 16 characters long. For each node, the first 8 characters are the origin **NodeID** in hexadecimal. The second 8 characters are the byte offset in hex to the location in the binary file where the destination **NodeIDs** and migration rates appear. |
+| `Tool` | string | The script used to create the file. |
 
 ### Example
 
 
-[link](../json/software-migration-1.json)
+```json
+{
+    "Metadata": {
+        "Author": "JDoe",
+        "Tool": "convert_txt_to_bin.py",
+        "IdReference": "Household-Scenario-Small",
+        "DateCreated": "Fri Aug 21 08:20:26 2015",
+        "NodeCount": 7,
+        "MigrationType": "LOCAL_MIGRATION",
+        "DatavalueCount": 8
+    },
+    "NodeOffsets": "0000000100000000000000020000006000000003000000C00000000400000120000000050000018000000006000001E00000000700000240"
+}
+```
 
 ### By Gender By Age Migration File Parameters
 
 
 The following parameters can be included in the by-gender by-age migration metadata file:
 
-```
-AgesYears, array, An array that defines the age bins by which to separate the population and define migration rates.
-Author, string, The author of the file.
-DatavalueCount, integer, "(Used by EMOD.) The number of outbound data values per node (max 100). The number must be the same across every node in the binary file. If you are using an older file that does not include this parameter, each migration type has the following maximum data values:
-
-    * LOCAL_MIGRATION: 8
-    * REGIONAL_MIGRATION: 30
-    * AIR_MIGRATION: 60
-    * SEA_MIGRATION: 5
-"    
-DateCreated, string, The day the file was created.
-GenderDataType, enum, Whether age data is provided for each gender separately or is the same for both. Accepted values are ONE_FOR_BOTH_GENDERS and ONE_FOR_EACH_GENDER.
-IdReference, string, "(Used by EMOD.) A unique, user-selected string that indicates the method used by EMOD for generating **NodeID** values in the input files. For more information, see [Input files](software-inputs.md)."
-InterpolationType, enum, The method by which to interpolate the age-dependent rate data. Accepted values are LINEAR_INTERPOLATION and PIECEWISE_CONSTANT.
-MigrationType, enum, "The type of migration the data describes. Accepted values are: 
-
-    * LOCAL_MIGRATION
-    * AIR_MIGRATION
-    * REGIONAL_MIGRATION
-    * SEA_MIGRATION
-"    
-NodeCount, integer, (Used by EMOD.) The number of nodes to expect in this file.
-NodeOffsets, string, "(Used by EMOD.) A string that is **NodeCount** $\\times$ 16 characters long. For each node, the first 8 characters are the origin **NodeID** in hexadecimal. The second 8 characters are the byte offset in hex to the location in the binary file where the destination **NodeIDs** and migration rates appear."
-Tool, string, The script used to create the file.
-```
+| Parameter | Data type | Description |
+| --- | --- | --- |
+| `AgesYears` | array | An array that defines the age bins by which to separate the population and define migration rates. |
+| `Author` | string | The author of the file. |
+| `DatavalueCount` | integer | (Used by EMOD.) The number of outbound data values per node (max 100). The number must be the same across every node in the binary file. If you are using an older file that does not include this parameter, the maximum data values per migration type are: LOCAL_MIGRATION: 8; REGIONAL_MIGRATION: 30; AIR_MIGRATION: 60; SEA_MIGRATION: 5. |
+| `DateCreated` | string | The day the file was created. |
+| `GenderDataType` | enum | Whether age data is provided for each gender separately or is the same for both. Accepted values are ONE_FOR_BOTH_GENDERS and ONE_FOR_EACH_GENDER. |
+| `IdReference` | string | (Used by EMOD.) A unique, user-selected string that indicates the method used by EMOD for generating **NodeID** values in the input files. For more information, see [Input files](software-inputs.md). |
+| `InterpolationType` | enum | The method by which to interpolate the age-dependent rate data. Accepted values are LINEAR_INTERPOLATION and PIECEWISE_CONSTANT. |
+| `MigrationType` | enum | The type of migration the data describes. Accepted values are LOCAL_MIGRATION, AIR_MIGRATION, REGIONAL_MIGRATION, SEA_MIGRATION. |
+| `NodeCount` | integer | (Used by EMOD.) The number of nodes to expect in this file. |
+| `NodeOffsets` | string | (Used by EMOD.) A string that is **NodeCount** × 16 characters long. For each node, the first 8 characters are the origin **NodeID** in hexadecimal. The second 8 characters are the byte offset in hex to the location in the binary file where the destination **NodeIDs** and migration rates appear. |
+| `Tool` | string | The script used to create the file. |
 
 ### Example
 
 
-[link](../json/software-migration-2.json)
+```json
+{
+    "Metadata": {
+        "Tool": "PythonApplication1.py",
+        "IdReference": "ABC",
+        "DateCreated": "Wed Dec  2 14:08:48 2015",
+        "InterpolationType": "PIECEWISE_CONSTANT",
+        "GenderDataType": "SAME_FOR_BOTH_GENDERS",
+        "NodeCount": 4,
+        "MigrationType": "LOCAL_MIGRATION",
+        "AgesYears": [14.99, 15, 45, 75, 105],
+        "DatavalueCount": 3
+    },
+    "NodeOffsets": "000000010000000000000002000000240000000300000048000000040000006C"
+}
+```
 
 
 ## Binary file
@@ -97,13 +113,12 @@ Tool, string, The script used to create the file.
 
 The binary file contains the migration rate data. Migration rate determines the average time until an
 individual takes a trip out of the node. This time is drawn from an exponential distribution with
-the parameter $\lambda$ as the number of trips per day. Therefore, a migration rate of 0.1 can
+the parameter λ as the number of trips per day. Therefore, a migration rate of 0.1 can
 be viewed as 10 days until migration, on average. You can adjust this base rate using the 
 [parameter-configuration-scalars](parameter-configuration-scalars.md) parameters.
 
-The data in the binary file is laid out in a sequential stream of 4-byte integers that identify the origin and destination nodes followed by a stream of 8-byte floats that contain the migration rate for those node pairs laid out in the same order. Therefore, the length of the stream is defined by **DatavalueCount**. For each source node, there must be **DatavalueCount** $\times$ (4 bytes + 8 bytes). 
+The data in the binary file is laid out in a sequential stream of 4-byte integers that identify the origin and destination nodes followed by a stream of 8-byte floats that contain the migration rate for those node pairs laid out in the same order. Therefore, the length of the stream is defined by **DatavalueCount**. For each source node, there must be **DatavalueCount** × (4 bytes + 8 bytes). 
 
 The following image shows how a binary file with a **DatavalueCount** value of 8 would be laid out. 
 
 ![localMigrationBFF.jpg](../figures/file-structure/localMigrationBFF.jpg)
-
