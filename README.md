@@ -2,7 +2,7 @@
 
 Python module for use as user-space front-end for doing research easily with EMOD (MALARIA_SIM) via idmtools.
 
-![mosquito](docs/figures/tutorial/jorussell-mosquito.png)
+![mosquito](docs/figures/jorussell-mosquito.png)
 
 ![license](https://img.shields.io/badge/License-MIT-brightgreen.svg)
 
@@ -12,7 +12,7 @@ This package provides a Python scriptable interface for configuring EMOD for mal
 
 ## Getting started
 
-Before installing `emodpy_malaria`, please see the [Getting Started page](docs/md_tutorial/getting_started.md).
+Before installing `emodpy_malaria`, please see the [Getting Started page](docs/tutorials/overview.md).
 It can guide you through trying EMOD before you try it on your own machine.
 
 ## Get `emodpy-malaria`

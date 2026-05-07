@@ -38,11 +38,13 @@ In EMOD, each mosquito carries a simplified diploid genome composed of two gamet
 from each parent. The genome supports up to 8 user-defined genetic loci, each with up to 8 named
 alleles. While real mosquito genomes contain thousands of genes, this abstraction captures the
 loci most relevant to the dynamics being studied. A mosquito's Wolbachia status and microsporidia
-strain are also tracked per individual alongside the genetic information.
+strain are also tracked per individual alongside the genetic information. Each female also stores
+her mate's genome for the duration of her life — represented in the VectorCohort as the "Mate"
+genome alongside her own ("Self") — and uses it when she lays eggs after each feeding cycle.
 
-![Example diploid genome: two gametes (rows), each carrying one allele per locus. The first column is the gender locus; the remaining columns are user-defined genes with named alleles.](../figures/vector-genetics/genome-example.png)
+![EMOD genome representation: the genome consists of two gametes (Mom and Dad), each carrying one allele per locus. The top row is the gender locus, where X and Y are modeled as alleles. The remaining rows are user-defined loci; the possible alleles for each gene are listed on the left. At right, the VectorCohort structure shows that each female stores two genomes — one for herself (Self) and one for her mate (Mate) — used during fertilization.](../figures/vector-genetics/genetics_model1.png)
 
-*Example diploid genome: two gametes (rows), each carrying one allele per locus. The first column is the gender locus; the remaining columns are user-defined genes with named alleles.*
+*EMOD genome representation: the genome consists of two gametes (Mom and Dad), each carrying one allele per locus. The top row is the gender locus, where X and Y are modeled as alleles. The remaining rows are user-defined loci; the possible alleles for each gene are listed on the left. At right, the VectorCohort structure shows that each female stores two genomes — one for herself (Self) and one for her mate (Mate) — used during fertilization.*
 
 One locus is always reserved as the gender gene. A mosquito's sex is always determined by the
 gender gene — this is true even in simulations that do not use the genetics system. In a standard

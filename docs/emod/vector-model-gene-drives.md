@@ -77,25 +77,35 @@ at the cut site:
 
 *Classic gene drive system. A drive mosquito mates with a wild-type mosquito; in the offspring germline, the Cas9 and gRNA cut the wild-type chromosome at the target site and homology-directed repair copies the complete construct. Possible alleles in offspring: wild type (no copy), complete construct (successful copy), or resistant (non-homologous end joining creates a mutated target site the drive can no longer recognize). From Leung et al. (2022), [doi:10.1186/s12936-022-04242-2][leung-2022].*
 
+In EMOD, this mechanism is abstracted as two alleles — a Driver (representing Cas9) and an
+Effector — bundled at the same locus. The drive either copies successfully or fails, as shown
+below; these outcomes map directly to the probabilities set in `Copy_To_Likelihood`.
+
+![EMOD abstraction of a classic gene drive: the Driver and Effector are bundled at the same locus. On the left, the drive copies successfully into the target chromosome, producing a mosquito carrying the drive. On the right, the additional outcome where the drive fails and the wild-type allele is retained.](../figures/vector-genetics/conventional_gene_drive.png)
+
+*EMOD abstraction of a classic gene drive: the Driver and Effector are bundled at the same locus. On the left, the drive copies successfully into the target chromosome, producing a mosquito carrying the drive. On the right, the additional outcome where the drive fails and the wild-type allele is retained.*
+
 ### Example configuration
 
-A classic drive at a single locus. The `drive_a` allele bundles Cas9 + gRNA and copies itself
-over the wild-type allele `wild_a` with 95% efficiency. The remaining 5% produce a resistance
-allele through NHEJ:
+A classic drive at a single locus. The `Ade` allele bundles Cas9 + gRNA and replaces the
+wild-type allele `Aw` with 99% efficiency. There is a 0.7% chance of complete failure where
+the wild-type allele is retained, and a 0.3% chance of a mutation to `Am` — a resistant allele
+that the drive can no longer recognize, preventing future conversion at that locus:
 
 ```json
 {
     "Drivers": [
         {
             "Driver_Type": "CLASSIC",
-            "Driving_Allele": "drive_a",
+            "Driving_Allele": "Ade",
             "Alleles_Driven": [
                 {
-                    "Allele_To_Copy": "drive_a",
-                    "Allele_To_Replace": "wild_a",
+                    "Allele_To_Copy": "Ade",
+                    "Allele_To_Replace": "Aw",
                     "Copy_To_Likelihood": [
-                        {"Copy_To_Allele": "drive_a", "Likelihood": 0.95},
-                        {"Copy_To_Allele": "resist_a", "Likelihood": 0.05}
+                        {"Copy_To_Allele": "Aw",  "Likelihood": 0.007},
+                        {"Copy_To_Allele": "Ade", "Likelihood": 0.990},
+                        {"Copy_To_Allele": "Am",  "Likelihood": 0.003}
                     ]
                 }
             ]
@@ -123,35 +133,44 @@ a particular locus, nothing happens at that locus, but other loci can still be d
 
 *Integral gene drive system. Driver and effector are on separate loci, each with their own gRNA, allowing each to be copied independently. Possible alleles at each locus: wild type, the introduced construct, resistant (drive can no longer recognize the target site), or loss-of-function (lethal mutation at an essential gene target site). From Leung et al. (2022), [doi:10.1186/s12936-022-04242-2][leung-2022].*
 
+In EMOD, the Driver and Effector are modeled as alleles at separate loci. Because they are
+independent, each can succeed or fail on its own — producing a mosquito carrying both (most
+effective), only the effector, only the driver, or neither, as shown below.
+
+![EMOD abstraction of an integral drive: the Driver and Effector are at separate loci and copy independently. The main outcome (left) is a mosquito carrying both. Additional outcomes (right) show the effector copying without the driver, the driver copying without the effector, or both failing.](../figures/vector-genetics/integral_gene_drive.png)
+
+*EMOD abstraction of an integral drive: the Driver and Effector are at separate loci and copy independently. The main outcome (left) is a mosquito carrying both. Additional outcomes (right) show the effector copying without the driver, the driver copying without the effector, or both failing.*
+
 ### Example configuration
 
-An autonomous drive with one driver locus (`a1`) and one effector locus (`b1`). The driver
-`a1` copies itself over `a0` with 90% efficiency and also drives the effector `b1` over
-`b0` at 90%. Because the driver and effector are at separate loci, the effector can be driven
-even if the driver allele itself fails to copy, and vice versa (the driver can be driven
-even if the effector fails to copy):
+Driver locus `Ad` replaces wild-type `Aw` with 90% efficiency (6% failure, 4% mutation to
+resistant `Am`). Effector locus `Be` replaces wild-type `Bw` with 80% efficiency (15% failure,
+5% mutation to resistant `Bm`). Because the loci are independent, the effector can be driven
+even if the driver fails to copy, and vice versa:
 
 ```json
 {
     "Drivers": [
         {
             "Driver_Type": "INTEGRAL_AUTONOMOUS",
-            "Driving_Allele": "a1",
+            "Driving_Allele": "Ad",
             "Alleles_Driven": [
                 {
-                    "Allele_To_Copy": "a1",
-                    "Allele_To_Replace": "a0",
+                    "Allele_To_Copy": "Ad",
+                    "Allele_To_Replace": "Aw",
                     "Copy_To_Likelihood": [
-                        {"Copy_To_Allele": "a1", "Likelihood": 0.9},
-                        {"Copy_To_Allele": "a0", "Likelihood": 0.1}
+                        {"Copy_To_Allele": "Aw", "Likelihood": 0.06},
+                        {"Copy_To_Allele": "Ad", "Likelihood": 0.90},
+                        {"Copy_To_Allele": "Am", "Likelihood": 0.04}
                     ]
                 },
                 {
-                    "Allele_To_Copy": "b1",
-                    "Allele_To_Replace": "b0",
+                    "Allele_To_Copy": "Be",
+                    "Allele_To_Replace": "Bw",
                     "Copy_To_Likelihood": [
-                        {"Copy_To_Allele": "b1", "Likelihood": 0.9},
-                        {"Copy_To_Allele": "b0", "Likelihood": 0.1}
+                        {"Copy_To_Allele": "Bw", "Likelihood": 0.15},
+                        {"Copy_To_Allele": "Be", "Likelihood": 0.80},
+                        {"Copy_To_Allele": "Bm", "Likelihood": 0.05}
                     ]
                 }
             ]
