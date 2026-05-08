@@ -1,6 +1,0 @@
-{
-    "Intervention_Config": {
-        "class": "MultiInsecticideUsageDependentBednetUsageDependentBednet",
-        "Intervention_Name": "IRS bednet that wears over time"
-    }
-}

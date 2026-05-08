@@ -1,6 +1,0 @@
-{
-    "Intervention_Config": {
-        "class": "MultiInsecticideSpaceSpraying",
-        "Intervention_Name": "spraying"
-    }
-}
