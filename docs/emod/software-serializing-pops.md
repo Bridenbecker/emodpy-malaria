@@ -122,15 +122,14 @@ one, you will likely need to regenerate your serialized files.
 ### Population
 
 
-The file contains the state of a human population and, for vector or malaria simulations, a vector
-population. All the nodes that belong to the simulation and the individuals that belong to a node
-are saved. Furthermore, each individual has an internal state and certain characteristics that
-belong to it, like infections, drugs or interventions. Thus, interventions that were distributed
-before the population was saved are still active. Node-level interventions or event coordinators are
-not saved because they are not part of the population: they can change they state of a population
-but are not part of it.
-
-Similar to individuals, vectors and their habitats are saved.
+The file contains the state of a human population and a vector population. All nodes belonging to
+the simulation are saved, along with their larval habitats, vector populations, and vector
+lifecycle probabilities. Individual humans are stored separately from nodes, in collections of up
+to **Serialization_Max_Humans_Per_Collection** individuals each. Each individual carries its own
+internal state: infections, drugs, interventions, susceptibility, and properties. Interventions
+that were distributed before the population was saved are therefore still active after loading.
+Node-level interventions and event coordinators are not saved because they are not part of the
+population state.
 
 
 ### Multi-core

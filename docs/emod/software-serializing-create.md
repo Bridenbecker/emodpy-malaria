@@ -22,6 +22,7 @@ The following configuration parameters must be set to create serialized files:
 | `Serialization_Times` | array of floats | [] | The list of times at which to save the serialized state to file. 0 indicates the initial state before simulation, 'n' indicates the time to serialize in terms of start time and step size, rounded up to the nearest timestep. Time is in terms of days. |
 | `Serialization_Time_Steps` | array of integers | [] | The list of timesteps after which to save the serialized state to file. 0 indicates the initial state before simulation, n indicates after the nth timestep. |
 | `Serialization_Mask_Node_Write` | integer | 0 | A bitmask that defines what is NOT written to the file. 0 implies write everything to the file, 16 implies do NOT write larval habitats to the file. |
+| `Serialization_Max_Humans_Per_Collection` | integer | 2000 | The maximum number of individuals stored in a single human collection chunk. Humans for each node are split across as many chunks as needed. Smaller values reduce peak memory usage during serialization and deserialization at the cost of more chunks. |
 | `Serialization_Precision` | enum | REDUCED | REDUCED is used to reduce the size of the serialized file. FULL gives more floating point precision but creates larger files. FULL precision is needed if you want the continuing simulation to be exactly the same as if you didn't start from a serialized file. |
 
 ### Example JSON
