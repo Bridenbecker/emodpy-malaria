@@ -1,4 +1,4 @@
-# MultiInsecticideIndoorSpaceSpraying
+﻿# MultiInsecticideIndoorSpaceSpraying
 
 
 The **MultiInsecticideIndoorSpaceSpraying** intervention class is a node-level intervention that
@@ -36,6 +36,32 @@ At a glance:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-multiinsecticideindoorspacespraying.csv") }}
+{{ read_csv("csv/campaign-multiinsecticideindoorspacespraying.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-node-multiinsecticideindoorspacespraying.json)
+```json
+{
+    "class": "MultiInsecticideIndoorSpaceSpraying",
+    "Cost_To_Consumer": 1.0,
+    "Spray_Coverage": 1.0,
+    "Insecticides": [
+        {
+            "Insecticide_Name": "pyrethroid_homo",
+            "Killing_Config": {
+                "Box_Duration": 100,
+                "Decay_Time_Constant": 150,
+                "Initial_Effect": 0.95,
+                "class": "WaningEffectBoxExponential"
+            }
+        },
+        {
+            "Insecticide_Name": "carbamate_homo",
+            "Killing_Config": {
+                "Box_Duration": 100,
+                "Decay_Time_Constant": 150,
+                "Initial_Effect": 0.95,
+                "class": "WaningEffectBoxExponential"
+            }
+        }
+    ]
+}
+```

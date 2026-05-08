@@ -1,4 +1,4 @@
-# MigrateFamily
+﻿# MigrateFamily
 
 
 The **MigrateFamily** intervention class tells family groups of residents of the targeted node to go
@@ -19,6 +19,38 @@ start until all residents are at the *home node*.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-migratefamily.csv") }}
+{{ read_csv("csv/campaign-migratefamily.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-node-migratefamily.json)
+```json
+{
+    "Use_Defaults": 1,
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 1,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Intervention_Config": {
+                    "class": "NodeLevelHealthTriggeredIV",
+                    "Trigger_Condition_List": [
+                        "NewInfectionEvent"
+                    ],
+                    "Demographic_Coverage": 1.0,
+                    "Actual_NodeIntervention_Config": {
+                        "class": "MigrateFamily",
+                        "NodeID_To_Migrate_To": 4,
+                        "Duration_Before_Leaving_Distribution": "CONSTANT_DISTRIBUTION",
+                        "Duration_At_Node_Distribution": "CONSTANT_DISTRIBUTION",
+                        "Is_Moving": 0,
+                        "Duration_Before_Leaving_Constant": 0,
+                        "Duration_At_Node_Constant": 10
+                    }
+                }
+            }
+        }
+    ]
+}
+```

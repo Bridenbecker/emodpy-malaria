@@ -1,4 +1,4 @@
-# ArtificialDiet
+﻿# ArtificialDiet
 
 
 The **ArtificialDiet** intervention class is used to include feeding stations for vectors within a
@@ -40,6 +40,33 @@ At a glance:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-artificialdiet.csv") }}
+{{ read_csv("csv/campaign-artificialdiet.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-node-artificialdiet.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Start_Day": 120,
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Intervention_Config": {
+                    "class": "ArtificialDiet",
+                    "Artificial_Diet_Target": "AD_WithinVillage",
+                    "Attraction_Config": {
+                        "Initial_Effect": 0.5,
+                        "Box_Duration": 100,
+                        "Decay_Time_Constant": 150,
+                        "class": "WaningEffectBoxExponential"
+                    },
+                    "Cost_To_Consumer": 10.0
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

@@ -1,4 +1,4 @@
-# MigrateIndividuals
+﻿# MigrateIndividuals
 
 
 The **MigrateIndividuals** intervention class is an individual-level intervention used to force
@@ -33,6 +33,35 @@ node, and Node A becomes the destination node and still remains the home node.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-migrateindividuals.csv") }}
+{{ read_csv("csv/campaign-migrateindividuals.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-migrateindividuals.json)
+```json
+{
+    "Use_Defaults": 1,
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 5,
+            "Nodeset_Config": {
+                "class": "NodeSetNodeList",
+                "Node_List": [1]
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Residents_Only": 1,
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 1.0,
+                "Intervention_Config": {
+                    "class": "MigrateIndividuals",
+                    "NodeID_To_Migrate_To": 2,
+                    "Duration_Before_Leaving_Distribution": "CONSTANT_DISTRIBUTION",
+                    "Duration_At_Node_Distribution": "CONSTANT_DISTRIBUTION",
+                    "Is_Moving": 0,
+                    "Duration_Before_Leaving_Constant": 0,
+                    "Duration_At_Node_Constant": 999
+                }
+            }
+        }
+    ]
+}
+```

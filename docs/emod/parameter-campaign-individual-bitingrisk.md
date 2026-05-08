@@ -1,4 +1,4 @@
-# BitingRisk
+﻿# BitingRisk
 
 
 The **BitingRisk** class allows you to adjust the relative risk that the person is bitten by a
@@ -34,6 +34,14 @@ some individuals are more likely to be bitten than others.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-bitingrisk.csv") }}
+{{ read_csv("csv/campaign-bitingrisk.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-bitingrisk.json)
+```json
+{
+    "Intervention_Config": {
+        "class": "BitingRisk",
+        "Risk_Distribution": "CONSTANT_DISTRIBUTION",
+        "Risk_Constant": 0.1
+    }
+}
+```

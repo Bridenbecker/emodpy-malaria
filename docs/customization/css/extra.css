@@ -4,3 +4,27 @@ div.md-copyright__highlight
     flex-direction: row;
     gap: 2em;
 }
+
+/* Keep short metadata columns from wrapping; Description (always last) is excluded so it wraps */
+.md-typeset table td:not(:last-child),
+.md-typeset table th:not(:last-child) {
+    white-space: nowrap;
+}
+
+/* Ensure Description column is wide enough to push table beyond the viewport, triggering scroll */
+.md-typeset table td:last-child,
+.md-typeset table th:last-child {
+    min-width: 400px;
+}
+
+/* Sticky first column - keeps parameter name visible while scrolling horizontally */
+.md-typeset table td:first-child,
+.md-typeset table th:first-child {
+    position: sticky;
+    left: 0;
+    background-color: var(--md-default-bg-color);
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.08);
+}
+
+.md-typeset table td:first-child { z-index: 1; }
+.md-typeset table th:first-child { z-index: 4; }

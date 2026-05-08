@@ -1,6 +1,0 @@
-{
-    "Intervention_Config": {
-        "class": "OutbreakIndividualMalaria",
-        "Antigen": 0
-    }
-}

@@ -1,4 +1,4 @@
-# MosquitoRelease
+﻿# MosquitoRelease
 
 
 The **MosquitoRelease** intervention class adds mosquito release vector control programs to the simulation.
@@ -23,6 +23,85 @@ You can also release already-mated females to guarantee specific genomes in the 
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-mosquitorelease.csv") }}
+{{ read_csv("csv/campaign-mosquitorelease.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-node-mosquitorelease.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Event_Name": "MosquitoRelease",
+            "Start_Day": 5,
+            "Nodeset_Config": {"class": "NodeSetAll"},
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Intervention_Config": {
+                    "class": "MosquitoRelease",
+                    "Cost_To_Consumer": 200,
+                    "Released_Type": "Ratio",
+                    "Released_Ratio": 1.5,
+                    "Released_Infectious": 0.5,
+                    "Released_Species": "SillySkeeter",
+                    "Released_Wolbachia": "VECTOR_WOLBACHIA_FREE",
+                    "Released_Genome": [["X", "Y"], ["a1", "a1"]]
+                }
+            }
+        },
+        {
+            "class": "CampaignEvent",
+            "Event_Name": "MosquitoRelease",
+            "Start_Day": 125,
+            "Nodeset_Config": {"class": "NodeSetAll"},
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Intervention_Config": {
+                    "class": "MosquitoRelease",
+                    "Cost_To_Consumer": 200,
+                    "Released_Type": "FIXED_NUMBER",
+                    "Released_Number": 35000,
+                    "Released_Species": "SillySkeeter",
+                    "Released_Wolbachia": "VECTOR_WOLBACHIA_A",
+                    "Released_Genome": [["X", "X"], ["b0", "b0"]]
+                }
+            }
+        },
+        {
+            "class": "CampaignEvent",
+            "Event_Name": "MosquitoRelease_Microsporidia",
+            "Start_Day": 200,
+            "Nodeset_Config": {"class": "NodeSetAll"},
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Intervention_Config": {
+                    "class": "MosquitoRelease",
+                    "Cost_To_Consumer": 200,
+                    "Released_Type": "FIXED_NUMBER",
+                    "Released_Number": 50000,
+                    "Released_Species": "gambiae",
+                    "Released_Microsporidia_Strain": "Strain_A",
+                    "Released_Genome": [["X", "X"], ["a1", "a1"]]
+                }
+            }
+        },
+        {
+            "class": "CampaignEvent",
+            "Event_Name": "MosquitoRelease Pre-mated",
+            "Start_Day": 200,
+            "Nodeset_Config": {"class": "NodeSetAll"},
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Intervention_Config": {
+                    "class": "MosquitoRelease",
+                    "Cost_To_Consumer": 300,
+                    "Released_Type": "FIXED_NUMBER",
+                    "Released_Number": 20000,
+                    "Released_Species": "SillySkeeter",
+                    "Released_Genome": [["X", "X"], ["a1", "a1"]],
+                    "Released_Mate_Genome": [["X", "Y"], ["a1", "a1"]]
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

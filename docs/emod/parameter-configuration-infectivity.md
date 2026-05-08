@@ -1,4 +1,4 @@
-# Infectivity and transmission
+﻿# Infectivity and transmission
 
 
 The following parameters determine aspects of infectivity and disease transmission. For example,
@@ -8,6 +8,10 @@ disease can be maternally transmitted, and how population density affects infect
 The malaria transmission model does not use many of the parameters provided by the generic simulation
 type. Instead, *gametocyte* abundances and *cytokine* mediated infectiousness are
 modeled explicitly. See [vector-model-transmission](vector-model-transmission.md) for more information.
+
+!!! seealso
+    [malaria-model-fpg](malaria-model-fpg.md)
+        For `Max_Individual_Infections` and other transmission parameters as used in FPG simulations.
 
 !!! note
     Parameters are case-sensitive. For Boolean parameters, set to 1 for true or 0 for false.
@@ -19,4 +23,4 @@ modeled explicitly. See [vector-model-transmission](vector-model-transmission.md
     JSON format does not permit comments, but you can add "dummy" parameters to add contextual
     information to your files. Any keys that are not EMOD parameter names will be ignored by the
     model.
-{{ read_csv("csv/config-infectivity-malaria.csv") }}
+{{ read_csv("csv/config-infectivity-malaria.csv", keep_default_na=False) }}

@@ -1,4 +1,4 @@
-# SugarTrap
+﻿# SugarTrap
 
 
 The **SugarTrap** intervention class implements a vector sugar-baited trap to collect/kill
@@ -42,6 +42,32 @@ At a glance:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-sugartrap.csv") }}
+{{ read_csv("csv/campaign-sugartrap.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-node-sugartrap.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Nodeset_Config": {"class": "NodeSetAll"},
+            "Start_Day": 1460,
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Intervention_Config": {
+                    "class": "SugarTrap",
+                    "Cost_To_Consumer": 3.75,
+                    "Killing_Config": {
+                        "class": "WaningEffectExponential",
+                        "Decay_Time_Constant": 2190,
+                        "Initial_Effect": 0.1
+                    },
+                    "Expiration_Distribution": "CONSTANT_DISTRIBUTION",
+                    "Expiration_Constant": 360
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

@@ -39,6 +39,13 @@ are configured in the `Drivers` array within each species entry in `Vector_Speci
 !!! note
     The model does not allow for mixing drive types within a species.
 
+!!! seealso
+    Hammond, A.M. and Galizi, R. (2017). [Gene drives to fight malaria: current state and future directions](https://doi.org/10.1080/20477724.2018.1438880). *Pathogens and Global Health*, 111(8), 412–423.
+
+    Leung, S., Windbichler, N., Wenger, E.A., Bever, C.A. and Selvaraj, P. (2022). [Population replacement gene drive characteristics for malaria elimination in a range of seasonal transmission settings: a modelling study](https://doi.org/10.1186/s12936-022-04242-2). *Malaria Journal*, 21, 226.
+
+    Vitale, M., Kranjc, N., Leigh, J., Kyrou, K., Courty, T., Marston, L., Grilli, S., Crisanti, A. and Bernardini, F. (2024). [Y chromosome shredding in Anopheles gambiae: insight into the cellular dynamics of a novel synthetic sex ratio distorter](https://doi.org/10.1371/journal.pgen.1011303). *PLOS Genetics*, 20(6), e1011303.
+
 ## CLASSIC
 
 
@@ -66,17 +73,46 @@ at the cut site:
   longer be cut, preventing future drive conversion at that locus.
 - **No change**: The cut fails entirely.
 
-![Classic gene drive system. A drive mosquito mates with a wild-type mosquito; in the offspring germline, the Cas9 and gRNA cut the wild-type chromosome at the target site and homology-directed repair copies the complete construct. Possible alleles in offspring: wild type (no copy), complete construct (successful copy), or resistant (non-homologous end joining creates a mutated target site the drive can no longer recognize). From Leung et al. (2022), [doi:10.1186/s12936-022-04242-2][leung-2022].](../figures/vector-genetics/classic-gene-drive.png)
+![Classic gene drive system. A drive mosquito mates with a wild-type mosquito; in the offspring germline, the Cas9 and gRNA cut the wild-type chromosome at the target site and homology-directed repair copies the complete construct. Possible alleles in offspring: wild type (no copy), complete construct (successful copy), or resistant (non-homologous end joining creates a mutated target site the drive can no longer recognize). From Leung et al. (2022), [doi:10.1186/s12936-022-04242-2][leung-2022].](../figures/vector-genetics/classic-gene-drive.png){ style="width: 30%;" }
 
 *Classic gene drive system. A drive mosquito mates with a wild-type mosquito; in the offspring germline, the Cas9 and gRNA cut the wild-type chromosome at the target site and homology-directed repair copies the complete construct. Possible alleles in offspring: wild type (no copy), complete construct (successful copy), or resistant (non-homologous end joining creates a mutated target site the drive can no longer recognize). From Leung et al. (2022), [doi:10.1186/s12936-022-04242-2][leung-2022].*
 
+In EMOD, this mechanism is abstracted as two alleles — a Driver (representing Cas9) and an
+Effector — bundled at the same locus. The drive either copies successfully or fails, as shown
+below; these outcomes map directly to the probabilities set in `Copy_To_Likelihood`.
+
+![EMOD abstraction of a classic gene drive: the Driver and Effector are bundled at the same locus. On the left, the drive copies successfully into the target chromosome, producing a mosquito carrying the drive. On the right, the additional outcome where the drive fails and the wild-type allele is retained.](../figures/vector-genetics/conventional_gene_drive.png)
+
+*EMOD abstraction of a classic gene drive: the Driver and Effector are bundled at the same locus. On the left, the drive copies successfully into the target chromosome, producing a mosquito carrying the drive. On the right, the additional outcome where the drive fails and the wild-type allele is retained.*
+
 ### Example configuration
 
-A classic drive at a single locus. The `drive_a` allele bundles Cas9 + gRNA and copies itself
-over the wild-type allele `wild_a` with 95% efficiency. The remaining 5% produce a resistance
-allele through NHEJ:
+A classic drive at a single locus. The `Ade` allele bundles Cas9 + gRNA and replaces the
+wild-type allele `Aw` with 99% efficiency. There is a 0.7% chance of complete failure where
+the wild-type allele is retained, and a 0.3% chance of a mutation to `Am` — a resistant allele
+that the drive can no longer recognize, preventing future conversion at that locus:
 
-[link](../json/vector-model-gene-drives-1.json)
+```json
+{
+    "Drivers": [
+        {
+            "Driver_Type": "CLASSIC",
+            "Driving_Allele": "Ade",
+            "Alleles_Driven": [
+                {
+                    "Allele_To_Copy": "Ade",
+                    "Allele_To_Replace": "Aw",
+                    "Copy_To_Likelihood": [
+                        {"Copy_To_Allele": "Aw",  "Likelihood": 0.007},
+                        {"Copy_To_Allele": "Ade", "Likelihood": 0.990},
+                        {"Copy_To_Allele": "Am",  "Likelihood": 0.003}
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
 
 
 ## INTEGRAL_AUTONOMOUS [](){#integral-autonomous}
@@ -93,19 +129,55 @@ it does not require heterozygosity at the driven locus. For each driven locus, t
 `Allele_To_Replace` must exist in the other gamete. If one of these conditions is not met for
 a particular locus, nothing happens at that locus, but other loci can still be driven.
 
-![Integral gene drive system. Driver and effector are on separate loci, each with their own gRNA, allowing each to be copied independently. Possible alleles at each locus: wild type, the introduced construct, resistant (drive can no longer recognize the target site), or loss-of-function (lethal mutation at an essential gene target site). From Leung et al. (2022), [doi:10.1186/s12936-022-04242-2][leung-2022].](../figures/vector-genetics/integral-gene-drive.png)
+![Integral gene drive system. Driver and effector are on separate loci, each with their own gRNA, allowing each to be copied independently. Possible alleles at each locus: wild type, the introduced construct, resistant (drive can no longer recognize the target site), or loss-of-function (lethal mutation at an essential gene target site). From Leung et al. (2022), [doi:10.1186/s12936-022-04242-2][leung-2022].](../figures/vector-genetics/integral-gene-drive.png){ style="width: 30%;" }
 
 *Integral gene drive system. Driver and effector are on separate loci, each with their own gRNA, allowing each to be copied independently. Possible alleles at each locus: wild type, the introduced construct, resistant (drive can no longer recognize the target site), or loss-of-function (lethal mutation at an essential gene target site). From Leung et al. (2022), [doi:10.1186/s12936-022-04242-2][leung-2022].*
 
+In EMOD, the Driver and Effector are modeled as alleles at separate loci. Because they are
+independent, each can succeed or fail on its own — producing a mosquito carrying both (most
+effective), only the effector, only the driver, or neither, as shown below.
+
+![EMOD abstraction of an integral drive: the Driver and Effector are at separate loci and copy independently. The main outcome (left) is a mosquito carrying both. Additional outcomes (right) show the effector copying without the driver, the driver copying without the effector, or both failing.](../figures/vector-genetics/integral_gene_drive.png)
+
+*EMOD abstraction of an integral drive: the Driver and Effector are at separate loci and copy independently. The main outcome (left) is a mosquito carrying both. Additional outcomes (right) show the effector copying without the driver, the driver copying without the effector, or both failing.*
+
 ### Example configuration
 
-An autonomous drive with one driver locus (`a1`) and one effector locus (`b1`). The driver
-`a1` copies itself over `a0` with 90% efficiency and also drives the effector `b1` over
-`b0` at 90%. Because the driver and effector are at separate loci, the effector can be driven
-even if the driver allele itself fails to copy, and vice versa (the driver can be driven
-even if the effector fails to copy):
+Driver locus `Ad` replaces wild-type `Aw` with 90% efficiency (6% failure, 4% mutation to
+resistant `Am`). Effector locus `Be` replaces wild-type `Bw` with 80% efficiency (15% failure,
+5% mutation to resistant `Bm`). Because the loci are independent, the effector can be driven
+even if the driver fails to copy, and vice versa:
 
-[link](../json/vector-model-gene-drives-2.json)
+```json
+{
+    "Drivers": [
+        {
+            "Driver_Type": "INTEGRAL_AUTONOMOUS",
+            "Driving_Allele": "Ad",
+            "Alleles_Driven": [
+                {
+                    "Allele_To_Copy": "Ad",
+                    "Allele_To_Replace": "Aw",
+                    "Copy_To_Likelihood": [
+                        {"Copy_To_Allele": "Aw", "Likelihood": 0.06},
+                        {"Copy_To_Allele": "Ad", "Likelihood": 0.90},
+                        {"Copy_To_Allele": "Am", "Likelihood": 0.04}
+                    ]
+                },
+                {
+                    "Allele_To_Copy": "Be",
+                    "Allele_To_Replace": "Bw",
+                    "Copy_To_Likelihood": [
+                        {"Copy_To_Allele": "Bw", "Likelihood": 0.15},
+                        {"Copy_To_Allele": "Be", "Likelihood": 0.80},
+                        {"Copy_To_Allele": "Bm", "Likelihood": 0.05}
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
 
 ## DAISY_CHAIN
 
@@ -133,7 +205,54 @@ through Mendelian dilution over time, making the drive self-limiting.
     set the `Copy_To_Likelihood` for that entry to 100% failure (`Likelihood: 1.0` for
     the `Allele_To_Replace`), as shown below for `Bt` and `Ct`.
 
-[link](../json/vector-model-gene-drives-3.json)
+```json
+{
+    "Drivers": [
+        {
+            "Driver_Type": "DAISY_CHAIN",
+            "Driving_Allele": "Bt",
+            "Alleles_Driven": [
+                {
+                    "Allele_To_Copy": "At",
+                    "Allele_To_Replace": "Aw",
+                    "Copy_To_Likelihood": [
+                        {"Copy_To_Allele": "Aw", "Likelihood": 0.0},
+                        {"Copy_To_Allele": "At", "Likelihood": 1.0}
+                    ]
+                },
+                {
+                    "Allele_To_Copy": "Bt",
+                    "Allele_To_Replace": "Bw",
+                    "Copy_To_Likelihood": [
+                        {"Copy_To_Allele": "Bw", "Likelihood": 1.0}
+                    ]
+                }
+            ]
+        },
+        {
+            "Driver_Type": "DAISY_CHAIN",
+            "Driving_Allele": "Ct",
+            "Alleles_Driven": [
+                {
+                    "Allele_To_Copy": "Bt",
+                    "Allele_To_Replace": "Bw",
+                    "Copy_To_Likelihood": [
+                        {"Copy_To_Allele": "Bw", "Likelihood": 0.0},
+                        {"Copy_To_Allele": "Bt", "Likelihood": 1.0}
+                    ]
+                },
+                {
+                    "Allele_To_Copy": "Ct",
+                    "Allele_To_Replace": "Cw",
+                    "Copy_To_Likelihood": [
+                        {"Copy_To_Allele": "Cw", "Likelihood": 1.0}
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
 
 ## X_SHRED and Y_SHRED
 
@@ -169,7 +288,31 @@ non-gender locus. When a male carrying `Ad` also has the Y-chromosome allele `Yw
 (`Allele_Required`), his X-bearing sperm carrying `Xw` (`Allele_To_Shred`) are destroyed.
 `Driving_Allele_Params` specifies how the drive allele itself is inherited:
 
-[link](../json/vector-model-gene-drives-4.json)
+```json
+{
+    "Drivers": [
+        {
+            "Driver_Type": "X_SHRED",
+            "Driving_Allele": "Ad",
+            "Driving_Allele_Params": {
+                "Allele_To_Copy": "Ad",
+                "Allele_To_Replace": "Aw",
+                "Copy_To_Likelihood": [
+                    {"Copy_To_Allele": "Ad", "Likelihood": 1.0},
+                    {"Copy_To_Allele": "Aw", "Likelihood": 0.0}
+                ]
+            },
+            "Shredding_Alleles": {
+                "Allele_Required": "Yw",
+                "Allele_To_Shred": "Xw",
+                "Allele_To_Shred_To": "Xm",
+                "Allele_Shredding_Fraction": 1.0,
+                "Allele_To_Shred_To_Surviving_Fraction": 0.0
+            }
+        }
+    ]
+}
+```
 
 With `Allele_Shredding_Fraction` = 1.0 and `Allele_To_Shred_To_Surviving_Fraction` = 0.0,
 all X-bearing sperm are destroyed and none survive as the `Xm` allele.
@@ -180,7 +323,31 @@ A Y-shredding drive that biases offspring toward females. When a male carrying `
 the X-chromosome allele `Xw` (`Allele_Required`), his Y-bearing sperm carrying `Yw`
 (`Allele_To_Shred`) are destroyed:
 
-[link](../json/vector-model-gene-drives-5.json)
+```json
+{
+    "Drivers": [
+        {
+            "Driver_Type": "Y_SHRED",
+            "Driving_Allele": "Ad",
+            "Driving_Allele_Params": {
+                "Allele_To_Copy": "Ad",
+                "Allele_To_Replace": "Aw",
+                "Copy_To_Likelihood": [
+                    {"Copy_To_Allele": "Ad", "Likelihood": 1.0},
+                    {"Copy_To_Allele": "Aw", "Likelihood": 0.0}
+                ]
+            },
+            "Shredding_Alleles": {
+                "Allele_Required": "Xw",
+                "Allele_To_Shred": "Yw",
+                "Allele_To_Shred_To": "Ym",
+                "Allele_Shredding_Fraction": 1.0,
+                "Allele_To_Shred_To_Surviving_Fraction": 0.0
+            }
+        }
+    ]
+}
+```
 
 ## Configuration parameters
 
@@ -189,4 +356,4 @@ Gene drivers are defined in the `Drivers` array within each species entry in
 `Vector_Species_Params`. The following table lists all parameters. Parameters marked as applying
 to specific driver types are ignored for other types.
 
-{{ read_csv("csv/config-gene-drives.csv") }}
+{{ read_csv("csv/config-gene-drives.csv", keep_default_na=False) }}

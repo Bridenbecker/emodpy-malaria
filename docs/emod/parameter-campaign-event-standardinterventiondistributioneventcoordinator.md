@@ -1,4 +1,4 @@
-# StandardInterventionDistributionEventCoordinator
+﻿# StandardInterventionDistributionEventCoordinator
 
 
 The **StandardInterventionDistributionEventCoordinator** coordinator class distributes an individual-level or
@@ -26,6 +26,28 @@ for this event coordinator.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-standardinterventiondistributioneventcoordinator.csv") }}
+{{ read_csv("csv/campaign-standardinterventiondistributioneventcoordinator.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-event-standardinterventiondistributioneventcoordinator.json)
+```json
+{
+    "Use_Defaults": 1,
+    "Events": [
+        {
+            "Event_Name": "Outbreak",
+            "class": "CampaignEvent",
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Start_Day": 1,
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Demographic_Coverage": 0.005,
+                "Intervention_Config": {
+                    "class": "OutbreakIndividual",
+                    "Outbreak_Source": "PrevalenceIncrease"
+                }
+            }
+        }
+    ]
+}
+```

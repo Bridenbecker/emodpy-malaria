@@ -127,7 +127,6 @@ nav:
       - Parasite dynamics: emod/parameter-configuration-parasite.md
       - Population dynamics: emod/parameter-configuration-population.md
       - Sampling: emod/parameter-configuration-sampling.md
-      - Scalars and multipliers: emod/parameter-configuration-scalars.md
       - Simulation setup: emod/parameter-configuration-setup.md
       - Symptoms and diagnosis: emod/parameter-configuration-symptoms.md
       - Vector control: emod/parameter-configuration-vector-control.md

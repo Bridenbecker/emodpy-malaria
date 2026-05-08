@@ -1,4 +1,4 @@
-# IncidenceEventCoordinator
+﻿# IncidenceEventCoordinator
 
 
 The **IncidenceEventCoordinator** coordinator class distributes interventions based on the number of events counted over a period of time.
@@ -17,6 +17,12 @@ The **IncidenceEventCoordinator** coordinator class distributes interventions ba
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-incidenceeventcoordinator.csv") }}
+{{ read_csv("csv/campaign-incidenceeventcoordinator.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-event-incidenceeventcoordinator.json)
+```json
+{
+    "class": "IncidenceEventCoordinator",
+    "Number_Repetitions": 3,
+    "Timesteps_Between_Repetitions": 6
+}
+```

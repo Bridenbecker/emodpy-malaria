@@ -1,4 +1,4 @@
-# ReportInfectionDuration
+﻿# ReportInfectionDuration
 
 
 The infection duration report (ReportInfectionDuration.csv) records one row each time an infection
@@ -13,30 +13,41 @@ interest.
 
 To generate this report, configure the following parameters in the custom_reports.json file:
 
-```
-**Start_Day**, float, 0, 3.40E+38, 0, "The day of the simulation to start collecting data."
-**End_Day**, float, 0, 3.40E+38, 3.40E+38, "The day of the simulation to stop collecting data."
-```
+| Parameter | Data type | Min | Max | Default | Description |
+| --- | --- | --- | --- | --- | --- |
+| `Start_Day` | float | 0 | 3.40E+38 | 0 | The day of the simulation to start collecting data. |
+| `End_Day` | float | 0 | 3.40E+38 | 3.40E+38 | The day of the simulation to stop collecting data. |
 
-[link](../json/software-report-infection-duration.json)
+```json
+{
+    "Reports": [
+        {
+            "class": "ReportInfectionDuration",
+            "Start_Day": 3855,
+            "End_Day": 4000
+        }
+    ],
+    "Use_Defaults": 1
+}
+```
 
 ## Output file data
 
 
 The output file is named `ReportInfectionDuration.csv`. The report contains the following columns.
 
-```
-Time, float, "The simulation time in days when the infection was cleared."
-NodeID, integer, "The external ID of the node where the individual resides."
-IndividualID, integer, "The unique ID of the individual whose infection cleared."
-Gender, enum, "The gender of the individual. Possible values are M or F."
-AgeYears, float, "The age of the individual in years at the time the infection cleared."
-InfectionDuration, float, "The duration in days of the infection that cleared."
-```
+| Column | Data type | Description |
+| --- | --- | --- |
+| `Time` | float | The simulation time in days when the infection was cleared. |
+| `NodeID` | integer | The external ID of the node where the individual resides. |
+| `IndividualID` | integer | The unique ID of the individual whose infection cleared. |
+| `Gender` | enum | The gender of the individual. Possible values are M or F. |
+| `AgeYears` | float | The age of the individual in years at the time the infection cleared. |
+| `InfectionDuration` | float | The duration in days of the infection that cleared. |
 
 ## Example
 
 
 The following is an example of ReportInfectionDuration.csv.
 
-{{ read_csv("csv/report-infection-duration.csv") }}
+{{ read_csv("csv/report-infection-duration.csv", keep_default_na=False) }}

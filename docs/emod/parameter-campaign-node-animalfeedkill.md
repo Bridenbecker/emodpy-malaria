@@ -1,4 +1,4 @@
-# AnimalFeedKill
+﻿# AnimalFeedKill
 
 
 The **AnimalFeedKill** intervention class imposes node-targeted mortality to a vector that
@@ -31,6 +31,32 @@ At a glance:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-animalfeedkill.csv") }}
+{{ read_csv("csv/campaign-animalfeedkill.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-node-animalfeedkill.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 120,
+            "Nodeset_Config": {
+                "class": "NodeSetAlld"
+            },
+            "Event_Coordinator_Config": {
+                "class": "NodeEventCoordinator",
+                "Intervention_Config": {
+                    "class": "AnimalFeedKill",
+                    "Cost_To_Consumer": 10.0,
+                    "Killing_Config": {
+                        "Box_Duration": 100,
+                        "Decay_Time_Constant": 150,
+                        "Initial_Effect": 0.2,
+                        "class": "WaningEffectBoxExponential"
+                    }
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

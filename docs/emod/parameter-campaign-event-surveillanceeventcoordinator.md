@@ -1,4 +1,4 @@
-# SurveillanceEventCoordinator
+﻿# SurveillanceEventCoordinator
 
 
 
@@ -18,6 +18,120 @@ event is typically used with other classes, such as [parameter-campaign-event-br
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-surveillanceeventcoordinator.csv") }}
+{{ read_csv("csv/campaign-surveillanceeventcoordinator.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-event-surveillanceeventcoordinator.json)
+```json
+{
+    "Events": [
+        {
+            "comment": "Broadcast Event to start Surveillance",
+            "class": "CampaignEvent",
+            "Start_Day": 2,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "BroadcastCoordinatorEvent",
+                "Coordinator_Name": "Coordnator_1",
+                "Cost_To_Consumer": 10,
+                "Broadcast_Event": "Start_ACF"
+            }
+        },
+        {
+            "comment": "Triggered by Broadcast_Event, stops itself by broadcasting Start_SIA_X Event",
+            "class": "CampaignEvent",
+            "Start_Day": 1,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "SurveillanceEventCoordinator",
+                "Coordinator_Name": "ACF_Counter",
+                "Start_Trigger_Condition_List": [
+                    "Start_ACF"
+                ],
+                "Stop_Trigger_Condition_List": [
+                    "Start_SIA_2",
+                    "Start_SIA_4"
+                ],
+                "Duration": 30,
+                "Incidence_Counter": {
+                    "Counter_Type": "PERIODIC",
+                    "Counter_Period": 14,
+                    "Counter_Event_Type": "NODE",
+                    "Trigger_Condition_List": [
+                        "Node_Event_1",
+                        "Node_Event_2"
+                    ],
+                    "Node_Property_Restrictions": [],
+                    "Property_Restrictions_Within_Node": [],
+                    "Target_Demographic": "Everyone",
+                    "Demographic_Coverage": 1.0
+                },
+                "Responder": {
+                    "Responded_Event": "Respond_To_Surveillance",
+                    "Threshold_Type": "COUNT",
+                    "Action_List": [
+                        {
+                            "Threshold": 5,
+                            "Event_Type": "COORDINATOR",
+                            "Event_To_Broadcast": "Ind_Start_SIA_2"
+                        },
+                        {
+                            "Threshold": 2,
+                            "Event_Type": "COORDINATOR",
+                            "Event_To_Broadcast": "Ind_Start_SIA_4"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 3,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Intervention_Config": {
+                    "class": "BroadcastNodeEvent",
+                    "Cost_To_Consumer": 25,
+                    "Broadcast_Event": "Node_Event_1"
+                }
+            }
+        },
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 3,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Intervention_Config": {
+                    "class": "BroadcastNodeEvent",
+                    "Cost_To_Consumer": 25,
+                    "Broadcast_Event": "Node_Event_1"
+                }
+            }
+        },
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 4,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Intervention_Config": {
+                    "class": "BroadcastNodeEvent",
+                    "Cost_To_Consumer": 25,
+                    "Broadcast_Event": "Node_Event_2"
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

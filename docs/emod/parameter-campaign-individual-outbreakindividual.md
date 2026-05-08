@@ -1,4 +1,4 @@
-# OutbreakIndividual
+﻿# OutbreakIndividual
 
 
 The **OutbreakIndividual** intervention class introduces contagious diseases that are compatible
@@ -21,6 +21,29 @@ this intervention class. Instead, use [parameter-campaign-individual-outbreakind
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-outbreakindividual.csv") }}
+{{ read_csv("csv/campaign-outbreakindividual.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-outbreakindividual.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 30,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 0.001,
+                "Intervention_Config": {
+                    "class": "OutbreakIndividual",
+                    "Clade": 1,
+                    "Genome": 3,
+                    "IgnoreImmunity": 1
+                }
+            }
+        }
+    ]
+}
+```

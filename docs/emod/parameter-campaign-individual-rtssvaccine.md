@@ -1,4 +1,4 @@
-# RTSSVaccine
+﻿# RTSSVaccine
 
 
 The **RTSSVaccine** intervention class protects individuals against infection acquisition by
@@ -28,6 +28,29 @@ survive and infect the hepatocytes. Without the vaccine, CSP does not do anythin
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-rtssvaccine.csv") }}
+{{ read_csv("csv/campaign-rtssvaccine.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-rtssvaccine.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 20,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 0.8,
+                "Intervention_Config": {
+                    "class": "RTSSVaccine",
+                    "Boosted_Antibody_Concentration": 1200,
+                    "Cost_To_Consumer": 1.0
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

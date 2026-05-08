@@ -1,4 +1,4 @@
-# AntimalarialDrug
+﻿# AntimalarialDrug
 
 
 The **AntimalarialDrug** intervention is used to apply drug-based control efforts to malaria
@@ -20,6 +20,32 @@ behave.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-antimalarialdrug.csv") }}
+{{ read_csv("csv/campaign-antimalarialdrug.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-antimalarialdrug.json)
+```json
+{
+    "Use_Defaults": 1,
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 270,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 0.8,
+                "Number_Repetitions": 1,
+                "Timesteps_Between_Repetitions": 0,
+                "Intervention_Config": {
+                    "class": "AntimalarialDrug",
+                    "Cost_To_Consumer": 3.75,
+                    "Dont_Allow_Duplicates": 1,
+                    "Drug_Type": "Chloroquine"
+                }
+            }
+        }
+    ]
+}
+```

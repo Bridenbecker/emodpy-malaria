@@ -1,9 +1,13 @@
-# Parasite dynamics
+﻿# Parasite dynamics
 
 
 The following parameters determine the dynamics of the *Plasmodium falciparum* parasite life cycle,
 including dynamics within the host and human population. For more information, see
 [malaria-model-infection-immunity](malaria-model-infection-immunity.md).
+
+!!! seealso
+    [malaria-model-fpg](malaria-model-fpg.md)
+        For the `Parasite_Genetics` parameters that configure the Full Parasite Genetics (FPG) model.
 
 !!! note
     Parameters are case-sensitive. For Boolean parameters, set to 1 for true or 0 for false.
@@ -15,4 +19,4 @@ including dynamics within the host and human population. For more information, s
     JSON format does not permit comments, but you can add "dummy" parameters to add contextual
     information to your files. Any keys that are not EMOD parameter names will be ignored by the
     model.
-{{ read_csv("csv/config-parasite-malaria.csv") }}
+{{ read_csv("csv/config-parasite-malaria.csv", keep_default_na=False) }}

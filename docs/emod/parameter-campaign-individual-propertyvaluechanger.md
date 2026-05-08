@@ -1,4 +1,4 @@
-# PropertyValueChanger
+﻿# PropertyValueChanger
 
 
 The **PropertyValueChanger** intervention class assigns new individual property values to
@@ -23,6 +23,35 @@ does not need to be enabled to use this intervention. To instead change node pro
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-propertyvaluechanger.csv") }}
+{{ read_csv("csv/campaign-propertyvaluechanger.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-propertyvaluechanger.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 10,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 1.0,
+                "Property_Restrictions": ["Risk:LOW"],
+                "Intervention_Config": {
+                    "class": "PropertyValueChanger",
+                    "Disqualifying_Properties": ["InterventionStatus:Diagnosed"],
+                    "New_Property_Value": "InterventionStatus:Monitor",
+                    "Target_Property_Key": "Risk",
+                    "Target_Property_Value": "HIGH",
+                    "Daily_Probability": 1.0,
+                    "Maximum_Duration": 0,
+                    "Revert": 10
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

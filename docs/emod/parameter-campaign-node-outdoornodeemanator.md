@@ -1,4 +1,4 @@
-# OutdoorNodeEmanator
+﻿# OutdoorNodeEmanator
 
 
 The **OutdoorNodeEmanator** intervention class implements node-level outdoor emanators against blood meal-seeking
@@ -51,6 +51,39 @@ At a glance:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-outdoornodeemanator.csv") }}
+{{ read_csv("csv/campaign-outdoornodeemanator.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-node-outdoornodeemanator.json)
+```json
+{
+    "Use_Defaults": 1,
+    "Campaign_Name": "SpaceSpraying",
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Nodeset_Config": {"class": "NodeSetAll"},
+            "Start_Day": 4,
+            "Event_Coordinator_Config": {
+                "class": "NodeEventCoordinator",
+                "Intervention_Config": {
+                    "class": "OutdoorNodeEmanator",
+                    "Cost_To_Consumer": 0,
+                    "Killing_Config": {
+                        "class": "WaningEffectBoxExponential",
+                        "Box_Duration": 100,
+                        "Decay_Time_Constant": 150,
+                        "Initial_Effect": 1
+                    },
+                    "Repelling_Config": {
+                        "class": "WaningEffectBoxExponential",
+                        "Box_Duration": 100,
+                        "Decay_Time_Constant": 150,
+                        "Initial_Effect": 1
+                    },
+                    "Insecticide_Name": "carbamate",
+                    "Spray_Coverage": 0.9
+                }
+            }
+        }
+    ]
+}
+```

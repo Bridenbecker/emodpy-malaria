@@ -210,3 +210,8 @@ interactions with human populations, and includes microsimulations for human imm
 host parasite dynamics. The model builds on the work of Ross and MacDonald, leverages the Garki
 model, and incorporates current modeling efforts to model multiple vector species simultaneously
 interacting with a human population.
+
+## References
+
+- Macdonald G (1950) The analysis of infection rates in diseases in which superinfection occurs. *Trop Dis Bull* 47: 907–915.
+- Dietz K, Molineaux L, Thomas A (1974) A malaria model tested in the African savannah. *Bull World Health Organ* 50: 347–357.

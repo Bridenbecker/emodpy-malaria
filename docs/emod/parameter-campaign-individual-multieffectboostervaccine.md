@@ -1,4 +1,4 @@
-# MultiEffectBoosterVaccine
+﻿# MultiEffectBoosterVaccine
 
 
 The **MultiEffectBoosterVaccine** intervention class is derived from
@@ -24,6 +24,54 @@ to the corresponding boost parameter. After distribution, the effect wanes, just
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-multieffectboostervaccine.csv") }}
+{{ read_csv("csv/campaign-multieffectboostervaccine.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-multieffectboostervaccine.json)
+```json
+{
+    "Use_Defaults": 1,
+    "Campaign_Name": "Generic Seattle Regression Campaign",
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 1,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 1.0,
+                "Intervention_Config": {
+                    "class": "MultiEffectBoosterVaccine",
+                    "Cost_To_Consumer": 10.0,
+                    "Vaccine_Take": 1,
+                    "Prime_Acquire": 0.1,
+                    "Prime_Transmit": 0.2,
+                    "Prime_Mortality": 0.3,
+                    "Boost_Acquire": 0.7,
+                    "Boost_Transmit": 0.5,
+                    "Boost_Mortality": 1.0,
+                    "Boost_Threshold_Acquire": 0.0,
+                    "Boost_Threshold_Transmit": 0.0,
+                    "Boost_Threshold_Mortality": 0.0,
+                    "Acquire_Config": {
+                        "class": "WaningEffectBox",
+                        "Box_Duration": 100,
+                        "Initial_Effect": 0.5
+                    },
+                    "Transmit_Config": {
+                        "class": "WaningEffectBox",
+                        "Box_Duration": 100,
+                        "Initial_Effect": 0.5
+                    },
+                    "Mortality_Config": {
+                        "class": "WaningEffectBox",
+                        "Box_Duration": 100,
+                        "Initial_Effect": 0.5
+                    }
+                }
+            }
+        }
+    ]
+}
+```

@@ -1,4 +1,4 @@
-# SpatialRepellentHousingModification
+﻿# SpatialRepellentHousingModification
 
 
 The **SpatialRepellentHousingModification** intervention class is a housing modification utilizing
@@ -39,6 +39,34 @@ At a glance:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-spatialrepellenthousingmodification.csv") }}
+{{ read_csv("csv/campaign-spatialrepellenthousingmodification.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-spatialrepellenthousingmodification.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 120,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 0.8,
+                "Intervention_Config": {
+                    "class": "SpatialRepellentHousingModification",
+                    "Cost_To_Consumer": 1.0,
+                    "Repelling_Config": {
+                        "class": "WaningEffectBoxExponential",
+                        "Box_Duration": 100,
+                        "Decay_Time_Constant": 150,
+                        "Initial_Effect": 0.1
+                    }
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

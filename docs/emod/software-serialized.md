@@ -44,34 +44,45 @@ simulations.
 ## File format
 
 
-Serialized population files are saved in JSON format. The file structure reflects the hierarchical
-structure of the objects in EMOD. Each file starts with a header and then contains
-information about the simulation and the nodes. The following figure gives a rough overview of the
-JSON file structure (note that only vector or malaria simulations will have larval habitats, vector
-populations, or vector life cycles).
+A serialized population file is a sequence of independently compressed chunks written in a fixed
+order. The file is not a single JSON tree — the simulation, nodes, and human agents are stored in
+separate chunks so that each can be loaded and freed independently, keeping peak memory usage low.
+
+The following figure gives an overview of the chunk layout.
 
 ![serialized_file_format.png](../figures/general/serialized_file_format.png)
+
+The chunks appear in this order on disk:
+
+1. **Simulation chunk** (one) — the simulation object with an empty node list.
+2. **Node chunks** (one per node) — each node’s non-human data: larval habitats, vector
+   populations, and vector lifecycle probabilities. Individual humans are **not** stored here.
+3. **Human collection chunks** (one or more per node) — each chunk holds up to
+   **Serialization_Max_Humans_Per_Collection** (default 2000) individuals and is tagged in the
+   header with the SUID of the node they belong to. Each individual carries its own Migration,
+   Interventions, Susceptibility, and Properties. A node with a large population produces multiple
+   human collection chunks.
+
+Each chunk is compressed independently using LZ4, SNAPPY, or no compression, chosen automatically
+based on the size of the data. Different chunks in the same file may use different compression schemes.
 
 ### Internal state
 
 
-The structure of a serialized population file reflects the relations of objects in a simulation. On
-the highest level, a serialized population file contains a list with nodes, each node is the root of
-a tree. At the configured timestep the simulation calls Node::serialize() which then calls the
-serialized method of other members of this object. The Node class, for instance, contains a list with
-individuals, each individual has certain attributes and a list of infections. Each infection has
-certain attributes and might contain again a list of objects, etc. This continues until there are
-no more objects.
+The structure of a serialized population file reflects the internal state of the objects used in
+the simulation. At the configured timestep, the simulation serializes the simulation object, then
+each node (without its humans), then the human agents in collections. Each object calls the
+serialize method of its members in turn — an individual, for instance, serializes its infections,
+interventions, susceptibility, and properties. This continues until there are no more objects.
 
 All objects that are instantiated from classes that inherit from ISerializable and implement the
-ISerializable interface can write itself to a buffer. It depends on the chosen writer how this
-buffer is written and where it is written. Here we assume that a JSON writer is used and that the
-writer adds variable names and formatting characters so that a valid JSON file is generated. A
-similar mechanism is at play when a simulation is loaded again from a file. The names of variables
-and their values are used to re-instantiate the same objects. Mind that EMOD is written in a compiled
-language, so the description of data and objects (classes and variable types) in the source code
-must match the data types in the serialized population file, e.g. if a variable is of type integer
-changing its value to a float won’t have the anticipated effect.
+ISerializable interface can write themselves to a buffer. A JSON writer adds variable names and
+formatting so that a valid JSON chunk is generated. A similar mechanism is at play when a
+simulation is loaded from a file — the names of variables and their values are used to
+re-instantiate the same objects. Because EMOD is written in a compiled language, the description
+of data and objects (classes and variable types) in the source code must match the data types in
+the serialized population file exactly — for example, if a variable is of type integer, changing
+its value to a float in the source will not have the anticipated effect.
 
 
 ### Multi-core
@@ -91,44 +102,26 @@ The format for multi-core is: state-timestep-core.dtk e.g. state-00100-001.dtk
 
 ### Header
 
-Each EMOD file starts with a header in JSON format that contains information about the data in the file.
+Each file begins with a 4-byte magic number (`IDTK`), followed by a 12-character decimal field
+giving the header size in bytes, followed by the header JSON. The header size is fixed based on the
+number of nodes and human collections, which allows the header to be overwritten with final chunk
+sizes after the chunks are written.
 
-Version 2 and 3
-
-| Field | Value | Type | Description |
-| --- | --- | --- | --- |
-| Magic Number | IDTK | 4 byte | |
-| Header Size | 160 | Integer | Size of header in bytes |
-
-Metadata
+The current header format (version 6) contains the following fields:
 
 | Parameter | Example | Type | Description |
 | --- | --- | --- | --- |
-| version | 2/3 | Integer | Version number |
-| date | Day Mon day HH:MM:SS year | String | A string |
-| compressed | True | Boolean | Content compressed |
-| engine | LZ4 | String | Compression engine |
-| bytecount | 285140 | Integer | Total number of bytes in file |
-| chunkcount | 3 | Integer | Number of chunks |
-| chunksizes | [368,141552,143220] | List of Integers | List of chunk sizes |
-
-
-
-
-Version 4
-
-| Field | Value | Type | Description |
-| --- | --- | --- | --- |
-| Magic Number | IDTK | 4 byte | |
-| Header Size | 160 | Integer | Size of header in bytes |
-
-Metadata
-
-| Parameter | Example | Type | Description |
-| --- | --- | --- | --- |
-| version | 4 | Integer | Version number |
-| date | Day Mon day HH:MM:SS year | String | A string |
-| compression | LZ4 | NONE, LZ4, SNAPPY | Content compressed |
-| bytecount | 285140 | Integer | Total number of bytes in file |
-| chunkcount | 3 | Integer | Number of chunks |
-| chunksizes | [368,141552,143220] | List of Integers | List of chunk sizes |
+| version | 6 | Integer | File format version number |
+| author | IDM | String | Author of the file |
+| tool | DTK | String | Tool used to create the file |
+| date | Mon Jan 01 00:00:00 2025 | String | Date and time the file was created |
+| emod_info | {} | Object | EMOD version information |
+| sim_compression | LZ4 | NON, LZ4, SNA | Compression used for the simulation chunk |
+| sim_chunk_size | 000000000012AB34 | Hex string | Size in bytes of the simulation chunk |
+| node_suids | ["00000001", "00000002"] | Array of hex strings | SUID for each node chunk |
+| node_compressions | ["LZ4", "LZ4"] | Array of NON/LZ4/SNA | Compression for each node chunk |
+| node_chunk_sizes | ["000000000012AB34", ...] | Array of hex strings | Size in bytes of each node chunk |
+| human_node_suids | ["00000001", "00000001", "00000002"] | Array of hex strings | Node SUID for each human collection chunk |
+| human_compressions | ["LZ4", "LZ4", "LZ4"] | Array of NON/LZ4/SNA | Compression for each human collection chunk |
+| human_num_humans | ["000007D0", "000003E8", "000007D0"] | Array of hex strings | Number of humans in each collection chunk |
+| human_chunk_sizes | ["000000000012AB34", ...] | Array of hex strings | Size in bytes of each human collection chunk |

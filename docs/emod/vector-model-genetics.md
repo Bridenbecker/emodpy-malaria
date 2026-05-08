@@ -38,11 +38,13 @@ In EMOD, each mosquito carries a simplified diploid genome composed of two gamet
 from each parent. The genome supports up to 8 user-defined genetic loci, each with up to 8 named
 alleles. While real mosquito genomes contain thousands of genes, this abstraction captures the
 loci most relevant to the dynamics being studied. A mosquito's Wolbachia status and microsporidia
-strain are also tracked per individual alongside the genetic information.
+strain are also tracked per individual alongside the genetic information. Each female also stores
+her mate's genome for the duration of her life — represented in the VectorCohort as the "Mate"
+genome alongside her own ("Self") — and uses it when she lays eggs after each feeding cycle.
 
-![Example diploid genome: two gametes (rows), each carrying one allele per locus. The first column is the gender locus; the remaining columns are user-defined genes with named alleles.](../figures/vector-genetics/genome-example.png)
+![EMOD genome representation: the genome consists of two gametes (Mom and Dad), each carrying one allele per locus. The top row is the gender locus, where X and Y are modeled as alleles. The remaining rows are user-defined loci; the possible alleles for each gene are listed on the left. At right, the VectorCohort structure shows that each female stores two genomes — one for herself (Self) and one for her mate (Mate) — used during fertilization.](../figures/vector-genetics/genetics_model1.png)
 
-*Example diploid genome: two gametes (rows), each carrying one allele per locus. The first column is the gender locus; the remaining columns are user-defined genes with named alleles.*
+*EMOD genome representation: the genome consists of two gametes (Mom and Dad), each carrying one allele per locus. The top row is the gender locus, where X and Y are modeled as alleles. The remaining rows are user-defined loci; the possible alleles for each gene are listed on the left. At right, the VectorCohort structure shows that each female stores two genomes — one for herself (Self) and one for her mate (Mate) — used during fertilization.*
 
 One locus is always reserved as the gender gene. A mosquito's sex is always determined by the
 gender gene — this is true even in simulations that do not use the genetics system. In a standard
@@ -57,7 +59,30 @@ element on the X chromosome suppresses Y-bearing sperm.
 Genes are defined in the `Genes` array within each species' configuration. Each gene declares a
 set of named alleles with initial population frequencies to be used at simulation initialization.
 
-[link](../json/vector-model-genetics-1.json)
+```json
+{
+    "Vector_Species_Params": [
+        {
+            "Name": "gambiae",
+            "Genes": [
+                {
+                    "Is_Gender_Gene": 1,
+                    "Alleles": [
+                        {"Name": "X", "Initial_Allele_Frequency": 0.75, "Is_Y_Chromosome": 0},
+                        {"Name": "Y", "Initial_Allele_Frequency": 0.25, "Is_Y_Chromosome": 1}
+                    ]
+                },
+                {
+                    "Alleles": [
+                        {"Name": "a0", "Initial_Allele_Frequency": 0.9, "Is_Y_Chromosome": 0},
+                        {"Name": "a1", "Initial_Allele_Frequency": 0.1, "Is_Y_Chromosome": 0}
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
 
 **Gender gene**: If defined, the gender gene must be listed first. It partitions alleles into
 X-chromosome alleles (`Is_Y_Chromosome` = 0 (false)) and Y-chromosome alleles
@@ -127,101 +152,7 @@ enter the standard egg-to-adult development pipeline.
 The following diagram shows the full sequence of events during fertilization, including when gene
 drive, germline mutation, and maternal deposition are applied relative to gamete creation:
 
-@startuml
-skinparam defaultFontSize 12
-skinparam activityFontSize 12
-skinparam activityArrowFontSize 11
-skinparam backgroundColor white
-
-start
-
-:Input: female genome, male genome, total egg count;
-
-fork
-    :**Gene Drive — Female**
-    DriveGenes(female)
-    Expands female genome into a set of
-    weighted genome-probability pairs.
-    Drives alleles across chromosomes
-    before gamete creation.;
-fork again
-    :**Gene Drive — Male**
-    DriveGenes(male)
-    Expands male genome into a set of
-    weighted genome-probability pairs.
-    Drives alleles across chromosomes
-    before gamete creation.;
-fork again
-    :**Get FEMALE_EGG_RATIO modifier**
-    Read from male genome trait modifiers.
-    Adjusts the ratio of X-bearing to
-    Y-bearing sperm (affects sex ratio
-    of offspring).;
-end fork
-
-fork
-    :**Create Female Gametes**
-    Mendelian segregation: 50/50 probability
-    of inheriting either allele at each locus.
-    Wolbachia infection status is passed
-    through female gametes only.;
-fork again
-    :**Create Male Gametes**
-    Mendelian segregation: 50/50 probability
-    of inheriting either allele at each locus.
-    X vs Y gamete ratio adjusted by the
-    FEMALE_EGG_RATIO modifier.;
-end fork
-
-fork
-    :**Germline Mutation — Female Gametes**
-    For each allele with defined mutations:
-    new gametes are added at the mutation
-    frequency and the original gamete
-    probability is reduced accordingly.;
-fork again
-    :**Germline Mutation — Male Gametes**
-    For each allele with defined mutations:
-    new gametes are added at the mutation
-    frequency and the original gamete
-    probability is reduced accordingly.;
-end fork
-
-fork
-    :**Maternal Deposition — Female Gametes**
-    Using the mother's genome, pre-calculate
-    allele changes due to maternal Cas9
-    deposition (e.g. gene drive cargo
-    deposited into eggs).;
-fork again
-    :**Maternal Deposition — Male Gametes**
-    Using the mother's genome, pre-calculate
-    allele changes due to maternal Cas9
-    deposition. Applied to both gamete
-    sets using the mother's genome.;
-end fork
-
-:**Create Possible Egg Genomes**
-Combine all female gametes x all male gametes.
-Each combination's probability =
-female_gamete_prob x male_gamete_prob.
-Zero-probability combinations are discarded.;
-
-:**Adjust for Non-Fertile Eggs**
-Apply the ADJUST_FERTILE_EGGS trait modifier
-to each possible genome's probability.
-Reduces the likelihood of non-viable
-genome combinations.;
-
-:**Determine Egg Counts**
-For each possible genome, multiply its
-probability by totalEggs to get a
-stochastic count.;
-
-:Output: fertilized eggs (genome to count pairs);
-
-stop
-@enduml
+![Fertilization flowchart: the full sequence of events during fertilization, showing when gene drive, germline mutation, and maternal deposition are applied relative to gamete creation.](../figures/vector-genetics/vector-genetics-flowchart.png)
 
 
 ## Germline mutations
@@ -233,7 +164,25 @@ involve a variety of mechanisms (point mutations, insertions, deletions, etc.) t
 here into a single probability of one named allele converting to another. Mutations are defined
 per gene:
 
-[link](../json/vector-model-genetics-2.json)
+```json
+{
+    "Genes": [
+        {
+            "Alleles": [
+                {"Name": "a0", "Initial_Allele_Frequency": 0.95},
+                {"Name": "a1", "Initial_Allele_Frequency": 0.05}
+            ],
+            "Mutations": [
+                {
+                    "Mutate_From": "a0",
+                    "Mutate_To": "a1",
+                    "Probability_Of_Mutation": 0.005
+                }
+            ]
+        }
+    ]
+}
+```
 
 When gametes are created, each allele has the configured probability of mutating to the specified
 target. The mutation is applied after standard Mendelian segregation but before fertilization.
@@ -257,7 +206,18 @@ simplifies this to direct multipliers on specific traits for specified allele co
 Each modifier specifies one or more `Allele_Combinations` (the genotypes it applies to) and one
 or more `Trait_Modifiers` (the traits it affects and by how much):
 
-[link](../json/vector-model-genetics-3.json)
+```json
+{
+    "Gene_To_Trait_Modifiers": [
+        {
+            "Allele_Combinations": [["a1", "a1"]],
+            "Trait_Modifiers": [
+                {"Trait": "MORTALITY", "Modifier": 1.5}
+            ]
+        }
+    ]
+}
+```
 
 In this example, mosquitoes homozygous for `a1` at a given locus have 1.5x the baseline
 mortality rate.

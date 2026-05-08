@@ -1,4 +1,4 @@
-# NLHTIVNode
+﻿# NLHTIVNode
 
 
 The **NLHTIVNode** intervention class distributes node-level interventions to nodes when a specific
@@ -24,6 +24,39 @@ is focused on *node* interventions and events while **NodeLevelHealthTriggeredIV
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-nlhtivnode.csv") }}
+{{ read_csv("csv/campaign-nlhtivnode.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-node-nlhtivnode.json)
+```json
+{
+    "Events": [
+        {
+            "comment": "No infections, Negative_Event_Node",
+            "class": "CampaignEvent",
+            "Start_Day": 1,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Intervention_Config": {
+                    "class": "NLHTIVNode",
+                    "Trigger_Condition_List": ["SheddingComplete"],
+                    "Duration": 1000,
+                    "Blackout_Event_Trigger": "Blackout",
+                    "Blackout_Period": 100.0,
+                    "Blackout_On_First_Occurrence": 0,
+                    "Actual_NodeIntervention_Config": {
+                        "class": "EnvironmentalDiagnostic",
+                        "Sample_Threshold": 0.0,
+                        "Environment_IP_Key_Value": "Risk:High",
+                        "Base_Specificity": 1.0,
+                        "Base_Sensitivity": 1.0,
+                        "Negative_Diagnostic_Event": "Negative_Event_Node",
+                        "Positive_Diagnostic_Event": "Positive_Event_Node"
+                    }
+                }
+            }
+        }
+    ]
+}
+```

@@ -1,4 +1,4 @@
-# SpatialRepellent
+﻿# SpatialRepellent
 
 
 The **SpatialRepellent** intervention class implements node-level spatial repellents exclusively against
@@ -31,6 +31,31 @@ At a glance:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-spatialrepellent.csv") }}
+{{ read_csv("csv/campaign-spatialrepellent.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-node-spatialrepellent.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Nodeset_Config": {"class": "NodeSetAll"},
+            "Start_Day": 120,
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Intervention_Config": {
+                    "class": "SpatialRepellent",
+                    "Repelling_Config": {
+                        "Box_Duration": 100,
+                        "Decay_Time_Constant": 150,
+                        "Initial_Effect": 0.4,
+                        "class": "WaningEffectBoxExponential"
+                    },
+                    "Cost_To_Consumer": 1.0,
+                    "Spray_Coverage": 0.6
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

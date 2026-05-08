@@ -1,4 +1,4 @@
-# ImmunityBloodTest
+﻿# ImmunityBloodTest
 
 
 The **ImmunityBloodTest** intervention class identifies whether an individual's immunity meets a
@@ -20,6 +20,35 @@ above the threshold.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-immunitybloodtest.csv") }}
+{{ read_csv("csv/campaign-immunitybloodtest.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-immunitybloodtest.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 14,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 1.0,
+                "Intervention_Config": {
+                    "class": "ImmunityBloodTest",
+                    "Base_Sensitivity": 1.0,
+                    "Base_Specificity": 1.0,
+                    "Cost_To_Consumer": 0,
+                    "Days_To_Diagnosis": 0.0,
+                    "Positive_Diagnosis_Event": "TestedPositive_IamImmune",
+                    "Negative_Diagnosis_Event": "TestedNegative_IamSusceptible",
+                    "Treatment_Fraction": 1.0,
+                    "Positive_Threshold_AcquisitionImmunity": 0.99
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

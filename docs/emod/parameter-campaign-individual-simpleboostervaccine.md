@@ -1,4 +1,4 @@
-# SimpleBoosterVaccine
+﻿# SimpleBoosterVaccine
 
 
 The **SimpleBoosterVaccine** intervention class is derived from [parameter-campaign-individual-simplevaccine](parameter-campaign-individual-simplevaccine.md)
@@ -26,6 +26,39 @@ intended to mimic biological priming and boosting.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-simpleboostervaccine.csv") }}
+{{ read_csv("csv/campaign-simpleboostervaccine.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-simpleboostervaccine.json)
+```json
+{
+    "Use_Defaults": 1,
+    "Campaign_Name": "Generic Seattle Regression Campaign",
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 20,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 1.0,
+                "Intervention_Config": {
+                    "class": "SimpleBoosterVaccine",
+                    "Cost_To_Consumer": 10.0,
+                    "Vaccine_Take": 1,
+                    "Vaccine_Type": "MortalityBlocking",
+                    "Prime_Effect": 0.25,
+                    "Boost_Effect": 0.45,
+                    "Boost_Threshold": 0.0,
+                    "Waning_Config": {
+                        "class": "WaningEffectBox",
+                        "Box_Duration": 10,
+                        "Initial_Effect": 1
+                    }
+                }
+            }
+        }
+    ]
+}
+```

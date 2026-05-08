@@ -1,4 +1,4 @@
-# Microsporidia Infection Model
+﻿# Microsporidia Infection Model
 
 
 The model extends the standard VECTOR_SIM model to track endosymbiont infections and their
@@ -166,11 +166,57 @@ Microsporidia strains are configured within the **Vector_Species_Params** sectio
     JSON format does not permit comments, but you can add "dummy" parameters to add contextual
     information to your files. Any keys that are not EMOD parameter names will be ignored by the
     model.
-{{ read_csv("csv/config-vector-microsporidia-malaria.csv") }}
+{{ read_csv("csv/config-vector-microsporidia-malaria.csv", keep_default_na=False) }}
 
 The following example shows a two-strain microsporidia configuration for *Anopheles gambiae*.
 
-[link](../json/vector-model-microsporidia.json)
+```json
+{
+    "Vector_Species_Params": [
+        {
+            "Name": "gambiae",
+            "Microsporidia": [
+                {
+                    "Strain_Name": "Strain_A",
+                    "Female_To_Egg_Transmission_Probability": 0.7,
+                    "Male_To_Egg_Transmission_Probability": 0.0,
+                    "Female_To_Male_Transmission_Probability": 0.4,
+                    "Male_To_Female_Transmission_Probability": 0.98,
+                    "Larval_Growth_Modifier": 1.08,
+                    "Female_Mortality_Modifier": 1.2,
+                    "Male_Mortality_Modifier": 1.2,
+                    "Duration_To_Disease_Acquisition_Modification": {
+                        "Times": [0, 1, 2, 3],
+                        "Values": [1.0, 0.8, 0.3, 0.0]
+                    },
+                    "Duration_To_Disease_Transmission_Modification": {
+                        "Times": [0, 3, 7],
+                        "Values": [1.0, 0.5, 0.1]
+                    }
+                },
+                {
+                    "Strain_Name": "Strain_B",
+                    "Female_To_Egg_Transmission_Probability": 0.5,
+                    "Male_To_Egg_Transmission_Probability": 1.0,
+                    "Female_To_Male_Transmission_Probability": 0.0,
+                    "Male_To_Female_Transmission_Probability": 0.0,
+                    "Larval_Growth_Modifier": 1.0,
+                    "Female_Mortality_Modifier": 1.0,
+                    "Male_Mortality_Modifier": 1.0,
+                    "Duration_To_Disease_Acquisition_Modification": {
+                        "Times": [0, 6],
+                        "Values": [1.0, 0.5]
+                    },
+                    "Duration_To_Disease_Transmission_Modification": {
+                        "Times": [0, 7],
+                        "Values": [1.0, 0.7]
+                    }
+                }
+            ]
+        }
+    ]
+}
+```
 
 ## Interventions
 

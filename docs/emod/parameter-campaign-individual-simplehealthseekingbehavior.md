@@ -1,4 +1,4 @@
-# SimpleHealthSeekingBehavior
+﻿# SimpleHealthSeekingBehavior
 
 
 The **SimpleHealthSeekingBehavior** intervention class models the time delay that typically occurs
@@ -24,6 +24,44 @@ exponentially distributed delay and ultimately receives the specified interventi
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-simplehealthseekingbehavior.csv") }}
+{{ read_csv("csv/campaign-simplehealthseekingbehavior.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-simplehealthseekingbehavior.json)
+```json
+{
+    "Use_Defaults": 1,
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Event_Name": "Drugs after TB activation",
+            "Start_Day": 9125,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Number_Repetitions": 1,
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 1,
+                "Intervention_Config": {
+                    "class": "NodeLevelHealthTriggeredIV",
+                    "Trigger_Condition_List": ["NewInfectionEvent"],
+                    "Actual_IndividualIntervention_Config": {
+                        "class": "SimpleHealthSeekingBehavior",
+                        "Event_Or_Config": "Config",
+                        "Tendency": 0.0015,
+                        "Actual_IndividualIntervention_Config": {
+                            "class": "AntiTBDrug",
+                            "Cost_To_Consumer": 90,
+                            "Drug_Type": "FirstLineCombo",
+                            "Durability_Profile": "FIXED_DURATION_CONSTANT_EFFECT",
+                            "Primary_Decay_Time_Constant": 180,
+                            "Remaining_Doses": 1,
+                            "Secondary_Decay_Time_Constant": 0
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
+```

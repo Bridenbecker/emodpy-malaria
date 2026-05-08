@@ -25,11 +25,11 @@ Below are different csv file input configurations you can use to create vector m
 Header (optional):  FromNodeID, ToNodeID, Rate (Average # of Trips Per Day)
 If the csv/text file has three columns with no headers, this is the format we assume.
 
-```
-FromNodeID, integer, 1, 2147480000, NA,"NodeID, matching NodeIDs in demographics file, from which the vector/human will travel."
-ToNodeID, integer, 1, 2147480000, NA,"NodeID, matching NodeIDs in demographics file, to which the vector/human will travel."
-Rate, float, 0, 3.40282e+38, NA, "Rate at which the all the vectors/humans will travel from the FromNodeID to ToNodeID."
-```
+| Parameter | Data type | Min | Max | Default | Description |
+| --- | --- | --- | --- | --- | --- |
+| `FromNodeID` | integer | 1 | 2147480000 | NA | NodeID, matching NodeIDs in demographics file, from which the vector/human will travel. |
+| `ToNodeID` | integer | 1 | 2147480000 | NA | NodeID, matching NodeIDs in demographics file, to which the vector/human will travel. |
+| `Rate` | float | 0 | 3.40282e+38 | NA | Rate at which the all the vectors/humans will travel from the FromNodeID to ToNodeID. |
 
 Example:
 
@@ -70,12 +70,12 @@ Actual csv:
 Header (optional):  FromNodeID, ToNodeID, RateMales, RateFemales
 If the csv/text file has four columns with no headers, this is the format we assume.
 
-```
-FromNodeID, integer, 1, 2147480000, NA, "NodeID, matching NodeIDs in demographics file, from which the vector/human will travel."
-ToNodeID, integer, 1, 2147480000, NA,"NodeID, matching NodeIDs in demographics file, to which the vector/human will travel."
-RateMales, float,0, 3.40282e+38, NA,  "Rate at which the vector/human of male sex will travel from the FromNodeID to ToNodeID."
-RateFemales, float, 0, 3.40282e+38, NA, "Rate at which the vector/human of female sex will travel from the FromNodeID to ToNodeID."
-```
+| Parameter | Data type | Min | Max | Default | Description |
+| --- | --- | --- | --- | --- | --- |
+| `FromNodeID` | integer | 1 | 2147480000 | NA | NodeID, matching NodeIDs in demographics file, from which the vector/human will travel. |
+| `ToNodeID` | integer | 1 | 2147480000 | NA | NodeID, matching NodeIDs in demographics file, to which the vector/human will travel. |
+| `RateMales` | float | 0 | 3.40282e+38 | NA | Rate at which the vector/human of male sex will travel from the FromNodeID to ToNodeID. |
+| `RateFemales` | float | 0 | 3.40282e+38 | NA | Rate at which the vector/human of female sex will travel from the FromNodeID to ToNodeID. |
 
 Example:
 
@@ -118,12 +118,12 @@ regardless of the order in the csv file. Allele_Combinations can, but don't have
 specified sex-alleles, any vector that matches the alleles regardless of sex will travel at that rate. Use '*' as a
 wildcard if the second allele does not matter and can be matched with anything.
 
-```
-FromNodeID, integer, 1, 2147480000, NA, "NodeID, matching NodeIDs in demographics file, from which the vector/human will travel."
-ToNodeID, integer, 1, 2147480000, NA, "NodeID, matching NodeIDs in demographics file, to which the vector/human will travel."
-[], float, 0, 3.40282e+38, NA, "Default rate at which the vector that doesn't match any other allele combinations will travel from the FromNodeID to ToNodeID."
-User-defined Allele Combination, float, 0, 3.40282e+38, NA, "Rate at which the vector that matches this and not a more-specific allele combination will travel from the FromNodeID to ToNodeID."
-```
+| Parameter | Data type | Min | Max | Default | Description |
+| --- | --- | --- | --- | --- | --- |
+| `FromNodeID` | integer | 1 | 2147480000 | NA | NodeID, matching NodeIDs in demographics file, from which the vector/human will travel. |
+| `ToNodeID` | integer | 1 | 2147480000 | NA | NodeID, matching NodeIDs in demographics file, to which the vector/human will travel. |
+| `[]` | float | 0 | 3.40282e+38 | NA | Default rate at which the vector that doesn't match any other allele combinations will travel from the FromNodeID to ToNodeID. |
+| User-defined Allele Combination | float | 0 | 3.40282e+38 | NA | Rate at which the vector that matches this and not a more-specific allele combination will travel from the FromNodeID to ToNodeID. |
 
 Example:
 
@@ -188,19 +188,33 @@ are ignored.
 ### Vector Migration Metadata File Parameters
 
 
-```
-IdReference, string, "Required. A unique id to match demographics, climate, and migration files that work together."
-DatavalueCount, integer, "Required.The number of outbound data values per node (max 100). The number must be the same across every node in the binary file."
-GenderDataType, enum, "Required. Denotes whether data is provided for each gender separately, is the same for both, or depends on vector genetics. Accepted values are ONE_FOR_BOTH_GENDERS, ONE_FOR_EACH_GENDER, VECTOR_MIGRATION_BY_GENETICS."
-AlleleCombinations, array, "Required for GenderDataType: VECTOR_MIGRATION_BY_GENETICS. An array of Allele_Combinations, starting with an emtpy array to mark the default migration rate."
-NodeCount, integer, "Required. The number of 'from' nodes in the data. Used to verify size NodeOffsets - 16*NodeCount = # chars in NodeOffsets."
-NodeOffsets, string, "Required. The number of rates/'to' nodes for each 'from' node. Max of 100."
-DateCreated , string, (Informational for user only) Date and time the file was generated by the script.
-Tool, string, (Informational for user only) The script used to create the file.
-User-created parameter, string, (Informational for user only) Example of a user-created parameter
-```
+| Parameter | Data type | Description |
+| --- | --- | --- |
+| `IdReference` | string | Required. A unique id to match demographics, climate, and migration files that work together. |
+| `DatavalueCount` | integer | Required. The number of outbound data values per node (max 100). The number must be the same across every node in the binary file. |
+| `GenderDataType` | enum | Required. Denotes whether data is provided for each gender separately, is the same for both, or depends on vector genetics. Accepted values are ONE_FOR_BOTH_GENDERS, ONE_FOR_EACH_GENDER, VECTOR_MIGRATION_BY_GENETICS. |
+| `AlleleCombinations` | array | Required for GenderDataType: VECTOR_MIGRATION_BY_GENETICS. An array of Allele_Combinations, starting with an empty array to mark the default migration rate. |
+| `NodeCount` | integer | Required. The number of 'from' nodes in the data. Used to verify size NodeOffsets - 16*NodeCount = # chars in NodeOffsets. |
+| `NodeOffsets` | string | Required. The number of rates/'to' nodes for each 'from' node. Max of 100. |
+| `DateCreated` | string | (Informational for user only) Date and time the file was generated by the script. |
+| `Tool` | string | (Informational for user only) The script used to create the file. |
+| User-created parameter | string | (Informational for user only) Example of a user-created parameter. |
 
 ### Example
 
 
-[link](../json/software-migration-creation-vector.json)
+```json
+{
+    "Metadata": {
+        "IdReference": "9-nodes",
+        "DateCreated": "Thu Nov 21 17:41:47 2024",
+        "Tool": "convert_csv_to_bin_vector_migration.py",
+        "DatavalueCount": 8,
+        "GenderDataType": "VECTOR_MIGRATION_BY_GENETICS",
+        "AlleleCombinations": [[], [["X1","Y2"]], [["a1","a1"], ["b1","b0"], ["X1","X1"]], [["*","a0"], ["X1","Y1"]], [["a1","a1"],["b1","b1"]]],
+        "NodeCount": 3,
+        "Project": "Migration based on Dr. Acula research."
+    },
+    "NodeOffsets": "0000000500000000000000010000006000000003000000C0"
+}
+```

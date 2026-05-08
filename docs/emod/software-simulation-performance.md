@@ -47,7 +47,7 @@ for more information about each of the parameters.
 **Population_Scale_Type** and **x_Base_Population**
     Alternatively, you can simply reduce the total population of the simulation using
     **Population_Scale_Type** set to "FIXED_SCALING" and **x_Base_Population** set to
-    less than one. For more information, see [parameter-configuration-scalars](parameter-configuration-scalars.md) parameters.
+    less than one. For more information, see [population configuration](parameter-configuration-population.md) parameters.
 
 ### Processing
 

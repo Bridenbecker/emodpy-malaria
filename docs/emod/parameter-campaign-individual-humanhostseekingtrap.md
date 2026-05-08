@@ -1,4 +1,4 @@
-# HumanHostSeekingTrap
+﻿# HumanHostSeekingTrap
 
 
 The **HumanHostSeekingTrap** intervention class applies a trap that attracts and kills indoor host-seeking
@@ -40,6 +40,38 @@ At a glance:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-humanhostseekingtrap.csv") }}
+{{ read_csv("csv/campaign-humanhostseekingtrap.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-humanhostseekingtrap.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 140,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 0.7,
+                "Intervention_Config": {
+                    "class": "HumanHostSeekingTrap",
+                    "Cost_To_Consumer": 3.75,
+                    "Attract_Config": {
+                        "class": "WaningEffectBox",
+                        "Box_Duration": 3650,
+                        "Initial_Effect": 0.6
+                    },
+                    "Killing_Config": {
+                        "class": "WaningEffectBox",
+                        "Box_Duration": 3650,
+                        "Initial_Effect": 0.9
+                    }
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

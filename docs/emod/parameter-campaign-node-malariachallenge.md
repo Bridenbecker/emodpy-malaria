@@ -1,4 +1,4 @@
-# MalariaChallenge
+﻿# MalariaChallenge
 
 
 The **MalariaChallenge** intervention class is a node-level intervention similar to
@@ -18,6 +18,29 @@ malaria challenges by either tracking numbers of sporozoites or infectious mosqu
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-malariachallenge.csv") }}
+{{ read_csv("csv/campaign-malariachallenge.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-node-malariachallenge.json)
+```json
+{
+    "Use_Defaults": 1,
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Start_Day": 40,
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Intervention_Config": {
+                    "class": "MalariaChallenge",
+                    "Challenge_Type": "InfectiousBites",
+                    "Coverage": 1.0,
+                    "Infectious_Bite_Count": 2,
+                    "Sporozoite_Count": 3
+                }
+            }
+        }
+    ]
+}
+```

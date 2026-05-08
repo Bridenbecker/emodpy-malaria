@@ -1,10 +1,14 @@
-# Migration
+﻿# Migration
 
 
 The following parameters determine aspects of population migration into and outside of a node,
 including daily commutes, seasonal migration, and one-way moves. Modes of transport includes travel
 by foot, automobile, sea, or air. Migration can also be configured to move all individuals in a
 family at the same time.
+
+!!! note
+    Vector migration parameters are configured per species inside **Vector_Species_Params**. See
+    [Vector life cycle](parameter-configuration-vector-lifecycle.md) for those parameters.
 
 !!! note
     Parameters are case-sensitive. For Boolean parameters, set to 1 for true or 0 for false.
@@ -16,4 +20,4 @@ family at the same time.
     JSON format does not permit comments, but you can add "dummy" parameters to add contextual
     information to your files. Any keys that are not EMOD parameter names will be ignored by the
     model.
-{{ read_csv("csv/config-migration-malaria.csv") }}
+{{ read_csv("csv/config-migration-malaria.csv", keep_default_na=False) }}

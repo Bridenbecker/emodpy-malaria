@@ -1,4 +1,4 @@
-# CoverageByNodeEventCoordinator
+﻿# CoverageByNodeEventCoordinator
 
 
 The **CoverageByNodeEventCoordinator** coordinator class distributes individual-level interventions and is
@@ -24,6 +24,40 @@ parameters for this event coordinator.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-coveragebynodeeventcoordinator.csv") }}
+{{ read_csv("csv/campaign-coveragebynodeeventcoordinator.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-event-coveragebynodeeventcoordinator.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 0,
+            "Nodeset_Config": {
+                "class": "NodeSetNodeList",
+                "Node_List": [1, 2, 3]
+            },
+            "Event_Coordinator_Config": {
+                "class": "CoverageByNodeEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Coverage_By_Node": [
+                    [1, 0.6],
+                    [2, 0.9],
+                    [3, 0.1]
+                ],
+                "Intervention_Config": {
+                    "class": "SimpleVaccine",
+                    "Cost_To_Consumer": 10.0,
+                    "Reduced_Transmit": 0,
+                    "Vaccine_Take": 1,
+                    "Vaccine_Type": "AcquisitionBlocking",
+                    "Waning_Config": {
+                        "class": "WaningEffectBox",
+                        "Initial_Effect": 1,
+                        "Box_Duration": 3650
+                    }
+                }
+            }
+        }
+    ]
+}
+```

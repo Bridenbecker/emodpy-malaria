@@ -1,4 +1,4 @@
-# MultiInterventionDistributor
+﻿# MultiInterventionDistributor
 
 
 The **MultiInterventionDistributor** intervention class allows you to input a list of
@@ -18,6 +18,55 @@ individuals.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-multiinterventiondistributor.csv") }}
+{{ read_csv("csv/campaign-multiinterventiondistributor.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-multiinterventiondistributor.json)
+```json
+{
+    "Events": [
+        {
+            "class": "SimpleDiagnostic",
+            "Treatment_Fraction": 0.7,
+            "Base_Sensitivity": 0.8,
+            "Base_Specificity": 0.9,
+            "Cost_To_Consumer": 0,
+            "Days_To_Diagnosis": 0.0,
+            "Event_Or_Config": "Config",
+            "Positive_Diagnosis_Config": {
+                "class": "MultiInterventionDistributor",
+                "Intervention_List": [
+                    {
+                        "class": "SimpleVaccine",
+                        "Vaccine_Type": "AcquisitionBlocking",
+                        "Vaccine_Take": 1,
+                        "Waning_Config": {
+                            "class": "WaningEffectBox",
+                            "Box_Duration": 3650,
+                            "Initial_Effect": 0.1
+                        }
+                    },
+                    {
+                        "class": "SimpleVaccine",
+                        "Vaccine_Type": "TransmissionBlocking",
+                        "Vaccine_Take": 1,
+                        "Waning_Config": {
+                            "class": "WaningEffectBox",
+                            "Box_Duration": 3650,
+                            "Initial_Effect": 0.9
+                        }
+                    },
+                    {
+                        "class": "SimpleVaccine",
+                        "Vaccine_Type": "MortalityBlocking",
+                        "Vaccine_Take": 1,
+                        "Waning_Config": {
+                            "class": "WaningEffectBox",
+                            "Box_Duration": 3650,
+                            "Initial_Effect": 0.5
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
+```

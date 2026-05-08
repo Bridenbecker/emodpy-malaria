@@ -1,8 +1,14 @@
-# Immunity
+﻿# Immunity
 
 
 The following parameters determine the immune system response for the disease being modeled, including
 waning immunity after an infection clears.
+
+!!! seealso
+    [malaria-model-fpg](malaria-model-fpg.md)
+        For `PfHRP2_Boost_Rate`, `PfHRP2_Decay_Rate`, and how the Falciparum antigen variant parameters
+        (`Falciparum_MSP_Variants`, `Falciparum_Nonspecific_Types`, `Falciparum_PfEMP1_Variants`) interact
+        with the FPG model.
 
 !!! note
     Parameters are case-sensitive. For Boolean parameters, set to 1 for true or 0 for false.
@@ -14,4 +20,4 @@ waning immunity after an infection clears.
     JSON format does not permit comments, but you can add "dummy" parameters to add contextual
     information to your files. Any keys that are not EMOD parameter names will be ignored by the
     model.
-{{ read_csv("csv/config-immunity-malaria.csv") }}
+{{ read_csv("csv/config-immunity-malaria.csv", keep_default_na=False) }}

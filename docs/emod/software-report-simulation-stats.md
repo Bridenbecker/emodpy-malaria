@@ -25,34 +25,43 @@ campaign file and investigate whether a campaign event is responsible.
 To generate this report, add the following to the custom_reports.json file. This report has no
 configurable parameters beyond the class name.
 
-[link](../json/software-report-simulation-stats.json)
+```json
+{
+    "Reports": [
+        {
+            "class": "ReportSimulationStats"
+        }
+    ],
+    "Use_Defaults": 1
+}
+```
 
 ## Output file data
 
 
 The output file is named `ReportSimulationStats.csv`. The report contains the following columns.
 
-```
-TotalDuration(secs), integer, "Total wall-clock time in seconds elapsed since the simulation process started."
-SimulationTime(Days), float, "The current simulation time in days."
-Rank, integer, "The MPI rank of the process that generated this row. In single-core runs this is always 0."
-StepDuration(secs), integer, "Wall-clock time in seconds taken to complete this time step."
-WorkingMemory(MB), float, "Current physical memory used by the simulation process, in megabytes. On Windows: Working Set Size. On Linux: Resident Set Size (VmRSS)."
-PeakWorkingMemory(MB), float, "Peak physical memory used by the simulation process since it started, in megabytes. On Windows: Peak Working Set Size. On Linux: Peak Resident Set Size (VmHWM)."
-VirtualMemory(MB), float, "Current virtual memory committed by the simulation process, in megabytes. On Windows: Pagefile Usage. On Linux: Virtual Memory Size (VmSize)."
-PeakVirtualMemory(MB), float, "Peak virtual memory committed by the simulation process since it started, in megabytes. On Windows: Peak Pagefile Usage. On Linux: Peak Virtual Memory Size (VmPeak)."
-FreeRAM(MB), float, "Free physical RAM available on the machine, in megabytes. On Windows: Available Physical Memory. On Linux: MemFree."
-TotalRAM(MB), float, "Total physical RAM installed on the machine, in megabytes. On Windows: Total Physical Memory. On Linux: MemTotal."
-FreeSwap(MB), float, "Free swap space available on the machine, in megabytes. On Windows: Available Page File. On Linux: SwapFree."
-TotalSwap(MB), float, "Total swap space available on the machine, in megabytes. On Windows: Total Page File. On Linux: SwapTotal."
-NumNodes, integer, "Number of nodes in the simulation at this time step."
-NumIndividuals, integer, "Total number of individuals across all nodes at this time step."
-NumInterventionsPersisted, integer, "Total number of active interventions currently held by all individuals at this time step."
-NumInterventionsAdded, integer, "Number of new interventions distributed to individuals during this time step."
-NumInfections, integer, "Total number of active infections across all individuals at this time step."
-NumIndividualEventsTriggered, integer, "Number of individual-level events triggered during this time step."
-NumIndividualEventsObserved, integer, "Number of individual-level events observed by event observers during this time step."
-```
+| Parameter | Data type | Description |
+| --- | --- | --- |
+| `TotalDuration(secs)` | integer | Total wall-clock time in seconds elapsed since the simulation process started. |
+| `SimulationTime(Days)` | float | The current simulation time in days. |
+| `Rank` | integer | The MPI rank of the process that generated this row. In single-core runs this is always 0. |
+| `StepDuration(secs)` | integer | Wall-clock time in seconds taken to complete this time step. |
+| `WorkingMemory(MB)` | float | Current physical memory used by the simulation process, in megabytes. On Windows: Working Set Size. On Linux: Resident Set Size (VmRSS). |
+| `PeakWorkingMemory(MB)` | float | Peak physical memory used by the simulation process since it started, in megabytes. On Windows: Peak Working Set Size. On Linux: Peak Resident Set Size (VmHWM). |
+| `VirtualMemory(MB)` | float | Current virtual memory committed by the simulation process, in megabytes. On Windows: Pagefile Usage. On Linux: Virtual Memory Size (VmSize). |
+| `PeakVirtualMemory(MB)` | float | Peak virtual memory committed by the simulation process since it started, in megabytes. On Windows: Peak Pagefile Usage. On Linux: Peak Virtual Memory Size (VmPeak). |
+| `FreeRAM(MB)` | float | Free physical RAM available on the machine, in megabytes. On Windows: Available Physical Memory. On Linux: MemFree. |
+| `TotalRAM(MB)` | float | Total physical RAM installed on the machine, in megabytes. On Windows: Total Physical Memory. On Linux: MemTotal. |
+| `FreeSwap(MB)` | float | Free swap space available on the machine, in megabytes. On Windows: Available Page File. On Linux: SwapFree. |
+| `TotalSwap(MB)` | float | Total swap space available on the machine, in megabytes. On Windows: Total Page File. On Linux: SwapTotal. |
+| `NumNodes` | integer | Number of nodes in the simulation at this time step. |
+| `NumIndividuals` | integer | Total number of individuals across all nodes at this time step. |
+| `NumInterventionsPersisted` | integer | Total number of active interventions currently held by all individuals at this time step. |
+| `NumInterventionsAdded` | integer | Number of new interventions distributed to individuals during this time step. |
+| `NumInfections` | integer | Total number of active infections across all individuals at this time step. |
+| `NumIndividualEventsTriggered` | integer | Number of individual-level events triggered during this time step. |
+| `NumIndividualEventsObserved` | integer | Number of individual-level events observed by event observers during this time step. |
 
 ## Example
 

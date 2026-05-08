@@ -1,4 +1,4 @@
-# ControlledVaccine
+﻿# ControlledVaccine
 
 
 The **ControlledVaccine** intervention class is a subclass of [parameter-campaign-individual-simplevaccine](parameter-campaign-individual-simplevaccine.md)
@@ -26,6 +26,76 @@ as each vaccine has a different value for **Intervention_Name**.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-controlledvaccine.csv") }}
+{{ read_csv("csv/campaign-controlledvaccine.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-controlledvaccine.json)
+```json
+{
+    "Use_Defaults": 1,
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "COMMENT": "Vaccinate Everyone with VaccineA",
+            "Start_Day": 1,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 1.0,
+                "Intervention_Config": {
+                    "class": "ControlledVaccine",
+                    "Intervention_Name": "VaccineA",
+                    "Cost_To_Consumer": 1,
+                    "Vaccine_Type": "AcquisitionBlocking",
+                    "Vaccine_Take": 1.0,
+                    "Waning_Config": {
+                        "class": "WaningEffectMapLinear",
+                        "Initial_Effect": 1.0,
+                        "Expire_At_Durability_Map_End": 1,
+                        "Durability_Map": {
+                            "Times":  [0,   25,  50],
+                            "Values": [1.0, 1.0, 0.0]
+                        }
+                    },
+                    "Distributed_Event_Trigger": "VaccinatedA",
+                    "Expired_Event_Trigger": "VaccineExpiredA",
+                    "Duration_To_Wait_Before_Revaccination": 40
+                }
+            }
+        },
+        {
+            "class": "CampaignEvent",
+            "COMMENT": "After the first round expires, distribute a different vaccine, VaccineB",
+            "Start_Day": 60,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 1.0,
+                "Intervention_Config": {
+                    "class": "ControlledVaccine",
+                    "Intervention_Name": "VaccineB",
+                    "Cost_To_Consumer": 1,
+                    "Vaccine_Type": "AcquisitionBlocking",
+                    "Vaccine_Take": 1.0,
+                    "Waning_Config": {
+                        "class": "WaningEffectMapLinear",
+                        "Initial_Effect": 1.0,
+                        "Expire_At_Durability_Map_End": 1,
+                        "Durability_Map": {
+                            "Times":  [0,   25,  50],
+                            "Values": [1.0, 1.0, 0.0]
+                        }
+                    },
+                    "Distributed_Event_Trigger": "VaccinatedB",
+                    "Expired_Event_Trigger": "VaccineExpiredB",
+                    "Duration_To_Wait_Before_Revaccination": 40
+                }
+            }
+        }
+    ]
+}
+```

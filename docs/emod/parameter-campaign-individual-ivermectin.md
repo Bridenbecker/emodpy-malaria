@@ -1,4 +1,4 @@
-# Ivermectin
+﻿# Ivermectin
 
 
 The **Ivermectin** intervention class modifies the feeding outcome probabilities for both indoor-
@@ -37,6 +37,35 @@ At a glance:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-ivermectin.csv") }}
+{{ read_csv("csv/campaign-ivermectin.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-ivermectin.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Start_Day": 120,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Number_Repetitions": 5,
+                "Timesteps_Between_Repetitions": 3,
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 0.8,
+                "Intervention_Config": {
+                    "class": "Ivermectin",
+                    "Cost_To_Consumer": 1,
+                    "Killing_Config": {
+                        "class": "WaningEffectBox",
+                        "Box_Duration": 3,
+                        "Initial_Effect": 1
+                    }
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

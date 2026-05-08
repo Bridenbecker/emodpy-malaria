@@ -1,4 +1,4 @@
-# LarvalMicrosporidiaIntervention
+﻿# LarvalMicrosporidiaIntervention
 
 
 The **LarvalMicrosporidiaIntervention** is a node-level intervention that mimics
@@ -89,6 +89,34 @@ At a glance:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-larvalmicrosporidiaintervention.csv") }}
+{{ read_csv("csv/campaign-larvalmicrosporidiaintervention.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-node-larvalmicrosporidiaintervention.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Start_Day": 1,
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Intervention_Config": {
+                    "class": "LarvalMicrosporidiaIntervention",
+                    "Strain_Name": "Strain_A",
+                    "Habitat_Target": "ALL_HABITATS",
+                    "Habitat_Coverage": 1.0,
+                    "Infectivity_Config": {
+                        "class": "WaningEffectBox",
+                        "Box_Duration": 100,
+                        "Initial_Effect": 0.5
+                    },
+                    "Cost_To_Consumer": 0
+                }
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

@@ -25,8 +25,8 @@ The following node-level interventions are commonly used for vector control.
 | [Larvicides](parameter-campaign-node-larvicides.md) | larva | all | all | killing, reduction |
 | [MosquitoRelease](parameter-campaign-node-mosquitorelease.md) |  |  |  |  |
 | [SpatialRepellent](parameter-campaign-node-spatialrepellent.md) | feeding cycle | all | all | blocking |
-| [OutdoorRestKill](parameter-campaign-node-outdoorrestkill.md) | "feeding cycle | males" | human | all |
-| [OutdoorNodeEmanator](parameter-campaign-node-outdoornodeemanator.md) | feeding cycle, males | all | all | "repelling |
+| [OutdoorRestKill](parameter-campaign-node-outdoorrestkill.md) | feeding cycle, males | human | all | killing |
+| [OutdoorNodeEmanator](parameter-campaign-node-outdoornodeemanator.md) | feeding cycle, males | all | all | repelling, killing |
 | [OvipositionTrap](parameter-campaign-node-ovipositiontrap.md) | feeding cycle | all | all | killing |
 | [ScaleLarvalHabitat](parameter-campaign-node-scalelarvalhabitat.md) | larva | all | all | reduction |
 | [SpaceSpraying](parameter-campaign-node-spacespraying.md) | feeding cycle | human | outdoor | killing |

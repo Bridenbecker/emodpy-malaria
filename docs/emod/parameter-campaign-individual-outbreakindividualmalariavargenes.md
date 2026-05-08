@@ -1,4 +1,4 @@
-# OutbreakIndividualMalariaVarGenes
+﻿# OutbreakIndividualMalariaVarGenes
 
 
 The **OutbreakIndividualMalariaVarGenes** intervention class is an individual-level intervention
@@ -21,6 +21,34 @@ to FALCIPARUM_FIXED_STRAIN.
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-outbreakindividualmalariavargenes.csv") }}
+{{ read_csv("csv/campaign-outbreakindividualmalariavargenes.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-individual-outbreakindividualmalariavargenes.json)
+```json
+{
+    "Event_Coordinator_Config": {
+        "class": "StandardInterventionDistributionEventCoordinator",
+        "Number_Repetitions": 30,
+        "Timesteps_Between_Repetitions": 150,
+        "Target_Demographic": "Everyone",
+        "Demographic_Coverage": 1.0,
+        "Intervention_Config": {
+            "class": "OutbreakIndividualMalariaVarGenes",
+            "MSP_Type": 2,
+            "IRBC_Type": [
+                2, 75, 148, 221, 294, 367, 440, 513, 586, 659,
+                732, 805, 878, 951,  24,  97, 170, 243, 316, 389,
+                462, 535, 608, 681, 754, 827, 900, 973,  46, 119,
+                192, 265, 338, 411, 484, 557, 630, 703, 776, 849,
+                922, 995,  68, 141, 214, 287, 360, 433, 506, 579
+            ],
+            "Minor_Epitope_Type": [
+                2, 0, 3, 3, 1, 2, 3, 3, 0, 1,
+                3, 2, 1, 3, 0, 1, 1, 2, 4, 0,
+                1, 1, 0, 4, 0, 1, 1, 4, 4, 0,
+                2, 0, 4, 1, 2, 1, 1, 0, 1, 3,
+                3, 1, 2, 4, 2, 4, 4, 3, 2, 4
+            ]
+        }
+    }
+}
+```

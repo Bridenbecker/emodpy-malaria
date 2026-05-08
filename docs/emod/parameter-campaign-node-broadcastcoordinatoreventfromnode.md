@@ -1,4 +1,4 @@
-# BroadcastCoordinatorEventFromNode
+﻿# BroadcastCoordinatorEventFromNode
 
 
 
@@ -26,6 +26,64 @@ For more information, see [emod:dev-architecture-core](emod:dev-architecture-cor
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-broadcastcoordinatoreventfromnode.csv") }}
+{{ read_csv("csv/campaign-broadcastcoordinatoreventfromnode.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-node-broadcastcoordinatoreventfromnode.json)
+```json
+{
+    "Events": [
+        {
+            "class": "CampaignEventByYear",
+            "Start_Year": 1990.0,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Intervention_Config": {
+                    "class": "NodeLevelHealthTriggeredIV",
+                    "Trigger_Condition_List": [
+                        "NonDiseaseDeaths",
+                        "DiseaseDeaths"
+                    ],
+                    "Demographic_Coverage": 1.0,
+                    "Actual_NodeIntervention_Config": {
+                        "class": "BroadcastCoordinatorEventFromNode",
+                        "Broadcast_Event": "Distribute_Vaccine"
+                    }
+                }
+            }
+        },
+        {
+            "class": "CampaignEventByYear",
+            "Start_Year": 1990.0,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "TriggeredEventCoordinator",
+                "Coordinator_Name": "VaccineDistributor",
+                "Start_Trigger_Condition_List": [
+                    "Distribute_Vaccine"
+                ],
+                "Stop_Trigger_Condition_List": [],
+                "Number_Repetitions": 1,
+                "Target_Demographic": "Everyone",
+                "Demographic_Coverage": 0.5,
+                "Intervention_Config": {
+                    "class": "SimpleVaccine",
+                    "Cost_To_Consumer": 2,
+                    "Vaccine_Take": 1,
+                    "Vaccine_Type": "AcquisitionBlocking",
+                    "Waning_Config": {
+                        "class": "WaningEffectBox",
+                        "Initial_Effect": 1.0,
+                        "Box_Duration": 100
+                    }
+                },
+                "Completion_Event": "Vaccine_Was_Distributed"
+            }
+        }
+    ],
+    "Use_Defaults": 1
+}
+```

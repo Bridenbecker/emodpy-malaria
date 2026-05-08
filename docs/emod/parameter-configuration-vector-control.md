@@ -1,4 +1,4 @@
-# Vector control
+﻿# Vector control
 
 
 The following parameters determine the characteristics of campaign interventions aimed at vector
@@ -17,4 +17,4 @@ infection. When, to whom, and how those interventions are distributed is determi
     JSON format does not permit comments, but you can add "dummy" parameters to add contextual
     information to your files. Any keys that are not EMOD parameter names will be ignored by the
     model.
-{{ read_csv("csv/config-vector-control-malaria.csv") }}
+{{ read_csv("csv/config-vector-control-malaria.csv", keep_default_na=False) }}

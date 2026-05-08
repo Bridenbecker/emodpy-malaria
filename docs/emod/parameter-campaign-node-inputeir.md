@@ -1,4 +1,4 @@
-# InputEIR
+﻿# InputEIR
 
 
 The **InputEIR** intervention class enables the Entomological Inoculation Rate (EIR) to be
@@ -47,6 +47,29 @@ At a glance:
 The table below describes all possible parameters with which this class can be configured. The JSON
 example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-inputeir.csv") }}
+{{ read_csv("csv/campaign-inputeir.csv", keep_default_na=False) }}
 
-[link](../json/parameter-campaign-node-inputeir.json)
+```json
+{
+    "Use_Defaults": 1,
+    "Campaign_Name": "Constant EIR challenge",
+    "Events": [
+        {
+            "class": "CampaignEvent",
+            "Event_Name": "Input EIR intervention",
+            "Start_Day": 0,
+            "Nodeset_Config": {
+                "class": "NodeSetAll"
+            },
+            "Event_Coordinator_Config": {
+                "class": "StandardInterventionDistributionEventCoordinator",
+                "Number_Repetitions": 1,
+                "Intervention_Config": {
+                    "class": "InputEIR",
+                    "Monthly_EIR": [0.39, 0.19, 0.77, 0, 0, 0, 6.4, 2.2, 4.7, 3.9, 0.87, 0.58]
+                }
+            }
+        }
+    ]
+}
+```
