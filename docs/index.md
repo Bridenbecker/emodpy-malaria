@@ -4,7 +4,7 @@ title: Home
 
 # Welcome to emodpy-malaria
 
-![Anopheles mosquito](figures/jorussell-mosquito.png){ align=right style="width: 280px; margin-left: 2em; margin-bottom: 1em;" }
+![Anopheles mosquito](figures/jorussell-mosquito.png){ align=right style="width: 200px; margin-left: 2em; margin-bottom: 1em;" }
 
 This documentation set describes how to use EMOD for simulating malaria transmission
 and interventions and how to use emodpy-malaria for creating model configuration files,
