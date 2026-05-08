@@ -17,6 +17,11 @@ div.md-copyright__highlight
     min-width: 400px;
 }
 
+/* display:inline-block on .md-typeset__table breaks sticky in Chrome — override to block */
+.md-typeset__table {
+    display: block;
+}
+
 /* Sticky first column - keeps parameter name visible while scrolling horizontally */
 .md-typeset table td:first-child,
 .md-typeset table th:first-child {
