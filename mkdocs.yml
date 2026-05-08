@@ -114,7 +114,6 @@ nav:
       - Overview: emod/parameter-configuration.md
       - Drugs and treatments: emod/parameter-configuration-drugs.md
       - Enable or disable features: emod/parameter-configuration-enable.md
-      - General disease: emod/parameter-configuration-general-disease.md
       - Geography and environment: emod/parameter-configuration-env.md
       - Immunity: emod/parameter-configuration-immunity.md
       - Incubation: emod/parameter-configuration-incubation.md
