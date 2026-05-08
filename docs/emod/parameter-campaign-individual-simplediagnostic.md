@@ -1,7 +1,14 @@
 ﻿# SimpleDiagnostic
 
+Note: We encourage you to use a newer intervention class, [StandardDiagnostic](parameter-campaign-individual-standarddiagnostic.md), 
+which has more features and flexibility than this one. However, **SimpleDiagnostic** is still available 
+for use.
 
-The **SimpleDiagnostic** intervention class identifies infected individuals, regardless of disease state, based on specified diagnostic sensitivity and specificity. Diagnostics are a key component of modern disease control efforts, whether used to identify high-risk individuals, infected individuals, or drug resistance. This intervention class distributes a specified intervention to a fraction of individuals who test positive.
+The **SimpleDiagnostic** intervention class identifies infected individuals, regardless of disease state, 
+based on specified diagnostic sensitivity and specificity. Diagnostics are a key component of modern 
+disease control efforts, whether used to identify high-risk individuals, infected individuals, or 
+drug resistance. This intervention class distributes a specified intervention to a fraction of individuals 
+who test positive.
 
 !!! note
     Parameters are case-sensitive. For Boolean parameters, set to 1 for true or 0 for false.

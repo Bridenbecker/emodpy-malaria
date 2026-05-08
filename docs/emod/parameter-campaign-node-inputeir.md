@@ -6,9 +6,15 @@ configured either for each month or for each day of the year in a particular nod
 infectious mosquito bites received in a night. This number is usually calculated by taking the number of mosquito
 bites received  per night and multiplying them by the proportion of those bites that are positive for sporozoites.
 
-The probability of an individual becoming infected from the each 'infectious bite' will be affected by
-**Age_Dependent_Biting_Risk_Type** and **Enable_Demographics_Risk** settings, as well as any
-**AcquisitionBlocking** vaccines that an individual may have received.
+Whether each individual actually becomes infected from the challenge is modified by individual-level
+factors. Each person's probability of infection is scaled by a combined relative risk that accounts for:
+* **Acquisition immunity** -- both naturally acquired immunity that develops over time through repeated
+  exposure and any reduction from acquisition-blocking vaccines (e.g., **SimpleVaccine** with
+  **Vaccine_Type** set to **AcquisitionBlocking**).
+* **Age-dependent biting risk** -- if **Age_Dependent_Biting_Risk_Type** is enabled in the configuration,
+  younger (smaller) individuals receive proportionally fewer bites.
+* **Demographics-based risk** -- if **Enable_Demographics_Risk** is enabled, each individual's personal
+  risk factor from the demographics file further scales their exposure.
 
 Vector control interventions will not affect the EIR delivered by this intervention.
 

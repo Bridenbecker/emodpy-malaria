@@ -5,6 +5,21 @@ The **MalariaChallenge** intervention class is a node-level intervention similar
 [parameter-campaign-node-outbreak](parameter-campaign-node-outbreak.md). However, instead of distributing infections, it distributes
 malaria challenges by either tracking numbers of sporozoites or infectious mosquito bites.
 
+Whether each individual actually becomes infected from the challenge is modified by individual-level
+factors. Each person's probability of infection is scaled by a combined relative risk that accounts for:
+* **Acquisition immunity** -- both naturally acquired immunity that develops over time through repeated
+  exposure and any reduction from acquisition-blocking vaccines (e.g., **SimpleVaccine** with
+  **Vaccine_Type** set to **AcquisitionBlocking**).
+* **Age-dependent biting risk** -- if **Age_Dependent_Biting_Risk_Type** is enabled in the configuration,
+  younger (smaller) individuals receive proportionally fewer bites.
+* **Demographics-based risk** -- if **Enable_Demographics_Risk** is enabled, each individual's personal
+  risk factor from the demographics file further scales their exposure.
+
+Vector control interventions will not affect the infections delivered by this intervention.
+
+If vectors are  included when this class is implemented, this will add the infections specified for that month or day in
+addition to the infections provided by the vectors. Note that the **Daily EIR channel** in the [software-report-inset-chart](software-report-inset-chart.md) will not be impacted by this intervention.
+
 !!! note
     Parameters are case-sensitive. For Boolean parameters, set to 1 for true or 0 for false.
     Minimum, maximum, or default values of "NA" indicate that those values are not applicable for
