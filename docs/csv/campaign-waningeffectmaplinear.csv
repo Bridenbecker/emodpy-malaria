@@ -1,7 +1,7 @@
-Parameter,Type,Min,Max,Default,Example,Description
-Durability_Map,json object,NA,NA,NA,[example](../json/campaign-waningeffectmaplinear-durability-map.json),"The time, in days, since the intervention was distributed and a multiplier for the **Initial_Effect**."
-Expire_At_Durability_Map_End,boolean,0,1,0,[example](../json/campaign-waningeffectmaplinear-expire-at-durability-map-end.json),Set to 1 to let the intervention expire when the end of the map is reached.
-Initial_Effect,float,0,1,1,[example](../json/campaign-waningeffectmaplinear-initial-effect.json),"The multiplier used to define the magnitude of the shape of the curve, as specified when using the parameters with the **WaningEffectMapLinear** class."
-Reference_Timer,integer,0,2147480000.0,0,[example](../json/campaign-waningeffectmaplinear-reference-timer.json),The timestamp at which linear-map should be anchored.
-Times,array of floats,0,999999,[],[example](../json/campaign-waningeffectmaplinear-times.json),An array of days.
-Values,array of floats,0,3.40282e+38,[],[example](../json/campaign-waningeffectmaplinear-values.json),An array of values to match the defined **Times**.
+Parameter,Type,Min,Max,Default,Description
+Durability_Map,json object,NA,NA,NA,"The time, in days, since the intervention was distributed and a multiplier for the **Initial_Effect**."
+Expire_At_Durability_Map_End,boolean,0,1,0,Set to 1 to let the intervention expire when the end of the map is reached.
+Initial_Effect,float,0,1,1,"The multiplier used to define the magnitude of the shape of the curve, as specified when using the parameters with the **WaningEffectMapLinear** class."
+Reference_Timer,integer,0,2147480000.0,0,The timestamp at which linear-map should be anchored.
+Times,array of floats,0,999999,[],An array of days.
+Values,array of floats,0,3.40282e+38,[],An array of values to match the defined **Times**.
