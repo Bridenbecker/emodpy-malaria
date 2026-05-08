@@ -7,6 +7,10 @@ by foot, automobile, sea, or air. Migration can also be configured to move all i
 family at the same time.
 
 !!! note
+    Vector migration parameters are configured per species inside **Vector_Species_Params**. See
+    [Vector life cycle](parameter-configuration-vector-lifecycle.md) for those parameters.
+
+!!! note
     Parameters are case-sensitive. For Boolean parameters, set to 1 for true or 0 for false.
     Minimum, maximum, or default values of "NA" indicate that those values are not applicable for
     that parameter.

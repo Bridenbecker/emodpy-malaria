@@ -69,9 +69,3 @@ The event will occur in the nodes listed by Node ID.
 
 {{ read_csv("csv/campaign-nodesetnodelist.csv", keep_default_na=False) }}
 
-### NodeSetPolygon
-
-
-The event will occur in the nodes that fall within a given polygon.
-
-{{ read_csv("csv/campaign-nodesetpolygon.csv", keep_default_na=False) }}

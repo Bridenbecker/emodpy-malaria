@@ -6,6 +6,14 @@ to include in the simulation and the feeding, egg-laying, migration, and larval 
 of each using these parameters. The parameters for larval development related to habitat and
 climate are described in [parameter-configuration-larval](parameter-configuration-larval.md).
 
+!!! note
+    Most parameters in this table are nested inside the **Vector_Species_Params** array objects,
+    one object per species. The exceptions — **Enable_Egg_Mortality**, **Enable_Vector_Aging**,
+    **Enable_Vector_Mortality**, **Human_Feeding_Mortality**, **Larval_Density_Dependence**,
+    **Larval_Density_Mortality_Offset**, **Larval_Density_Mortality_Scalar**,
+    **Vector_Sugar_Feeding_Frequency**, and **Vector_Species_Params** itself — are top-level
+    config parameters.
+
 
 !!! note
     Parameters are case-sensitive. For Boolean parameters, set to 1 for true or 0 for false.

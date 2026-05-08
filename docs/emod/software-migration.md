@@ -114,8 +114,8 @@ The following parameters can be included in the by-gender by-age migration metad
 The binary file contains the migration rate data. Migration rate determines the average time until an
 individual takes a trip out of the node. This time is drawn from an exponential distribution with
 the parameter λ as the number of trips per day. Therefore, a migration rate of 0.1 can
-be viewed as 10 days until migration, on average. You can adjust this base rate using the 
-[parameter-configuration-scalars](parameter-configuration-scalars.md) parameters.
+be viewed as 10 days until migration, on average. You can adjust this base rate using the
+[migration configuration](parameter-configuration-migration.md) parameters.
 
 The data in the binary file is laid out in a sequential stream of 4-byte integers that identify the origin and destination nodes followed by a stream of 8-byte floats that contain the migration rate for those node pairs laid out in the same order. Therefore, the length of the stream is defined by **DatavalueCount**. For each source node, there must be **DatavalueCount** × (4 bytes + 8 bytes). 
 

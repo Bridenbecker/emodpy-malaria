@@ -1,8 +1,0 @@
-{
-    "Vector_Species_Params": [
-        {
-            "Name": "arabiensis",
-            "Infectious_Human_Feed_Mortality_Factor": 1.5
-        }
-    ]
-}

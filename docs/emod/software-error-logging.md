@@ -201,3 +201,65 @@ Failed to load intervention emodules for SimType: GENERIC_SIM from path: interve
 
 When you run a simulation on an HPC cluster, it will also generate a standard error logging file
 (StdErr.txt) in the working directory that captures all standard error messages.
+
+
+## Configuration parameters
+
+The following parameters control logging behavior and can be set in your configuration file.
+
+| Parameter | Data type | Default | Description |
+|---|---|---|---|
+| `logLevel_default` | enum | INFO | The default log level for all modules. See [Log levels](#log-levels) below. |
+| `logLevel_<ModuleName>` | enum | INFO | Override the log level for a specific EMOD module, identified by the class name shown in StdOut.txt. Overrides `logLevel_default` for that module only. |
+| `Enable_Log_Throttling` | boolean | 0 | When set to 1, eliminates duplicate log messages from the same source file, retaining only the first occurrence of each repeated message. |
+| `Enable_Continuous_Log_Flushing` | boolean | 0 | When set to 1, flushes the log buffer to disk after every message. Useful when diagnosing crashes that may cut off buffered log output before it is written. |
+| `Enable_Warnings_Are_Fatal` | boolean | 0 | When set to 1, warning-level log messages are treated as fatal errors and will terminate the simulation. |
+
+
+## Log levels
+
+There are five log levels. The level chosen will log messages at that level and all higher levels
+(lower numeric value). You can set the default log level for all modules using `logLevel_default`
+and override it for individual modules using `logLevel_<ModuleName>`.
+
+**ERROR (1)**
+:   Only errors are logged. This is the least verbose level.
+
+**WARNING (2)**
+:   Warnings and errors are logged.
+
+**INFO (3)**
+:   The default level. Informational messages, warnings, and errors are logged. This is
+    the recommended level for normal use and provides the output needed to diagnose most issues.
+
+**DEBUG (4)**
+:   Debug messages, informational messages, warnings, and errors are logged. This setting
+    generates a large volume of output and may impact simulation performance. When using
+    this level, consider applying it to individual modules rather than setting it as the default.
+
+**VALID (5)**
+:   The most verbose level. Includes validation and low-level debug messages, in addition to all
+    higher-level messages. Because of the potential performance impact, this level only produces
+    output in a debug build of Eradication.exe.
+
+
+## Controlling log output size
+
+When running large numbers of simulations — for example, parameter sweeps with thousands of runs —
+the StdOut.txt file from each simulation can add up to significant disk usage. Setting
+`logLevel_default` to `WARNING` or `ERROR` reduces the volume of log output and can meaningfully
+reduce total disk usage.
+
+The tradeoff is that if a simulation fails or produces unexpected results, the reduced log output
+may not contain enough information to diagnose the problem. If you need to investigate an issue,
+re-run the simulation with `logLevel_default` set to `INFO` (or omit the parameter entirely to
+use the default) to get the full output needed for diagnosis.
+
+A middle ground is to reduce the default level but keep specific modules at `INFO`. For example:
+
+```json
+{
+    "logLevel_default": "WARNING",
+    "logLevel_Eradication": "INFO"
+}
+```

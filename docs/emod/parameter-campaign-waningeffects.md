@@ -127,7 +127,7 @@ The **WaningEffectCombo** class is used within individual-level interventions an
 }
 ```
 
-{{ read_csv("csv/campaign-waningeffectconstant.csv", keep_default_na=False) }}
+{{ read_csv("csv/campaign-waningeffectcombo.csv", keep_default_na=False) }}
 
 ## WaningEffectConstant
 
