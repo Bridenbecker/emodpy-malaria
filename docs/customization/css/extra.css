@@ -17,14 +17,14 @@ div.md-copyright__highlight
     min-width: 400px;
 }
 
-/* Sticky first column — JS (sticky-col.js) drives translateX; CSS provides background and shadow */
+/* Sticky first column - keeps parameter name visible while scrolling horizontally */
 .md-typeset table td:first-child,
 .md-typeset table th:first-child {
-    position: relative;
-    will-change: transform;
+    position: sticky;
+    left: 0;
     background-color: var(--md-default-bg-color);
     box-shadow: 2px 0 4px rgba(0, 0, 0, 0.08);
-    z-index: 1;
 }
 
+.md-typeset table td:first-child { z-index: 1; }
 .md-typeset table th:first-child { z-index: 4; }
