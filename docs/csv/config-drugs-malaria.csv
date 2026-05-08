@@ -7,8 +7,8 @@ Drug_Dose_Interval,float,0,100000,1,"The interval between doses of drugs, in day
 Drug_Fulltreatment_Doses,float,1,100000,3,The number of doses for a full treatment of a drug.
 Drug_Gametocyte02_Killrate,float,0,100000,0,The log reduction per day in early-stage gametocytes.
 Drug_Gametocyte34_Killrate,float,0,100000,0,The log reduction per day in late-stage gametocytes.
-Drug_GametocyteM_Killrate,float,0,100000,0,The log reduction per day in mature [gametocyte](../glossary.md) numbers at saturated drug concentrations.
-Drug_Hepatocyte_Killrate,float,0,100000,0,The log reduction in [hepatocyte](../glossary.md) numbers per day.
+Drug_GametocyteM_Killrate,float,0,100000,0,The log reduction per day in mature gametocyte numbers at saturated drug concentrations.
+Drug_Hepatocyte_Killrate,float,0,100000,0,The log reduction in hepatocyte numbers per day.
 Drug_PKPD_C50,float,0,100000,100,The concentration at which drug killing rates are half of the maximum.<br>!!! note<br>    This parameter and the **Drug_Cmax** parameter must use the same units.
 Drug_Vd,float,0,100000,10,The volume of drug distribution in a pharmacokinetic two compartment model. The first compartment comprises central organs and tissues and the second compartment comprises peripheral tissues. This value is the ratio of the volume of the second compartment to that of the first.
 Fractional_Dose_By_Upper_Age,array of json objects,NA,NA,NA,An array to specify the fraction of the adult dose to use for children at various ages. Contains **Upper_Age_In_Years** and **Fraction_Of_Adult_Dose** values. See [example](../json/config-drugs-malaria-fractional-dose-by-upper-age.json).

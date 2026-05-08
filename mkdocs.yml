@@ -273,6 +273,7 @@ nav:
 
 not_in_nav: |
   bib.md
+  abbreviations.md
 
 plugins:
   - search:
@@ -300,6 +301,7 @@ plugins:
   - mkdocstrings:
 
 markdown_extensions:
+  - abbr:
   - admonition:
   - attr_list:  # enables HTMl and CSS classes to inline elements
   - def_list:
@@ -322,6 +324,7 @@ markdown_extensions:
   - pymdownx.snippets:  # snippet reuse functionality
       auto_append:
         - docs/bib.md
+        - docs/abbreviations.md
   - pymdownx.tabbed:  # content tabs
       alternate_style: true
   - pymdownx.tilde:  # subscripts
