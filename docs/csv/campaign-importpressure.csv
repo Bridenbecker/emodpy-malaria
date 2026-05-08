@@ -1,6 +1,6 @@
-Parameter,Type,Min,Max,Default,Example,Description
-Antigen,integer,0,10,0,[example](../json/campaign-importpressure-antigen.json),The antigenic base strain ID of the outbreak infection.
-Daily_Import_Pressures,array of floats,0,3.40282E+38,0,[example](../json/campaign-importpressure-daily-import-pressures.json),The rate of per-day importation for each node that the intervention is distributed to.
-Durations,array of integers,0,2147480000.0,1,[example](../json/campaign-importpressure-durations.json),The durations over which to apply import pressure.
-Genome,integer,-1,16777200.0,0,[example](../json/campaign-importpressure-genome.json),"The genetic substrain ID of the outbreak infection. Together with **Antigen**, they are a unitary object representing a strain of infection, which allows for differentiation among infections. Values for **Genome** may range from -1 to $2^{Log2\_Number\_of\_Genomes\_per\_Clade-1}$"
-Import_Age,float,0,43800,365,[example](../json/campaign-importpressure-import-age.json),The age (in days) of infected import cases.
+Parameter,Type,Min,Max,Default,Description
+Antigen,integer,0,10,0,The antigenic base strain ID of the outbreak infection.
+Daily_Import_Pressures,array of floats,0,3.40282E+38,0,The rate of per-day importation for each node that the intervention is distributed to.
+Durations,array of integers,0,2147480000.0,1,The durations over which to apply import pressure.
+Genome,integer,-1,16777200.0,0,"The genetic substrain ID of the outbreak infection. Together with **Antigen**, they are a unitary object representing a strain of infection, which allows for differentiation among infections. Values for **Genome** may range from -1 to $2^{Log2\_Number\_of\_Genomes\_per\_Clade-1}$"
+Import_Age,float,0,43800,365,The age (in days) of infected import cases.

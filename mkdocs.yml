@@ -220,6 +220,7 @@ nav:
         - UsageDependentBednet: emod/parameter-campaign-individual-usagedependentbednet.md
       - Waning effect classes: emod/parameter-campaign-waningeffects.md
       - Targeting_Config classes: emod/parameter-campaign-targeting-config.md
+      - Nodeset_Config classes: emod/parameter-campaign-nodeset-config.md
       - Event list: emod/parameter-campaign-event-list.md
     - Reports:
       - Overview: emod/parameter-reports-overview.md
@@ -329,6 +330,7 @@ copyright: Copyright &copy; 2025 Gates Foundation. All rights reserved.
 
 extra_javascript:
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - customization/js/json-modal.js
 
 extra_css:
   - customization/css/extra.css

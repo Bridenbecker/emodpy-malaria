@@ -1,6 +1,0 @@
-{
-    "Intervention_Config": {
-        "class": "MalariaDiagnostic",
-        "Intervention_Name": "First round of malaria testing"
-    }
-}

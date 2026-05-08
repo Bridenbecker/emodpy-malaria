@@ -1,9 +1,7 @@
-﻿# CampaignEvent
+# Nodeset_Config classes
 
-
-The **CampaignEvent** event class determines when to distribute the intervention based on the first day of
-the simulation. See the following JSON example and table, which shows all available parameters for this
-campaign event.
+The following classes determine in which nodes a campaign event will occur. Every
+**CampaignEvent** requires a **Nodeset_Config** parameter specifying the target nodes.
 
 !!! note
     Parameters are case-sensitive. For Boolean parameters, set to 1 for true or 0 for false.
@@ -15,32 +13,44 @@ campaign event.
     JSON format does not permit comments, but you can add "dummy" parameters to add contextual
     information to your files. Any keys that are not EMOD parameter names will be ignored by the
     model.
-The table below describes all possible parameters with which this class can be configured. The JSON
-example that follows shows one potential configuration.
 
-{{ read_csv("csv/campaign-campaignevent.csv", keep_default_na=False) }}
+## NodeSetAll
+
+The event will occur in all nodes in the simulation. This class has no parameters.
+
+```json
+{
+    "Nodeset_Config": {
+        "class": "NodeSetAll"
+    }
+}
+```
+
+## NodeSetNodeList
+
+The event will occur only in the nodes specified by node ID.
+
+{{ read_csv("csv/campaign-nodesetnodelist.csv", keep_default_na=False) }}
 
 ```json
 {
     "Events": [
         {
             "class": "CampaignEvent",
-            "Event_Name": "Individual outbreak",
             "Start_Day": 1,
             "Nodeset_Config": {
-                "class": "NodeSetAll"
+                "class": "NodeSetNodeList",
+                "Node_List": [1, 2, 3]
             },
             "Event_Coordinator_Config": {
                 "class": "StandardInterventionDistributionEventCoordinator",
-                "Target_Demographic": "Everyone",
                 "Demographic_Coverage": 1.0,
                 "Intervention_Config": {
                     "class": "OutbreakIndividual"
                 }
             }
         }
-    ]
+    ],
+    "Use_Defaults": 1
 }
 ```
-
-

@@ -1,9 +1,0 @@
-{
-    "LarvalHabitatMultiplier": [
-        {
-            "Factor": 0.02,
-            "Habitat": "TEMPORARY_RAINFALL",
-            "Species": "ALL_SPECIES"
-        }
-    ]
-}

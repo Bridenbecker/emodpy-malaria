@@ -1,6 +1,0 @@
-{
-    "Intervention_Config": {
-        "class": "UsageDependentBednet",
-        "Intervention_Name": "IRS bednet that wears over time"
-    }
-}
