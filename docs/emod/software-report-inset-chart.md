@@ -1,16 +1,23 @@
 # InsetChart
 
 
-The inset chart (InsetChart.json) is an output report that is automatically generated with every simulation.
-It contains simulation-wide averages, one per time step, for a wide number of data *channel*s.
-The channels are fully specified by the simulation type and cannot be altered without making changes
-to the EMOD source code. Python or other tools can be used to create charts out of the information
-contained in the file (see the example charts provided at the end of this page.)
+The inset chart (InsetChart.json) is an output report that contains simulation-wide averages,
+one per time step, for a wide number of data *channel*s. The channels are fully specified by the
+simulation type and cannot be altered without making changes to the EMOD source code. Python or
+other tools can be used to create charts out of the information contained in the file (see the
+example charts provided at the end of this page.)
 
 ## Configuration
 
+The following parameters in the config.json file control the InsetChart.json report.
 
-To generate this report, make sure the **Enable_Default_Reporting** parameter is set to 1 in the config.json file.
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| Enable_Default_Reporting | boolean | 0 | Controls whether or not the InsetChart.json report is created. |
+| Inset_Chart_Has_IP | array of strings | [] | Adds a `HasIP_<Key>:<Value>` channel for each value of each individual property key listed. Keys must be defined in the demographics file. If the list is empty, no channels are added. |
+| Inset_Chart_Has_Interventions | array of strings | [] | Adds a `Has_<InterventionName>` channel for each intervention name listed. The **Intervention_Name** parameter in the campaign must match the values listed here. If the list is empty, no channels are added. |
+| Inset_Chart_Include_Pregnancies | boolean | 0 | If set to 1, adds channels about pregnancies and possible mothers. |
+| Inset_Chart_Reporting_Include_30Day_Avg_Infection_Duration | boolean | 1 | If set to 0, removes the "30-day Avg Infection Duration" channel from the report. |
 
 
 ## Output file data
