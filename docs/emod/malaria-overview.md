@@ -2,7 +2,7 @@
 
 
 IDM is committed to supporting data-driven malaria control and elimination efforts. This page
-provide information about malaria itself: the biology, symptoms, treatment, and prevention.  See
+provides information about malaria itself: the biology, symptoms, treatment, and prevention. See
 [malaria-model-overview](malaria-model-overview.md) for information about the Epidemiological MODeling software (EMOD) MALARIA simulation type developed
 by IDM to aid in malaria elimination.
 
@@ -28,7 +28,7 @@ symptoms of disease (and obscure infection), which may hinder control or elimina
 Once an infected mosquito bites a human and transmits parasites, the parasites multiply in the
 host's liver, then infect and destroy red blood cells (erythrocytes). During the blood stage, the
 parasites that infect and destroy erythrocytes release *merozoites* which then infect other
-erythrocytes.  The *gametocyte* form of the blood-stage parasite are ingested
+erythrocytes. The *gametocyte* form of the blood-stage parasite are ingested
 by female Anophelenes during future blood meals, where the mosquito-based life cycle continues.
 
 
@@ -36,14 +36,14 @@ In the mosquito, the ingested gametocytes generate zygotes in the mosquito's gut
 undergo development, embed into the mosquito's midgut wall, and mature into oocytes. Oocytes develop
 and in turn rupture, releasing the *sporozoite* form of the parasite. The sporozoites travel
 to and reside in the mosquito's salivary glands. Then, when the female takes a blood meal, the
-sporozoites are  injected into the host, starting another infection cycle. The mosquito is the
+sporozoites are injected into the host, starting another infection cycle. The mosquito is the
 *vector* that transmits pathogens between human hosts.  See the below figure and figure
 caption for an illustrated description of this process.
 
 
-![*Plasmodium* life cycle, adapted from the CDC, [Malaria Biology][cdc-malaria-biology]. During a blood meal, a malaria-infected female *Anopheles* mosquito inoculates sporozoites into the human host (1) . Sporozoites infect liver cells (2) and mature into schizonts (3), which rupture and release merozoites (4). After this initial replication in the liver (exo-erythrocytic schizogony, "A"), the parasites undergo asexual multiplication in the erythrocytes (erythrocytic schizogony, "B"). Merozoites infect red blood cells (5). Some parasites differentiate into sexual erythrocytic stages (gametocytes) (7). The gametocytes are ingested by an Anopheles mosquito during a blood meal (8). The parasites’ multiplication in the mosquito is known as the sporogonic cycle, "C". While in the mosquito's stomach, the gametocytes generate zygotes (9). The zygotes in turn become motile and elongated (ookinetes) (10) which invade the midgut wall of the mosquito where they develop into oocysts (11). The oocysts grow, rupture, and release sporozoites (12), which make their way to the mosquito's salivary glands. Inoculation of the sporozoites into a new human host (1) perpetuates the malaria life cycle.](../figures/vector-malaria/malaria_lifecycle.gif)
+![Diagram of the Plasmodium life cycle showing stages in the human host and the Anopheles mosquito vector.](../figures/vector-malaria/malaria_lifecycle.gif)
 
-**Plasmodium* life cycle, adapted from the CDC, [Malaria Biology][cdc-malaria-biology]. During a blood meal, a malaria-infected female *Anopheles* mosquito inoculates sporozoites into the human host (1) . Sporozoites infect liver cells (2) and mature into schizonts (3), which rupture and release merozoites (4). After this initial replication in the liver (exo-erythrocytic schizogony, "A"), the parasites undergo asexual multiplication in the erythrocytes (erythrocytic schizogony, "B"). Merozoites infect red blood cells (5). Some parasites differentiate into sexual erythrocytic stages (gametocytes) (7). The gametocytes are ingested by an Anopheles mosquito during a blood meal (8). The parasites’ multiplication in the mosquito is known as the sporogonic cycle, "C". While in the mosquito's stomach, the gametocytes generate zygotes (9). The zygotes in turn become motile and elongated (ookinetes) (10) which invade the midgut wall of the mosquito where they develop into oocysts (11). The oocysts grow, rupture, and release sporozoites (12), which make their way to the mosquito's salivary glands. Inoculation of the sporozoites into a new human host (1) perpetuates the malaria life cycle.*
+*Plasmodium* life cycle, adapted from the CDC, [Malaria Biology][cdc-malaria-biology]. During a blood meal, a malaria-infected female *Anopheles* mosquito inoculates sporozoites into the human host (1). Sporozoites infect liver cells (2) and mature into schizonts (3), which rupture and release merozoites (4). After this initial replication in the liver (exo-erythrocytic schizogony, "A"), the parasites undergo asexual multiplication in the erythrocytes (erythrocytic schizogony, "B"). Merozoites infect red blood cells (5). Some parasites differentiate into sexual erythrocytic stages (gametocytes) (7). The gametocytes are ingested by an *Anopheles* mosquito during a blood meal (8). The parasites’ multiplication in the mosquito is known as the sporogonic cycle, "C". While in the mosquito’s stomach, the gametocytes generate zygotes (9). The zygotes in turn become motile and elongated (ookinetes) (10) which invade the midgut wall of the mosquito where they develop into oocysts (11). The oocysts grow, rupture, and release sporozoites (12), which make their way to the mosquito’s salivary glands. Inoculation of the sporozoites into a new human host (1) perpetuates the malaria life cycle.
 
 ## Symptoms
 
@@ -153,7 +153,7 @@ dynamics.
 
 Ross's work inspired researchers focused on controlling mosquito-borne
 diseases. His emphasis on the development of metrics useful for measuring the intensity of
-transmission led to the development of * entomological inoculation rate (EIR)* and motivated
+transmission led to the development of *entomological inoculation rate (EIR)* and motivated
 research aimed at understanding mosquito movement and the relevant spatial scales for mosquito
 ecology. Later, in the 1950s, George MacDonald formalized Ross’s models, and introduced the
 concepts of *vectorial capacity* and *reproductive number*.  This framework is now known as
@@ -204,7 +204,7 @@ Modern research has continued to improve our understanding of both parasite biol
 as well as within-host immune system interactions.  To fully understand the complex nature of
 malaria epidemiology and how to control it, it is important to include these aspects into models.
 
-The malaria EMOD leverages the history of malaria modeling by staring with these important
+The malaria EMOD leverages the history of malaria modeling by starting with these important
 fundamentals and building upon them. EMOD combines detailed vector population dynamics and
 interactions with human populations, and includes microsimulations for human immunity and within-
 host parasite dynamics. The model builds on the work of Ross and MacDonald, leverages the Garki

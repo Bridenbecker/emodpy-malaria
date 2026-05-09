@@ -27,7 +27,7 @@ Paths used throughout the tutorials are defined in `manifest.py`.
 `build_config` is passed to `EMODTask` and called when building `config.json`. It receives a
 config object and returns it after making changes.
 
-```python
+```python linenums="1"
 def build_config(config):
     config = malaria_config.set_team_defaults(config, manifest)
     malaria_config.add_species(config, manifest, ["gambiae", "arabiensis", "funestus"])
@@ -50,7 +50,7 @@ present at most African sites.
 
 `build_demog` builds the demographics file that describes the simulated human population.
 
-```python
+```python linenums="1"
 def build_demog():
     demog = Demographics.from_template_node(lat=-3.2, lon=37.9, pop=1000,
                                             name="Tutorial_Site")
@@ -72,7 +72,7 @@ sub-Saharan Africa rather than starting everyone at the same age.
 The `Platform` specifies where simulations run. The tutorial includes commented-out blocks for
 all three supported platforms — uncomment the one that matches your environment:
 
-```python
+```python linenums="1"
 # Container platform — runs EMOD in a Docker container locally or in Codespaces
 platform = Platform("Container", job_directory=manifest.job_dir,
                     docker_image=manifest.plat_image)
@@ -94,7 +94,7 @@ platform = Platform("Container", job_directory=manifest.job_dir,
 `EMODTask.from_default2()` assembles the simulation task from the callbacks and the paths to
 the EMOD executable and schema:
 
-```python
+```python linenums="1"
 task = emod_task.EMODTask.from_default2(
     config_path="config.json",
     eradication_path=manifest.eradication_path,
@@ -115,7 +115,7 @@ transmission only. Campaigns are introduced in Tutorial 3.
 `SimulationBuilder` manages parameter sweeps across simulations. Tutorial 1 runs a single
 simulation by sweeping `Run_Number` over just one value:
 
-```python
+```python linenums="1"
 builder = SimulationBuilder()
 builder.add_sweep_definition(sweep_run_number, [0])
 

@@ -40,7 +40,7 @@ Tutorial 7 is split into two scripts:
 Three parameters in `build_config()` tell EMOD to write a population snapshot at the end of
 the simulation:
 
-```python
+```python linenums="1"
 config.parameters.Serialized_Population_Writing_Type = "TIME"
 config.parameters.Serialization_Times                = [serialize_years * 365]
 config.parameters.Serialization_Precision            = "REDUCED"
@@ -92,7 +92,7 @@ BURNIN_EXP_ID = "paste-your-burnin-experiment-id-here"
 To pick up from a burnin, three config parameters tell EMOD where to find the `.dtk` file
 and to read it rather than initialize from scratch:
 
-```python
+```python linenums="1"
 config.parameters.Serialized_Population_Reading_Type  = "READ"
 config.parameters.Serialized_Population_Path          = "<path to burnin output>"
 config.parameters.Serialized_Population_Filenames     = ["state-18250.dtk"]
@@ -106,7 +106,7 @@ sweeps over multiple burnin runs, they are set per-simulation in
 
 The pickup runs a cross-product of two sweep dimensions:
 
-```python
+```python linenums="1"
 builder.add_sweep_definition(
     partial(update_serialize_parameters, df=burnin_df),
     range(n_burnin)
@@ -127,7 +127,7 @@ definition following the same pattern as Tutorial 5.
 directory, and returns a DataFrame sorted by `Run_Number` — one row per burnin simulation.
 Path resolution differs by platform:
 
-```python
+```python linenums="1"
 if platform_type == "COMPS":
     path = sim.get_platform_object().hpc_jobs[0].working_directory
     path = path.replace("\\", "/").replace("internal.idm.ctr", "mnt").replace("IDM2", "idm2")
@@ -170,7 +170,7 @@ works as-is.
 `Serialized_Population_Filenames` for each pickup simulation based on its row index into
 `burnin_df`:
 
-```python
+```python linenums="1"
 def update_serialize_parameters(simulation, x, df):
     sim_path = df["outpath"][x]
     filename = f"state-{serialize_years * 365:05d}.dtk"

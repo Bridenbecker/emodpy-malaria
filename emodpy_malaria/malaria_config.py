@@ -1,3 +1,10 @@
+"""Primary module for setting simulation-wide configuration values for a malaria simulation.
+
+Start with team defaults and use the other functions in this module to meet your specific needs,
+including vector species and larval habitats, drug and parasite parameters, insecticide resistance,
+microsporidia, and parasite genetics.
+"""
+
 import math
 import csv
 import os
