@@ -1,3 +1,5 @@
+"""Pre-configured parameter sets for common Anopheles vector species used in malaria simulations."""
+
 import emod_api.config.default_from_schema_no_validation as dfs
 
 

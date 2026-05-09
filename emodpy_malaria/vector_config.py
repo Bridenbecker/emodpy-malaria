@@ -1,3 +1,10 @@
+"""Configuration functions for vector biology in malaria simulations.
+
+Covers vector species parameters, larval habitats, vector genetics, gene drives, insecticide
+resistance, microsporidia, and the team-standard vector defaults used as the foundation for
+most malaria simulations.
+"""
+
 import math
 import os
 
