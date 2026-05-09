@@ -12,7 +12,7 @@ The campaign file defines what interventions to distribute, to whom, and when. I
 a `build_campaign()` function constructs this file and is passed to `EMODTask` via
 `campaign_builder=`:
 
-```python
+```python linenums="1"
 task = emod_task.EMODTask.from_default2(
     ...
     campaign_builder=build_campaign,   # previously None
@@ -24,7 +24,7 @@ task = emod_task.EMODTask.from_default2(
 
 `build_campaign()` adds the two interventions using emodpy-malaria helper functions:
 
-```python
+```python linenums="1"
 def build_campaign():
     campaign.set_schema(manifest.schema_file)
 
@@ -78,7 +78,7 @@ uses it as the no-intervention reference (plotted in red) so the intervention im
 visible directly. If you are starting here without having run Tutorial 2, the plot will still
 work — the reference line simply will not appear.
 
-```python
+```python linenums="1"
 reference = None
 if os.path.exists("tutorial_2_results"):
     t2_files = get_filenames(dir_or_filename="tutorial_2_results",

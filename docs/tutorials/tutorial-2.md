@@ -11,7 +11,7 @@ plotting utilities.
 A new `add_reporters()` function configures the reports to add to the simulation task. Reports
 are added after `EMODTask` is created and before the experiment runs.
 
-```python
+```python linenums="1"
 def add_reporters(task):
     task.config.parameters.Enable_Default_Reporting = 1
     task.config.parameters.Enable_Demographics_Reporting = 1
@@ -49,7 +49,7 @@ After the experiment completes, `DownloadAnalyzer` copies specific output files 
 simulation into a local directory. This works the same way regardless of platform — Container,
 COMPS, or SLURM.
 
-```python
+```python linenums="1"
 filenames = [
     "output/InsetChart.json",
     "output/DemographicsSummary.json",
@@ -88,7 +88,7 @@ plot_inset_chart(dir_name=output_path,
 `DemographicsSummary.json` has the same channel report format as `InsetChart.json` and can be
 plotted the same way. `get_filenames()` locates the downloaded files by prefix:
 
-```python
+```python linenums="1"
 demog_files = get_filenames(dir_or_filename=output_path,
                             file_prefix="DemographicsSummary",
                             file_extension="json")

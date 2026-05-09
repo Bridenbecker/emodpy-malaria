@@ -20,7 +20,7 @@ for your site.
 scale values are relative multipliers on `max_larval_capacity` — values near zero represent
 the dry season, the peak represents the wet season.
 
-```python
+```python linenums="1"
 seasonal_habitat = vector_config.configure_linear_spline(
     manifest,
     max_larval_capacity=1e8,
@@ -59,7 +59,7 @@ uses it as the constant-transmission reference (plotted in red) so the seasonal 
 out directly against the flat baseline. If you are starting here without having run Tutorial
 3, the plot will still work — the reference line simply will not appear.
 
-```python
+```python linenums="1"
 plot_inset_chart(dir_name=output_path,
                  reference=reference,
                  title="Tutorial 4 - InsetChart",

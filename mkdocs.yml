@@ -318,7 +318,6 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight:  # syntax highlighting for code blocks
-      linenums: true  # adds line numbers to code blocks automatically
       anchor_linenums: true  # adds HTML anchors (#L1, #L2, etc.) to each line so you can link to specific ones.
       default_lang: 'python'
   - pymdownx.mark:  # text highlighting
