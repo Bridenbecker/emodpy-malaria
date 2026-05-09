@@ -39,6 +39,8 @@ pip install emodpy-malaria
 
 Full documentation: https://emod.idmod.org/emodpy-malaria
 
+**Releases and changelog:** https://github.com/EMOD-Hub/emodpy-malaria/releases
+
 ## Community
 
 Have a question or a comment? Check out our
