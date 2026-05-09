@@ -59,4 +59,4 @@ works as intended or that we will provide support, address issues that are found
 pull requests. You are welcome to create your own fork and modify the code to suit your own
 modeling needs as permitted under the MIT License.
 
-[emodpy-malaria-contributing]: https://github.com/EMOD-Hub/emodpy-malaria/blob/main/CONTRIBUTING.rst
+[emodpy-malaria-contributing]: https://github.com/EMOD-Hub/emodpy-malaria/blob/main/CONTRIBUTING.md
