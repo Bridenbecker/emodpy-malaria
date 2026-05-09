@@ -1,6 +1,6 @@
 # emodpy-malaria
 
-Python module for use as user-space front-end for doing research easily with EMOD (MALARIA_SIM) via idmtools.
+The Python interface for running EMOD malaria simulations.
 
 ![mosquito](docs/figures/jorussell-mosquito.png)
 
@@ -8,82 +8,55 @@ Python module for use as user-space front-end for doing research easily with EMO
 
 ## Description
 
-This package provides a Python scriptable interface for configuring EMOD for malaria modeling. This Python interface abstracts the process of creating JSON formatted files for parameter specification, demographics specification and intervention specification along as well as abstracting the process of creating binary climate and migration files.
+emodpy-malaria is the primary way to work with EMOD for malaria research. Use it to set up
+transmission settings, define populations, and evaluate the impact of interventions such as
+insecticide-treated nets, indoor residual spraying, treatment seeking, and vaccines — then
+run simulations and analyze the results.
 
-## Getting started
+## Try it now
 
-Before installing `emodpy_malaria`, please see the [Getting Started page](docs/tutorials/overview.md).
-It can guide you through trying EMOD before you try it on your own machine.
+No installation required. Open the repository in
+[GitHub Codespaces](https://github.com/codespaces/new?repo=EMOD-Hub/emodpy-malaria),
+wait for the environment to build, then run:
 
-## Get `emodpy-malaria`
-
-The `emodpy-malaria` package (and its supporting packages) is currently hosted on IDM's Python package repository.
-
-```shell
-python3 -m pip install emodpy-malaria
+```
+cd tutorials
+python tutorial_1_intro.py
 ```
 
-Note: you may need to only use `python` on Windows machines rather than `python3`.
+See the [tutorial setup page](https://emod.idmod.org/emodpy-malaria/tutorials/setup/) for
+Codespaces and local installation instructions, and
+[Tutorial 1](https://emod.idmod.org/emodpy-malaria/tutorials/tutorial-1/) for a walkthrough
+of what the script does.
+
+## Installation
+
+```shell
+pip install emodpy-malaria
+```
 
 ## Documentation
 
-Documentation available at https://emod.idmod.org/emodpy-malaria
-
-To build the documentation locally, do the following:
-
-1. Create and activate a venv.
-2. Navigate to the root directory of the repo and enter the following:
-
-    ```
-    pip install -e[docs] .
-    mkdocs serve
-    ```
-The HTML documentation will be output to the 'site' directory.
+Full documentation: https://emod.idmod.org/emodpy-malaria
 
 ## Community
 
-Have a question or a comment? Check out our [Discussions](https://github.com/EMOD-Hub/issues-and-discussions) space.
+Have a question or a comment? Check out our
+[Discussions](https://github.com/EMOD-Hub/issues-and-discussions) space.
 
-
-## Support and Contributions
-
-The code in this repository was developed by IDM to support our research in disease
-transmission and managing epidemics. We’ve made it publicly available under the MIT
-License to provide others with a better understanding of our research and an opportunity
-to build upon it for their own work. We make no representations that the code works as
-intended or that we will provide support, address issues that are found, or accept pull
-requests. You are welcome to create your own fork and modify the code to suit your own
-modeling needs as contemplated under the MIT License.
+## Contributing
 
 If you have feature requests, issues, or new code, please see our
-[CONTRIBUTING][emodpy-malaria-contributing] page
-for how to provide your feedback.
+[CONTRIBUTING][emodpy-malaria-contributing] page for how to provide your feedback.
 
-### Developer Installation
-There are several options if you are modifying the code locally.
+## Disclaimer
 
-Option 1:
-install in the `emodpy-malaria` directory:
-```
-pip install -e .
-```
-
-Option 2:
-You will need to install 'build':
-```
-pip install build 
-```
-Each time you make a change you want to use, you'll need to build a new .whl file and install it:
-```
-python -m build
-pip install dist\emodpy_malaria-XXXX.whl
-```
-
-# Disclaimer
-
-The code in this repository was developed by IDM and other collaborators to support our joint research on flexible agent-based modeling.
- We've made it publicly available under the MIT License to provide others with a better understanding of our research and an opportunity to build upon it for 
- their own work. We make no representations that the code works as intended or that we will provide support, address issues that are found, or accept pull requests.
- You are welcome to create your own fork and modify the code to suit your own modeling needs as permitted under the MIT License.
+The code in this repository was developed by IDM and other collaborators to support our
+joint research on flexible agent-based modeling. We've made it publicly available under
+the MIT License to provide others with a better understanding of our research and an
+opportunity to build upon it for their own work. We make no representations that the code
+works as intended or that we will provide support, address issues that are found, or accept
+pull requests. You are welcome to create your own fork and modify the code to suit your own
+modeling needs as permitted under the MIT License.
 
 [emodpy-malaria-contributing]: https://github.com/EMOD-Hub/emodpy-malaria/blob/main/CONTRIBUTING.rst
