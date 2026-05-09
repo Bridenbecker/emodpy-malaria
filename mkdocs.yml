@@ -325,6 +325,7 @@ markdown_extensions:
   - pymdownx.highlight:  # syntax highlighting for code blocks
       anchor_linenums: true  # adds HTML anchors (#L1, #L2, etc.) to each line so you can link to specific ones.
       default_lang: 'python'
+  - pymdownx.superfences:  # enables extended code fence attributes, including per-block linenums="1"
   - pymdownx.mark:  # text highlighting
   - pymdownx.snippets:  # snippet reuse functionality
       auto_append:
