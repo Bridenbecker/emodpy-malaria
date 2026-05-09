@@ -294,7 +294,7 @@ plugins:
         - emodpy_malaria.egg-info/**/*
         - examples-container/**/*
         - site/**/*
-        - tutiorials/**/*
+        - tutorials/**/*
         - tests/**/*
         - env/**/*
         - venv/**/*
@@ -302,6 +302,7 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
+          paths: [.]
           options:
             docstring_style: google
 
