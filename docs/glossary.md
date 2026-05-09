@@ -527,12 +527,6 @@ gonotrophic
 :   A female mosquito's feeding and egg-laying cycle, where the duration is defined as the average
     number of days that gravid mosquitoes take to oviposit after taking a blood meal.
 
-homing endonuclease gene (HEG)
-:   A "selfish" genetic element that can spread through the mosquito population even at a cost to
-    the host. The HEG allele status is a tracked property of mosquitoes. Large numbers of HEG-
-    positive mosquitoes may be introduced into the simulation by a **MosquitoRelease**
-    intervention.
-
 individual mosquito model
 :   A vector model simulation where every individual mosquito in the population is modeled, as
     well as a simulation of a sampled subset of mosquitoes to represent the population as the
