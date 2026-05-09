@@ -300,6 +300,10 @@ plugins:
         - venv/**/*
       autoapi_add_nav_entry: false
   - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
 
 markdown_extensions:
   - abbr:
