@@ -220,12 +220,14 @@ def run_experiment():
         config_path="config.json",
         eradication_path=manifest.eradication_path,
         campaign_builder=None,
-        schema_path=manifest.schema_file,
+        schema_path=manifest.schema_path,
         ep4_custom_cb=None,
         param_custom_cb=build_config,
         demog_builder=build_demog,
         plugin_report=None
     )
+
+    task.config.parameters.x_Base_Population *= manifest.x_Base_Population_scale
 
     # set_sif() tells EMOD which container image to use to run the executable.
     # For COMPS and SLURM, the image is a Singularity Image File (SIF);
@@ -253,6 +255,8 @@ def run_experiment():
     handle_results(experiment, platform)
 
     print("\nTutorial 2 is done.")
+
+    return experiment
 
 
 if __name__ == "__main__":
