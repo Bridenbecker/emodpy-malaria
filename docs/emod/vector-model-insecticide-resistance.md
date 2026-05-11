@@ -47,12 +47,12 @@ modifier of 0.5, the effective killing probability for that vector is 0.8 × 0.5
 Each insecticide defines resistance modifiers for four effect types that correspond to the ways
 insecticide-based interventions affect vectors during the feeding cycle:
 
-```
-Killing, "Probability that a vector dies from contact with the insecticide. Applies to individual and node interventions that have both: Killing_Config and Insecticide_Name parameters.", "**Individual interventions**: IRSHousingModification, MultiInsecticideIRSHousingModification, IndoorIndividualEmanator, Ivermectin, ScreeningHousingModification, SimpleBednet, SimpleHousingModification, UsageDependentBednet,MultiInsecticideUsageDependentBednet; Node interventions: AnimalFeedKill, IndoorSpaceSpraying, MultiInsecticideIndoorSpaceSpraying, OutdoorNodeEmanator, OutdoorRestKill, SpaceSpraying, MultiInsecticideSpaceSpraying, SugarTrap;"
-Blocking, "Probability that a vector is blocked from a blood meal. Applies to bednets blocking feeding attempts.", "**Individual interventions**: SimpleBednet, UsageDependentBednet, MultiInsecticideUsageDependentBednet; **Node interventions**: None;"
-Repelling, "Probability that a vector is deterred from entering a house or approaching a host. Applies to individual and node interventions that have both: Repelling_Config and Insecticide_Name parameters.", "**Individual interventions**: IRSHousingModification, MultiInsecticideIRSHousingModification, IndoorIndividualEmanator, ScreeningHousingModification, SimpleBednet, SimpleHousingModification, SimpleIndividualRepellent, SpatialRepellentHousingModification, UsageDependentBednet, MultiInsecticideUsageDependentBednet; **Node interventions**: OutdoorNodeEmanator, SpatialRepellent;"
-Larval_Killing, "Probability that larvae are killed by larvicide. Applies to larval habitat treatments.", "**Individual interventions**: None; **Node interventions**: Larvicides;"
-```
+| Type | Description | Applicable interventions |
+| --- | --- | --- |
+| `Killing` | Probability that a vector dies from contact with the insecticide. Applies to interventions that have both `Killing_Config` and `Insecticide_Name` parameters. | **Individual**: IRSHousingModification, MultiInsecticideIRSHousingModification, IndoorIndividualEmanator, Ivermectin, ScreeningHousingModification, SimpleBednet, SimpleHousingModification, UsageDependentBednet, MultiInsecticideUsageDependentBednet. **Node**: AnimalFeedKill, IndoorSpaceSpraying, MultiInsecticideIndoorSpaceSpraying, OutdoorNodeEmanator, OutdoorRestKill, SpaceSpraying, MultiInsecticideSpaceSpraying, SugarTrap. |
+| `Blocking` | Probability that a vector is blocked from a blood meal. Applies to bednets blocking feeding attempts. | **Individual**: SimpleBednet, UsageDependentBednet, MultiInsecticideUsageDependentBednet. **Node**: None. |
+| `Repelling` | Probability that a vector is deterred from entering a house or approaching a host. Applies to interventions that have both `Repelling_Config` and `Insecticide_Name` parameters. | **Individual**: IRSHousingModification, MultiInsecticideIRSHousingModification, IndoorIndividualEmanator, ScreeningHousingModification, SimpleBednet, SimpleHousingModification, SimpleIndividualRepellent, SpatialRepellentHousingModification, UsageDependentBednet, MultiInsecticideUsageDependentBednet. **Node**: OutdoorNodeEmanator, SpatialRepellent. |
+| `Larval_Killing` | Probability that larvae are killed by larvicide. Applies to larval habitat treatments. | **Individual**: None. **Node**: Larvicides. |
 
 A resistance modifier of 1.0 means the vector is fully susceptible — the insecticide works at
 full strength. A modifier less than 1.0 means the vector has partial resistance — the insecticide
