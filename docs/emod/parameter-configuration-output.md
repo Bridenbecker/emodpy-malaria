@@ -1,4 +1,4 @@
-﻿# Output settings
+# Output settings
 
 
 The following parameters configure whether or not output reports are created for the simulation,

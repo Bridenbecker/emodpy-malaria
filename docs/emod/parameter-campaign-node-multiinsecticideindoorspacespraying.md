@@ -1,4 +1,4 @@
-﻿# MultiInsecticideIndoorSpaceSpraying
+# MultiInsecticideIndoorSpaceSpraying
 
 
 The **MultiInsecticideIndoorSpaceSpraying** intervention class is a node-level intervention that

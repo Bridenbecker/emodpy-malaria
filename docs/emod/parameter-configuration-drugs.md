@@ -1,4 +1,4 @@
-﻿# Drugs and treatments
+# Drugs and treatments
 
 
 The following parameters determine the efficacy of drugs and other treatments.

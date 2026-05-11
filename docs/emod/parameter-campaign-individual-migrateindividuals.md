@@ -1,4 +1,4 @@
-﻿# MigrateIndividuals
+# MigrateIndividuals
 
 
 The **MigrateIndividuals** intervention class is an individual-level intervention used to force

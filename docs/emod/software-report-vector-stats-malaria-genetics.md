@@ -18,14 +18,7 @@ details on the oocysts, sporozoites, biting, etc.
 
 To generate this report, the following parameters must be configured in the custom_reports.json file:
 
-| Parameter | Data type | Min | Max | Default | Description |
-| --- | --- | --- | --- | --- | --- |
-| `Species_List` | array of strings | NA | NA | [] | The species for which to include information. If the list is empty or absent, then data for all species will be collected. |
-| `Stratify_By_Species` | boolean | NA | NA | 0 | If set to true (1), then data will be stratified by species for each node. |
-| `Include_Wolbachia_Columns` | boolean | NA | NA | 0 | If set to true (1), columns will be added for each type of Wolbachia. Summation of columns should be equal to VectorPopulation. |
-| `Include_Gestation_Columns` | boolean | NA | NA | 0 | If set to true (1), columns will be added for feeding and gestation. |
-| `Include_Death_By_State_Columns` | boolean | NA | NA | 0 | Adds columns for the number of vectors that died in this state during this time step as well as the average age. It adds two columns for each of the following states: ADULT, INFECTED, INFECTIOUS, and MALE. |
-| `Barcodes` | array of strings | NA | NA | [] | A list of barcode strings where a column will be created with the number of vectors with sporozoites with that barcode. Use '*' for a wild card. An **OtherBarcodes** column will be created for those not defined. |
+{{ read_csv('../csv/report-vector-stats-malaria-genetics.csv', keep_default_na=False) }}
 
 ```json
 {

@@ -1,4 +1,4 @@
-﻿# SimpleIndividualRepellent
+# SimpleIndividualRepellent
 
 
 The **SimpleIndividualRepellent** intervention class provides protection to individuals against both

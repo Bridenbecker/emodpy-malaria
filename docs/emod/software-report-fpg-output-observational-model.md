@@ -33,18 +33,7 @@ MALARIA_MECHANISTIC_MODEL_WITH_PARASITE_GENETICS.
 
 To generate this report, configure the following parameters in the custom_reports.json file:
 
-| Parameter | Data type | Min | Max | Default | Description |
-| --- | --- | --- | --- | --- | --- |
-| `Start_Day` | float | 0 | 3.40282e+38 | 0 | The day of the simulation to start collecting data. |
-| `End_Day` | float | 0 | 3.40282e+38 | 3.40282e+38 | The day of the simulation to stop collecting data. If you want data collected on a specific day, enter that day plus 1. |
-| `Node_IDs_Of_Interest` | array of integers | 1 | 2.14748e+09 | [] | Data will be collected for the nodes in this list. Empty list implies all nodes. |
-| `Min_Age_Years` | float | 0 | 125 | 0 | Minimum age in years of people to include in the report. |
-| `Max_Age_Years` | float | 0 | 125 | 125 | Maximum age in years of people to include in the report. |
-| `Must_Have_IP_Key_Value` | string | NA | NA | (empty string) | A Key:Value pair that the individual must have in order to be included. Empty string means to not include IPs in the selection criteria. |
-| `Must_Have_Intervention` | string | NA | NA | (empty string) | The name of the intervention that the person must have in order to be included. Empty string means to not include interventions in the selection criteria. |
-| `Minimum_Parasite_Density` | float | 0 | 3.40282e+38 | 1.0 | The minimum parasite density (asexual parasites per microliter of blood) that an infection must have to be included. A non-zero value filters out hepatocyte-stage infections and those with only gametocytes. |
-| `Sampling_Period` | float | 1 | 3.40282e+38 | 1 | The number of days between sampling the population. Data is collected on days Start_Day, Start_Day + Sampling_Period, Start_Day + 2*Sampling_Period, and so on. |
-| `Include_Genome_IDs` | boolean | NA | NA | 0 | If true (1), an additional genome_ids column is appended to the CSV output containing EMOD's internal ID for the genome of each infection's parasite. This ID can be used to cross-reference genome data with other EMOD reports that include genome IDs. |
+{{ read_csv('../csv/report-fpg-output-observational-model.csv', keep_default_na=False) }}
 
 ```json
 {

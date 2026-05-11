@@ -1,4 +1,4 @@
-﻿# Mortality and survival
+# Mortality and survival
 
 
 The following parameter determine mortality and survival characteristics of the disease being modeled

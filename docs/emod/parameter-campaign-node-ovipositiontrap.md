@@ -1,4 +1,4 @@
-﻿# OvipositionTrap
+# OvipositionTrap
 
 
 The **OvipositionTrap** intervention class utilizes an oviposition trap to collect host-seeking mosquitoes, and

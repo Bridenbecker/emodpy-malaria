@@ -1,4 +1,4 @@
-﻿# Migration
+# Migration
 
 
 The following parameters determine aspects of population migration into and outside of a node,

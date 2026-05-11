@@ -1,4 +1,4 @@
 Parameter,Type,Min,Max,Default,Description
 Add_Effects,boolean,0,1,0,"Controls how the waning effect values from multiple objects in **Effect_List** are combined. If set to 1, values are added together. If set to 0, values are multiplied. The resulting combined value must not exceed 1."
-Effect_List,array of json objects,NA,NA,NA,A list of waning effect objects defining how the intervention efficacy wanes over time. Each object is a waning effect class such as **WaningEffectBox** or **WaningEffectExponential**.
+Effect_List,array of json objects,NA,NA,NA,A list of waning effect objects defining how the intervention efficacy wanes over time. Each object is a waning effect class such as **WaningEffectBox** or **WaningEffectExponential**. See [example](../json/campaign-waningeffectcombo-effect-list.json).
 Expires_When_All_Expire,boolean,0,1,0,"If set to 1, the intervention efficacy expires only when all effects in **Effect_List** have expired. If set to 0, the efficacy expires as soon as any one effect expires."

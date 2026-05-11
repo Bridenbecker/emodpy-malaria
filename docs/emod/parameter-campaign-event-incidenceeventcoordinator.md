@@ -1,4 +1,4 @@
-﻿# IncidenceEventCoordinator
+# IncidenceEventCoordinator
 
 
 The **IncidenceEventCoordinator** coordinator class distributes interventions based on the number of events counted over a period of time.

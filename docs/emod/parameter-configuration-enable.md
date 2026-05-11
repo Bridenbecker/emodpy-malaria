@@ -1,4 +1,4 @@
-﻿# Enable or disable features
+# Enable or disable features
 
 
 The following parameters enable or disable features of the model, such as allowing births, deaths,

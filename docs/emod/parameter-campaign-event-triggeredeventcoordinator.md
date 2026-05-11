@@ -1,4 +1,4 @@
-﻿# TriggeredEventCoordinator
+# TriggeredEventCoordinator
 
 
 

@@ -1,4 +1,4 @@
-﻿# MultiPackComboDrug
+# MultiPackComboDrug
 
 
 The **MultiPackComboDrug** intervention class is an individual-level intervention that explicitly

@@ -1,4 +1,4 @@
-﻿# Larvicides
+# Larvicides
 
 
 The **Larvicides** intervention class is a node-level intervention that configures a killing effect for larva

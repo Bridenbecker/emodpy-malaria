@@ -1,4 +1,4 @@
-﻿# NodeLevelHealthTriggeredIV
+# NodeLevelHealthTriggeredIV
 
 
 The **NodeLevelHealthTriggeredIV** intervention class is a node-level intervention that distributes

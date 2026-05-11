@@ -1,4 +1,4 @@
-﻿# ReportMicrosporidia
+# ReportMicrosporidia
 
 
 The microsporidia report (ReportMicrosporidia.csv) tracks vector population counts broken down by

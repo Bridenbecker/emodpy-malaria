@@ -1,4 +1,4 @@
-﻿# NodePropertyValueChanger
+# NodePropertyValueChanger
 
 
 The **NodePropertyValueChanger** intervention class sets a given node property to a new value. You can

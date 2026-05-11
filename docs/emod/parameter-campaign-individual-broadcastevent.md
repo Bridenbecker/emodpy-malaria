@@ -1,4 +1,4 @@
-﻿# BroadcastEvent
+# BroadcastEvent
 
 
 The **BroadcastEvent** intervention class is an individual-level class that immediately broadcasts

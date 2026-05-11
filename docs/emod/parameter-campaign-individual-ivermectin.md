@@ -1,4 +1,4 @@
-﻿# Ivermectin
+# Ivermectin
 
 
 The **Ivermectin** intervention class modifies the feeding outcome probabilities for both indoor-

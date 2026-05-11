@@ -1,4 +1,4 @@
-﻿# OutbreakIndividual
+# OutbreakIndividual
 
 
 The **OutbreakIndividual** intervention class introduces contagious diseases that are compatible
@@ -38,9 +38,9 @@ example that follows shows one potential configuration.
                 "Demographic_Coverage": 0.001,
                 "Intervention_Config": {
                     "class": "OutbreakIndividual",
-                    "Clade": 1,
-                    "Genome": 3,
-                    "IgnoreImmunity": 1
+                    "IgnoreImmunity": 1,
+                    "Antigen": 0,
+                    "Genome": 0
                 }
             }
         }

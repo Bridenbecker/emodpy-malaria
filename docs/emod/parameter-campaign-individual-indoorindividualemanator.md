@@ -1,4 +1,4 @@
-﻿# IndoorIndividualEmanator
+# IndoorIndividualEmanator
 
 
 The **IndoorIndividualEmanator** intervention class is a house modification intervention and it imitates the use of

@@ -1,4 +1,4 @@
-﻿# ReportDrugStatus
+# ReportDrugStatus
 
 
 
@@ -15,10 +15,7 @@ parameters to limit the size of the output file. You cannot filter based on the 
 
 To generate this report, configure the following parameters in the custom_report.json file:
 
-| Parameter | Data type | Min | Max | Default | Description |
-| --- | --- | --- | --- | --- | --- |
-| `End_Day` | float | 0 | 3.40E+38 | 3.40E+38 | The day to stop collecting data for the report. |
-| `Start_Day` | float | 0 | 3.40E+38 | 0 | The day to start collecting data for the report. |
+{{ read_csv('../csv/report-drug-status.csv', keep_default_na=False) }}
 
 ```json
 {

@@ -1,4 +1,4 @@
-﻿# Geography and environment
+# Geography and environment
 
 
 The following parameters determine characteristics of the geography and environment of the simulation.

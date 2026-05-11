@@ -1,4 +1,4 @@
-﻿# CalendarEventCoordinator
+# CalendarEventCoordinator
 
 
 The **CalendarEventCoordinator** coordinator class distributes individual-level interventions at a specified

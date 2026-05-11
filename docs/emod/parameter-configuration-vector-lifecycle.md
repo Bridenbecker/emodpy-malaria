@@ -1,4 +1,4 @@
-﻿# Vector life cycle
+# Vector life cycle
 
 
 The following parameters determine the characteristics of the vector life cycle. Set the vector species

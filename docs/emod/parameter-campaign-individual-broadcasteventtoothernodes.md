@@ -1,4 +1,4 @@
-﻿# BroadcastEventToOtherNodes
+# BroadcastEventToOtherNodes
 
 
 The **BroadcastEventToOtherNodes** intervention class allows events to be sent from one node to

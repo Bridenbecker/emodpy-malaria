@@ -1,4 +1,4 @@
-﻿# MultiNodeInterventionDistributor
+# MultiNodeInterventionDistributor
 
 
 The **MultiNodeInterventionDistributor** intervention class is a node-level intervention that

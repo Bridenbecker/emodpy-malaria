@@ -1,4 +1,4 @@
-﻿# MultiEffectBoosterVaccine
+# MultiEffectBoosterVaccine
 
 
 The **MultiEffectBoosterVaccine** intervention class is derived from

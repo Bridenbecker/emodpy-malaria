@@ -1,4 +1,4 @@
-﻿# MultiEffectVaccine
+# MultiEffectVaccine
 
 
 The **MultiEffectVaccine** intervention class implements vaccine campaigns in the simulation.

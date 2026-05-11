@@ -15,13 +15,7 @@ the size of the database.
 
 To generate this report, configure the following parameters in the custom_report.json file:
 
-| Parameter | Data type | Min | Max | Default | Description |
-| --- | --- | --- | --- | --- | --- |
-| `Include_Drug_Status_Table` | boolean | NA | NA | 0 | A true value (1) includes the table that provides data at each time step for each drug the person has. |
-| `Include_Health_Table` | boolean | NA | NA | 1 | A true value (1) includes the Health table which has data for each time step for the health of an individual. |
-| `Include_Infection_Data_Table` | boolean | NA | NA | 1 | A true value (1) includes the InfectionData table which has data for each time step for each active infection. |
-| `End_Day` | float | 0 | 3.40E+38 | 3.40E+38 | The day to stop collecting data for the report. |
-| `Start_Day` | float | 0 | 3.40E+38 | 0 | The day to start collecting data. |
+{{ read_csv('../csv/report-sql-malaria-genetics.csv', keep_default_na=False) }}
 
 ```json
 {

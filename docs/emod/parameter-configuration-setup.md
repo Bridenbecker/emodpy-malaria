@@ -1,4 +1,4 @@
-﻿# Simulation setup
+# Simulation setup
 
 
 These parameters determine the basic setup of a simulation including the type of simulation you are

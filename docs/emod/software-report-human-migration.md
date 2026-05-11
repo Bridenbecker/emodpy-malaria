@@ -1,4 +1,4 @@
-﻿# ReportHumanMigrationTracking
+# ReportHumanMigrationTracking
 
 
 The human migration tracking report (ReportHumanMigrationTracking.csv) is a CSV-formatted report

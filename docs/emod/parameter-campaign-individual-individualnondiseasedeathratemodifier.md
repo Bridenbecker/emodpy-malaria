@@ -1,4 +1,4 @@
-﻿# IndividualNonDiseaseDeathRateModifier
+# IndividualNonDiseaseDeathRateModifier
 
 
 The **IndividualNonDiseaseDeathRateModifier** intervention class provides a method of modifying 

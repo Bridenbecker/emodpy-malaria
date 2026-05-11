@@ -1,4 +1,4 @@
-﻿# StandardDiagnostic
+# StandardDiagnostic
 
 
 The **StandardDiagnostic** intervention class identifies infected individuals, regardless of disease

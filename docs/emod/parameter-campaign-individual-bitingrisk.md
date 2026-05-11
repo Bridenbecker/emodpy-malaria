@@ -1,4 +1,4 @@
-﻿# BitingRisk
+# BitingRisk
 
 
 The **BitingRisk** class allows you to adjust the relative risk that the person is bitten by a

@@ -1,4 +1,4 @@
-﻿# ImmunityBloodTest
+# ImmunityBloodTest
 
 Note: This intervention has not been thoroughly tested and may not work as expected.
 

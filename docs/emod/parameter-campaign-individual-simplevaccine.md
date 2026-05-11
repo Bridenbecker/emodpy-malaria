@@ -1,4 +1,4 @@
-﻿# SimpleVaccine
+# SimpleVaccine
 
 
 The **SimpleVaccine** intervention class implements vaccine campaigns in the simulation. Vaccines can have

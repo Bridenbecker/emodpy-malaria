@@ -1,4 +1,4 @@
-﻿# MultiInsecticideIRSHousingModification
+# MultiInsecticideIRSHousingModification
 
 
 The **MultiInsecticideIRSHousingModification** intervention class is an individual-level intervention

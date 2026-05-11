@@ -1,4 +1,4 @@
-﻿# StandardInterventionDistributionEventCoordinator
+# StandardInterventionDistributionEventCoordinator
 
 
 The **StandardInterventionDistributionEventCoordinator** coordinator class distributes an individual-level or

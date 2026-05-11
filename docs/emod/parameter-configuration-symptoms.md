@@ -1,4 +1,4 @@
-﻿# Symptoms and diagnosis
+# Symptoms and diagnosis
 
 
 The following parameters determine the characteristics of malaria diagnosis and symptoms as the

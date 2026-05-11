@@ -13,16 +13,7 @@ See [software-migration-vector](software-migration-vector.md) for more informati
 
 To generate the report, configure the following parameters in the custom_reports.json file:
 
-| Parameter | Data type | Min | Max | Default | Description |
-| --- | --- | --- | --- | --- | --- |
-| `End_Day` | float | 0 | 3.40E+38 | 3.40E+38 | The day to stop collecting data for the report. |
-| `Start_Day` | float | 0 | 3.40E+38 | 0 | The day to start collecting data for the report. |
-| `Species_List` | array of strings | NA | NA | [] | The species for which to include information. If the list is empty or absent, then data for all species will be collected. |
-| `Must_Be_In_State` | array of enums | NA | NA | [] | A list of vector states for which you want to record the migration. Only STATE_MALE, STATE_ADULT, STATE_INFECTED, STATE_INFECTIOUS migrate. |
-| `Must_Be_From_Node` | array of integers | 1 | 2147480000 | [] | A list of node IDs. A vector must be travelling FROM one of these nodes to be recorded into the report. Empty list means vectors traveling from any/all nodes will be recorded. |
-| `Must_Be_To_Node` | array of integers | 1 | 2147480000 | [] | A list of node IDs. A vector must be travelling TO one of these nodes to be recorded into the report. Empty list means vectors traveling from any/all nodes will be recorded. |
-| `Include_Genome_Data` | boolean | NA | NA | 0 | If set to true (1), adds a Genome column for migrating vectors. Vectors with no custom alleles will still have their sex alleles listed. |
-| `Filename_Suffix` | string | NA | NA | (empty string) | Augments the filename of the report. If multiple reports are being generated, this allows you to distinguish among the multiple reports. |
+{{ read_csv('../csv/report-vector-migration.csv', keep_default_na=False) }}
 
 ```json
 {

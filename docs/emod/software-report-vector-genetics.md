@@ -13,21 +13,7 @@ be collected on one species per report.
 
 To generate this report, the following parameters must be configured in the custom_reports.json file:
 
-| Parameter | Data type | Min | Max | Default | Description |
-| --- | --- | --- | --- | --- | --- |
-| `Filename_Suffix` | string | NA | NA | (empty string) | Augments the filename of the report. If multiple reports are being generated, this allows you to distinguish among the multiple reports. |
-| `Start_Day` | float | 0 | 3.40282e+38 | 0 | The day of the simulation to start collecting data. |
-| `End_Day` | float | 0 | 3.40282e+38 | 3.40282e+38 | The day of the simulation to stop collecting data. |
-| `Node_IDs_Of_Interest` | array of integers | 0 | 2.14748e+09 | [] | Data will be collected for the nodes in this list. Empty list implies all nodes. |
-| `Allele_Combinations_For_Stratification` | array of strings | NA | NA | [] | If stratifying by allele, this will be the list of alleles to stratify by. Depends on **Stratify_By** = ALLELE. |
-| `Alleles_For_Stratification` | array of strings | NA | NA | [] | The list of alleles for which to collect frequency counts. If the list is empty, the report uses a list of all possible alleles. Depends on **Stratify_By** = ALLELE_FREQ. |
-| `Combine_Similar_Genomes` | boolean | NA | NA | [] | If set to true (1), genomes are combined for each locus (ignoring gender) if the set of alleles of the two genomes are the same. Note that '1-0' is considered to be the same as '0-1'. Depends on **Stratify_By** = GENOME or SPECIFIC_GENOME. |
-| `Gender` | enum | NA | NA | VECTOR_FEMALE | The gender to include in the file; possible values are VECTOR_FEMALE, VECTOR_MALE, and VECTOR_BOTH_GENDERS. |
-| `Include_Vector_State_Columns` | boolean | NA | NA | 1 | If set to true (1), the columns for each vector state (Eggs, Larvae, etc) will be included. |
-| `Include_Death_By_State_Columns` | boolean | NA | NA | 0 | Adds columns for the number of vectors that died in this state during this time step as well as the average age at death. It adds two columns for each of the following states: ADULT, INFECTED, INFECTIOUS, and MALE. |
-| `Species` | string | NA | NA | (if not specified, the first species found will be used) | The species to include information on; the name must exist in **Vector_Species_Params** in the config.json file. The name will be added to the report name. |
-| `Specific_Genome_Combinations_For_Stratification` | array of strings | NA | NA | NA | If stratifying by SPECIFIC_GENOME, this is the list of genomes to stratify by. '*' will list all entries at that location, and '?' will combine all entries at that location. Depends on **Stratify_By** = SPECIFIC_GENOME. |
-| `Stratify_By` | enum | NA | NA | GENOME | Determines how the report will be stratified; possible values are GENOME, SPECIFIC_GENOME, and ALLELE. |
+{{ read_csv('../csv/report-vector-genetics.csv', keep_default_na=False) }}
 
 The following is an example of an input file for this report:
 

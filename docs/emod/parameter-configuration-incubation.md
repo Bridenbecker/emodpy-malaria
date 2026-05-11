@@ -1,4 +1,4 @@
-﻿# Incubation
+# Incubation
 
 
 The following parameters determine the characteristics of the incubation period.

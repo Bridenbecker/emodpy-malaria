@@ -1,4 +1,4 @@
-﻿# SpatialRepellentHousingModification
+# SpatialRepellentHousingModification
 
 
 The **SpatialRepellentHousingModification** intervention class is a housing modification utilizing

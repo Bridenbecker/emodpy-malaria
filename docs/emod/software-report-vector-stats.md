@@ -12,14 +12,7 @@ node ID, and (optionally) species.
 
 To generate this report, the following parameters must be configured in the custom_reports.json file:
 
-| Parameter | Data type | Min | Max | Default | Description |
-| --- | --- | --- | --- | --- | --- |
-| `Species_List` | array of strings | NA | NA | [] | The species for which to include information. If the list is empty or absent, then data for all species will be collected. |
-| `Stratify_By_Species` | boolean | NA | NA | 0 | If set to true (1), then data will be stratified by species for each node. |
-| `Include_Wolbachia_Columns` | boolean | NA | NA | 0 | If set to true (1), columns will be added for each type of Wolbachia. Summation of columns should be equal to VectorPopulation. |
-| `Include_Gestation_Columns` | boolean | NA | NA | 0 | If set to true (1), columns will be added for feeding and gestation. |
-| `Include_Death_By_State_Columns` | boolean | NA | NA | 0 | Adds columns for the number of vectors that died in this state during this time step as well as the average age at death. It adds two columns for each of the following states: ADULT, INFECTED, INFECTIOUS, and MALE. |
-| `Include_Microsporidia_Columns` | boolean | NA | NA | 0 | If set to true (1), columns will be added for each state and the value in the column will be the number of vectors that have microsporidia in that state during this time step. |
+{{ read_csv('../csv/report-vector-stats.csv', keep_default_na=False) }}
 
 ```json
 {

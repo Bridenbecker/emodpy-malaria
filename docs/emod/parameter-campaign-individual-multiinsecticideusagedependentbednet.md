@@ -1,4 +1,4 @@
-﻿# MultiInsecticideUsageDependentBednet
+# MultiInsecticideUsageDependentBednet
 
 
 The **MultiInsecticideUsageDependentBednet** intervention class is an individual-level intervention

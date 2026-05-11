@@ -1,4 +1,4 @@
-﻿# ArtificialDiet
+# ArtificialDiet
 
 
 The **ArtificialDiet** intervention class is used to include feeding stations for vectors within a
