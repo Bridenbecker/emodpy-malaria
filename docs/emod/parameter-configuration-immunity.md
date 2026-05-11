@@ -1,4 +1,4 @@
-﻿# Immunity
+# Immunity
 
 
 The following parameters determine the immune system response for the disease being modeled, including

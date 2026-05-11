@@ -1,4 +1,4 @@
-﻿# IndividualImmunityChanger
+# IndividualImmunityChanger
 
 
 The **IndividualImmunityChanger** intervention class acts essentially as a

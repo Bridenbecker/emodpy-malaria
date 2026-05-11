@@ -1,4 +1,4 @@
-﻿# IndoorSpaceSpraying
+# IndoorSpaceSpraying
 
 
 The **IndoorSpaceSpraying** intervention class is a node-level vector control mechanism that works

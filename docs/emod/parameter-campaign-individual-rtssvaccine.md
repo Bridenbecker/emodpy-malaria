@@ -1,4 +1,4 @@
-﻿# RTSSVaccine
+# RTSSVaccine
 
 
 The **RTSSVaccine** intervention class protects individuals against infection acquisition by

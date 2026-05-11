@@ -1,4 +1,4 @@
-﻿# DelayedIntervention
+# DelayedIntervention
 
 
 The **DelayedIntervention** intervention class introduces a delay between when the intervention is

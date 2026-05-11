@@ -1,4 +1,4 @@
-﻿# SurveillanceEventCoordinator
+# SurveillanceEventCoordinator
 
 
 

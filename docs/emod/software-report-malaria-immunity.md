@@ -16,16 +16,7 @@ more naive the individual's immune system is to malaria.
 
 To generate this report, the following parameters must be configured in the custom_reports.json file:
 
-| Parameter | Data type | Min | Max | Default | Description |
-| --- | --- | --- | --- | --- | --- |
-| `Filename_Suffix` | string | NA | NA | (empty string) | Augments the filename of the report. If multiple reports are being generated, this allows you to distinguish among the multiple reports. |
-| `Start_Day` | float | 0 | 3.40282e+38 | 0 | The day of the simulation to start collecting data. |
-| `End_Day` | float | 0 | 3.40282e+38 | 3.40282e+38 | The day of the simulation to stop collecting data. |
-| `Node_IDs_Of_Interest` | array of integers | 0 | 2.14748e+09 | [] | Data will be collected for the nodes in this list. Empty list implies all nodes. |
-| `Reporting_Interval` | integer | 1 | 1000000 | 1000000 | Defines the cadence of the report by specifying how many time steps to collect data before writing to the file. This will limit system memory usage and is advised when large output files are expected. |
-| `Max_Number_Reports` | integer | 0 | 1000000 | 1 | The maximum number of report output files that will be produced for a given campaign. |
-| `Pretty_Format` | boolean | 0 | 1 | 0 | True (1) sets pretty JSON formatting. The default, false (0), saves space. |
-| `Age_Bins` | array of integers | 0 | 125 | [] | The age bins (in years, in ascending order) to aggregate within and report. An empty array does not stratify by age. |
+{{ read_csv('../csv/report-malaria-immunity.csv', keep_default_na=False) }}
 
 ```json
 {

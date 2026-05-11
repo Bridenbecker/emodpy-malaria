@@ -1,4 +1,4 @@
-﻿# SimpleHealthSeekingBehavior
+# SimpleHealthSeekingBehavior
 
 
 The **SimpleHealthSeekingBehavior** intervention class models the time delay that typically occurs
@@ -32,7 +32,7 @@ example that follows shows one potential configuration.
     "Events": [
         {
             "class": "CampaignEvent",
-            "Event_Name": "Drugs after TB activation",
+            "Event_Name": "Testing after new infection",
             "Start_Day": 9125,
             "Nodeset_Config": {
                 "class": "NodeSetAll"
@@ -50,13 +50,11 @@ example that follows shows one potential configuration.
                         "Event_Or_Config": "Config",
                         "Tendency": 0.0015,
                         "Actual_IndividualIntervention_Config": {
-                            "class": "AntiTBDrug",
-                            "Cost_To_Consumer": 90,
-                            "Drug_Type": "FirstLineCombo",
-                            "Durability_Profile": "FIXED_DURATION_CONSTANT_EFFECT",
-                            "Primary_Decay_Time_Constant": 180,
-                            "Remaining_Doses": 1,
-                            "Secondary_Decay_Time_Constant": 0
+                            "class": "SimpleDiagnostic",
+                            "Base_Sensitivity": 0.9,
+                            "Base_Specificity": 0.8,
+                            "Event_Or_Config": "Event",
+                            "Positive_Diagnosis_Event": "TestedPositive"
                         }
                     }
                 }

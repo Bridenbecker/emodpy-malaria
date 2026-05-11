@@ -1,4 +1,4 @@
-﻿# SugarTrap
+# SugarTrap
 
 
 The **SugarTrap** intervention class implements a vector sugar-baited trap to collect/kill

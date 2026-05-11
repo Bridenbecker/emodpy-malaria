@@ -1,4 +1,4 @@
-﻿# IVCalendar
+# IVCalendar
 
 
 The **IVCalendar** intervention class contains a list of ages when an individual will receive the

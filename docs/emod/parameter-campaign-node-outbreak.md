@@ -1,4 +1,4 @@
-﻿# Outbreak
+# Outbreak
 
 
 The **Outbreak** class allows the introduction of a disease outbreak event by the addition of new

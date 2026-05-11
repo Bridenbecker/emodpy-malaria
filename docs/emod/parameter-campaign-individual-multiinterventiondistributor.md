@@ -1,4 +1,4 @@
-﻿# MultiInterventionDistributor
+# MultiInterventionDistributor
 
 
 The **MultiInterventionDistributor** intervention class allows you to input a list of

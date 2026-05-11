@@ -1,4 +1,4 @@
-﻿# CoverageByNodeEventCoordinator
+# CoverageByNodeEventCoordinator
 
 
 The **CoverageByNodeEventCoordinator** coordinator class distributes individual-level interventions and is

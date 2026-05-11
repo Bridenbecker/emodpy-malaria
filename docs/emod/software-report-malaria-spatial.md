@@ -13,18 +13,7 @@ output report by adding **Start_Day** and a **Reporting_Interval**.
 
 To generate the report, configure the following parameters in the custom_report.json file:
 
-| Parameter | Data type | Min | Max | Default | Description |
-| --- | --- | --- | --- | --- | --- |
-| `Filename_Suffix` | string | NA | NA | (empty string) | Augments the filename of the report. If multiple reports are being generated, this allows you to distinguish among the multiple reports. |
-| `Start_Day` | float | 0 | 3.40282e+38 | 0 | The day of the simulation to start collecting data. |
-| `End_Day` | float | 0 | 3.40282e+38 | 3.40282e+38 | The day of the simulation to stop collecting data. |
-| `Node_IDs_Of_Interest` | array of integers | 0 | 2.14748e+09 | [] | Data will be collected for the nodes in this list. Empty list implies all nodes. |
-| `Min_Age_Years` | float | 0 | 9.3228e+35 | 0 | Minimum age in years of people to collect data on. |
-| `Max_Age_Years` | float | 0 | 9.3228e+35 | 9.3228e+35 | Maximum age in years of people to collect data on. |
-| `Must_Have_IP_Key_Value` | string | NA | NA | (empty string) | A Key:Value pair that the individual must have in order to be included. Empty string means to not include IPs in the selection criteria. |
-| `Must_Have_Intervention` | string | NA | NA | (empty string) | The name of the intervention that the person must have in order to be included. Empty string means to not include interventions in the selection criteria. |
-| `Reporting_Interval` | float | 0 | 3.40E+38 | 1 | The number of days to collect data and average over. |
-| `Spatial_Output_Channels` | list of strings | NA | NA | (empty string) | An array of channel names for spatial output by node and time step. The data from each channel will be written to a separate binary file. See the table below for all possible channels. |
+{{ read_csv('../csv/report-malaria-spatial.csv', keep_default_na=False) }}
 
 For more information on spatial reports, see [SpatialReport](software-report-spatial.md).
 

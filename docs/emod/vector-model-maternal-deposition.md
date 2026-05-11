@@ -1,4 +1,4 @@
-﻿# Maternal deposition
+# Maternal deposition
 
 
 Maternal deposition models the transfer of Cas9 protein (not DNA) from mother to offspring. In

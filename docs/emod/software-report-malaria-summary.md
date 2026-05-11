@@ -12,28 +12,7 @@ infectiousness.
 
 To generate this report, the following parameters must be configured in the custom_reports.json file:
 
-| Parameter | Data type | Min | Max | Default | Description |
-| --- | --- | --- | --- | --- | --- |
-| `Filename_Suffix` | string | NA | NA | (empty string) | Augments the filename of the report. If multiple reports are being generated, this allows you to distinguish among the multiple reports. |
-| `Start_Day` | float | 0 | 3.40282e+38 | 0 | The day of the simulation to start collecting data. |
-| `End_Day` | float | 0 | 3.40282e+38 | 3.40282e+38 | The day of the simulation to stop collecting data. |
-| `Node_IDs_Of_Interest` | array of integers | 0 | 2.14748e+09 | [] | Data will be collected for the nodes in this list. Empty list implies all nodes. |
-| `Must_Have_IP_Key_Value` | string | NA | NA | (empty string) | A Key:Value pair that the individual must have in order to be included. Empty string means to not include IPs in the selection criteria. |
-| `Must_Have_Intervention` | string | NA | NA | (empty string) | The name of the intervention that the person must have in order to be included. Empty string means to not include interventions in the selection criteria. |
-| `Reporting_Interval` | integer | 1 | 1000000 | 1000000 | Defines the cadence of the report by specifying how many time steps to collect data before writing to the file. This will limit system memory usage and is advised when large output files are expected. |
-| `Max_Number_Reports` | integer | 0 | 1000000 | 1 | The maximum number of report output files that will be produced for a given campaign per simulation. |
-| `Pretty_Format` | boolean | 0 | 1 | 0 | True (1) sets pretty JSON formatting. The default, false (0), saves space. |
-| `Age_Bins` | array of floats | 0 | 125 | [10,20,30,40,50,60,70,80,90,100,1000] | The age bins to aggregate within and report. Data must be in ascending order. |
-| `Parasitemia_Bins` | float | -3.40E+38 | 3.40E+38 | [50,500,5000,50000,FLT_MAX] | Parasitemia bins to aggregate within and report. A value greater than or equal to zero in the first bin indicates that the uninfected people should be added to this bin. The values must be in ascending order. |
-| `Infectiousness_Bins` | float | -3.40E+38 | 3.40E+38 | [20,40,60,80,100] | Infectiousness bins to aggregate within and report. |
-| `Individual_Property_Filter` | string | NA | NA | (empty string) | The individual 'property:value' to filter on. The default of an empty string means the report is not filtered. For example: 'Risk:High'. |
-| `Include_DataByTimeAndPfPRBinsAndAgeBins` | boolean | 0 | 1 | 1 | When set to true, the 'DataByTimeAndPfPRBinsAndAgeBins' element is included in the report. You can save disk space by setting this to false. |
-| `Include_DataByTimeAndInfectiousnessBinsAndPfPRBinsAndAgeBins` | boolean | 0 | 1 | 0 | When set to true, the 'DataByTimeAndInfectiousnessBinsAndPfPRBinsAndAgeBins' element is included in the report. You can save disk space by setting this to false. |
-| `Add_True_Density_Vs_Threshold` | boolean | 0 | 1 | 0 | If set to true, four new channels will be added to the report that use true density instead of measured. These additional channels are: 'PfPR_2to10-True', 'PfPR by Age Bin-True', 'Pf Gametocyte Prevalence by Age Bin-True', and 'Mean Log Parasite Density by Age Bin-True'. The true densities will be compared to thresholds: **Detection_Threshold_True_Parasite_Density** and **Detection_Threshold_True_Gametocyte_Density**. |
-| `Detection_Threshold_True_Parasite_Density` | float | 0 | 3.40282e+38 | 0 | Used when **Add_True_Density_Vs_Threshold** is true. The true parasite density is compared against this threshold. It impacts the 'PfPR_2to10-True', 'PfPR by Age Bin-True', and 'Mean Log Parasite Density by Age Bin-True' channels. |
-| `Detection_Threshold_True_Gametocyte_Density` | float | 0 | 3.40282e+38 | 0 | Used when **Add_True_Density_Vs_Threshold** is true. The true gametocyte density is compared against this threshold. It impacts the 'Pf Gametocyte Prevalence by Age Bin-True' channel. |
-| `Add_Prevalence_By_HRP2` | boolean | 0 | 1 | 0 | If true, the 'PfPR_2to10-HRP2' and the 'PfPR by Age Bin-HRP2' channels will be added. These channels will use **Detection_Threshold_True_HRP2** to determine if a person's HRP2 level counts towards prevalence. |
-| `Detection_Threshold_True_HRP2` | float | 0 | 3.40282e+38 | 0 | Used when **Add_Prevalence_By_HRP2** is true. If the true HRP2 value is greater than this threshold, the prevalence will be increased in the 'PfPR_2to10-HRP2' and the 'PfPR by Age Bin-HRP2' channels. |
+{{ read_csv('../csv/report-malaria-summary.csv', keep_default_na=False) }}
 
 ```json
 {

@@ -1,4 +1,4 @@
-﻿# BirthTriggeredIV
+# BirthTriggeredIV
 
 
 Note: This intervention has been replaced by NodeLevelHealthTriggeredIV, which provides more flexibility and can be

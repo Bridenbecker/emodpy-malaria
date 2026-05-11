@@ -1,4 +1,4 @@
-﻿# SpaceSpraying
+# SpaceSpraying
 
 
 The **SpaceSpraying** intervention class implements node-level vector control by spraying pesticides

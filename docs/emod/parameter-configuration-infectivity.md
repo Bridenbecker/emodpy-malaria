@@ -1,4 +1,4 @@
-﻿# Infectivity and transmission
+# Infectivity and transmission
 
 
 The following parameters determine aspects of infectivity and disease transmission. For example,

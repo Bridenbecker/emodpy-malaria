@@ -11,13 +11,7 @@ example charts provided at the end of this page.)
 
 The following parameters in the config.json file control the InsetChart.json report.
 
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| Enable_Default_Reporting | boolean | 0 | Controls whether or not the InsetChart.json report is created. |
-| Inset_Chart_Has_IP | array of strings | [] | Adds a `HasIP_<Key>:<Value>` channel for each value of each individual property key listed. Keys must be defined in the demographics file. If the list is empty, no channels are added. |
-| Inset_Chart_Has_Interventions | array of strings | [] | Adds a `Has_<InterventionName>` channel for each intervention name listed. The **Intervention_Name** parameter in the campaign must match the values listed here. If the list is empty, no channels are added. |
-| Inset_Chart_Include_Pregnancies | boolean | 0 | If set to 1, adds channels about pregnancies and possible mothers. |
-| Inset_Chart_Reporting_Include_30Day_Avg_Infection_Duration | boolean | 1 | If set to 0, removes the "30-day Avg Infection Duration" channel from the report. |
+{{ read_csv('../csv/report-inset-chart.csv', keep_default_na=False) }}
 
 
 ## Output file data

@@ -11,6 +11,9 @@
 *COMPS_ID
 *Eradication
 
+tests/executables/
+tutorials/executables/
+
 
 # Binary
 *.exe
@@ -37,8 +40,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Sphinx documentation
-docs/_build/
+
+# mkdocs documentation
+/site
 docs/emodpy_malaria*
 emodpy_malaria.egg-info/
 

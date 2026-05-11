@@ -1,4 +1,4 @@
-﻿# MalariaChallenge
+# MalariaChallenge
 
 
 The **MalariaChallenge** intervention class is a node-level intervention similar to

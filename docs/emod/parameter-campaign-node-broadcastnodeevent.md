@@ -1,4 +1,4 @@
-﻿# BroadcastNodeEvent
+# BroadcastNodeEvent
 
 
 
@@ -9,8 +9,6 @@ broadcasted event. You can also use this for the reporting of the broadcasted ev
 configuraton parameters, **Report_Node_Event_Recorder** and **Report_Surveillance_Event_Recorder**,
 which listen to events to be recorded. You must use this coordinator class with listeners that are
 operating on the same core. You can also use [parameter-campaign-node-nlhtivnode](parameter-campaign-node-nlhtivnode.md).
-
-For more information, see [emod:dev-architecture-core](emod:dev-architecture-core.md).
 
 !!! note
     Parameters are case-sensitive. For Boolean parameters, set to 1 for true or 0 for false.

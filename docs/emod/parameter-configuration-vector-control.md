@@ -1,4 +1,4 @@
-﻿# Vector control
+# Vector control
 
 
 The following parameters determine the characteristics of campaign interventions aimed at vector

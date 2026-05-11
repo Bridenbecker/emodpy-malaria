@@ -125,7 +125,7 @@ def build_campaign():
     from emodpy_malaria.interventions.treatment_seeking import add_treatment_seeking
     from emodpy_malaria.interventions.bednet import add_itn_scheduled
 
-    campaign.set_schema(manifest.schema_file)
+    campaign.set_schema(manifest.schema_path)
 
     if use_treatment_seeking:
         add_treatment_seeking(campaign,
@@ -294,12 +294,14 @@ def run_experiment():
         config_path="config.json",
         eradication_path=manifest.eradication_path,
         campaign_builder=build_campaign,
-        schema_path=manifest.schema_file,
+        schema_path=manifest.schema_path,
         ep4_custom_cb=None,
         param_custom_cb=build_config,
         demog_builder=build_demog,
         plugin_report=None
     )
+
+    task.config.parameters.x_Base_Population *= manifest.x_Base_Population_scale
 
     # set_sif() tells EMOD which container image to use to run the executable.
     # For COMPS and SLURM, the image is a Singularity Image File (SIF);
@@ -329,6 +331,8 @@ def run_experiment():
     handle_results(experiment, platform, suffix)
 
     print("\nTutorial 3 is done.")
+
+    return experiment
 
 
 if __name__ == "__main__":

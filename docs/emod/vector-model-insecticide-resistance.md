@@ -1,4 +1,4 @@
-﻿# Insecticide resistance
+# Insecticide resistance
 
 
 EMOD models insecticide resistance as a genome-dependent modification of insecticide

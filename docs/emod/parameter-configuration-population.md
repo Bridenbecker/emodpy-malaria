@@ -1,4 +1,4 @@
-﻿# Population dynamics
+# Population dynamics
 
 
 The following parameters determine characteristics related to population dynamics, such as age

@@ -1,4 +1,4 @@
-﻿# Sampling
+# Sampling
 
 
 The following parameters determine how a population is sampled in the simulation. While you may

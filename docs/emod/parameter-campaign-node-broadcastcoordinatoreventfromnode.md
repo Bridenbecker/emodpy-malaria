@@ -1,4 +1,4 @@
-﻿# BroadcastCoordinatorEventFromNode
+# BroadcastCoordinatorEventFromNode
 
 
 
@@ -10,8 +10,6 @@ distribute this intervention to the node. The node intervention could then broad
 that a **TriggeredEventCoordinator** is listening for. One can use the 
 **Report_Coordinator_Event_Recorder** to report on the events broadcasted by this intervention. 
 Note, this coordinator class must be used with listeners that are operating on the same core. 
-
-For more information, see [emod:dev-architecture-core](emod:dev-architecture-core.md).
 
 !!! note
     Parameters are case-sensitive. For Boolean parameters, set to 1 for true or 0 for false.

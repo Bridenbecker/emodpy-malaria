@@ -1,4 +1,4 @@
-﻿# OutbreakIndividualMalariaGenetics
+# OutbreakIndividualMalariaGenetics
 
 
 The **OutbreakIndividualMalariaGenetics** intervention class is an individual-level intervention

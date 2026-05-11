@@ -1,4 +1,4 @@
-﻿# VectorSurveillanceEventCoordinator
+# VectorSurveillanceEventCoordinator
 
 
 The **VectorSurveillanceEventCoordinator** coordinator class samples the vector population

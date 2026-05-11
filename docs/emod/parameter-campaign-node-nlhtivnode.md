@@ -1,4 +1,4 @@
-﻿# NLHTIVNode
+# NLHTIVNode
 
 
 The **NLHTIVNode** intervention class distributes node-level interventions to nodes when a specific

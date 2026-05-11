@@ -1,4 +1,4 @@
-﻿# FirstNodeWithNodePropertyEventCoordinator
+# FirstNodeWithNodePropertyEventCoordinator
 
 
 The **FirstNodeWithNodePropertyEventCoordinator** coordinator class screens for

@@ -1,4 +1,4 @@
-﻿# AnimalFeedKill
+# AnimalFeedKill
 
 
 The **AnimalFeedKill** intervention class imposes node-targeted mortality to a vector that

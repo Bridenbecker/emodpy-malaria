@@ -1,4 +1,4 @@
-﻿# CommunityHealthWorkerEventCoordinator
+# CommunityHealthWorkerEventCoordinator
 
 
 The **CommunityHealthWorkerEventCoordinator** coordinator class is used to model a health care worker's ability

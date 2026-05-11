@@ -1,4 +1,4 @@
-﻿# Larval habitat
+# Larval habitat
 
 
 The following parameters determine mosquito larval development related to habitat and climate. For

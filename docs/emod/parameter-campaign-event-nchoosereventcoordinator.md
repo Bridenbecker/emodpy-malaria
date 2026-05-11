@@ -1,4 +1,4 @@
-﻿# NChooserEventCoordinator
+# NChooserEventCoordinator
 
 
 The **NChooserEventCoordinator** coordinator class is used to distribute an individual-level intervention to

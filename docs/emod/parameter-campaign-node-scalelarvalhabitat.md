@@ -1,4 +1,4 @@
-﻿# ScaleLarvalHabitat
+# ScaleLarvalHabitat
 
 
 The **ScaleLarvalHabitat** intervention class is a node-level intervention that enables

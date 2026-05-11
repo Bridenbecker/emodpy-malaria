@@ -1,4 +1,4 @@
-﻿# Parasite dynamics
+# Parasite dynamics
 
 
 The following parameters determine the dynamics of the *Plasmodium falciparum* parasite life cycle,

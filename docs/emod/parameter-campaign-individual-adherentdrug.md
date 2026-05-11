@@ -1,4 +1,4 @@
-﻿# AdherentDrug
+# AdherentDrug
 
 
 The **AdherentDrug** class is an individual-level intervention that extends

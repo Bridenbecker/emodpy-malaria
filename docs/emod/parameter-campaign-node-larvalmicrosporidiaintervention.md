@@ -1,4 +1,4 @@
-﻿# LarvalMicrosporidiaIntervention
+# LarvalMicrosporidiaIntervention
 
 
 The **LarvalMicrosporidiaIntervention** is a node-level intervention that mimics

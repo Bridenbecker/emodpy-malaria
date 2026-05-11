@@ -1,4 +1,4 @@
-﻿# ReportAntibodies
+# ReportAntibodies
 
 
 The antibodies report (ReportAntibodiesCapacity.csv or ReportAntibodiesConcentration.csv)  is a csv-formatted report that
@@ -17,19 +17,7 @@ Note: This report gets very large, very quickly as well as adding processing tim
 
 To generate this report, the following parameters must be configured in the custom_reports.json file:
 
-| Parameter | Data type | Min | Max | Default | Description |
-| --- | --- | --- | --- | --- | --- |
-| `Reporting_Interval` | float | 1.0 | 1000000.0 | 1.0 | Defines the cadence of the report in days (not timesteps). Data will be recorded every **Reporting_Interval** days starting with the **Start_Day**. This will limit system memory usage and is advised when large output files are expected. |
-| `Contain_Capacity_Data` | boolean | 0 | 1 | 0 | If true (1), the data for each antibody is the capacity of the antibody, otherwise it's the concentration. Report name will reflect this setting being either ReportAntibodiesCapacity.csv or ReportAntibodiesConcentration.csv. |
-| `Infected_Only` | boolean | 0 | 1 | 0 | If true (1), only individuals who are currently infected will be included in the report. |
-| `Start_Day` | float | 0 | 3.40282e+38 | 0 | The day of the simulation to start collecting data. |
-| `Filename_Suffix` | string | NA | NA | (empty string) | Augments the filename of the report. If multiple reports are being generated, this allows you to distinguish among the multiple reports. |
-| `End_Day` | float | 0 | 3.40282e+38 | 3.40282e+38 | The day of the simulation to stop collecting data. |
-| `Node_IDs_Of_Interest` | array of integers | 0 | 2.14748e+09 | [] | Data will be collected for the nodes in this list. Empty list implies all nodes. |
-| `Min_Age_Years` | float | 0 | 9.3228e+35 | 0 | Minimum age in years of people to collect data on. |
-| `Max_Age_Years` | float | 0 | 9.3228e+35 | 9.3228e+35 | Maximum age in years of people to collect data on. |
-| `Must_Have_IP_Key_Value` | string | NA | NA | (empty string) | A Key:Value pair that the individual must have in order to be included. Empty string means to not include IPs in the selection criteria. |
-| `Must_Have_Intervention` | string | NA | NA | (empty string) | The name of the intervention that the person must have in order to be included. Empty string means to not include interventions in the selection criteria. |
+{{ read_csv('../csv/report-antibodies.csv', keep_default_na=False) }}
 
 ```json
 {

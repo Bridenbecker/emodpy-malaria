@@ -1,4 +1,4 @@
-﻿# SimpleBednet
+# SimpleBednet
 
 
 The **SimpleBednet** intervention class implements *insecticide-treated nets (ITN)* in the

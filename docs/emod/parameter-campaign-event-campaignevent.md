@@ -1,4 +1,4 @@
-﻿# CampaignEvent
+# CampaignEvent
 
 
 The **CampaignEvent** event class determines when to distribute the intervention based on the first day of

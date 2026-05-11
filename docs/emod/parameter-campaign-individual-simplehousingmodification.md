@@ -1,4 +1,4 @@
-﻿# SimpleHousingModification
+# SimpleHousingModification
 
 
 The **SimpleHousingModification** intervention class implements a generic housing modification for

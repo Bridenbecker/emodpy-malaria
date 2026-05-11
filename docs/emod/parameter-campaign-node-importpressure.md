@@ -1,4 +1,4 @@
-﻿# ImportPressure
+# ImportPressure
 
 
 The **ImportPressure** intervention class extends **Outbreak** by importing infected individuals
@@ -6,6 +6,14 @@ into a node at a configurable rate over specified time periods. Each element in 
 **Daily_Import_Pressures** array is applied for the corresponding number of days in the
 **Durations** array, allowing time-varying importation schedules. The imported cases are
 created with the specified **Antigen**, **Genome**, and **Import_Age**.
+
+!!! warning
+    Be careful when configuring import pressure in multi-node simulations.
+    **Daily_Import_Pressures**  defines a rate of per-day importation for *each* node that the
+    intervention is distributed to. In a 10 node simulation with  **Daily_Import_Pressures** = [0.1,
+    5.0], the total importation rate summed over all nodes will be 1/day and 50/day during the two
+    time periods. You must divide the per-day importation rates by the number of
+    nodes.
 
 !!! note
     Parameters are case-sensitive. For Boolean parameters, set to 1 for true or 0 for false.

@@ -1,4 +1,4 @@
-﻿# OutdoorNodeEmanator
+# OutdoorNodeEmanator
 
 
 The **OutdoorNodeEmanator** intervention class implements node-level outdoor emanators against blood meal-seeking

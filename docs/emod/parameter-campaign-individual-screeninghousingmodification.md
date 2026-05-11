@@ -1,4 +1,4 @@
-﻿# ScreeningHousingModification
+# ScreeningHousingModification
 
 
 The **ScreeningHousingModification** intervention class implements housing screens as a vector

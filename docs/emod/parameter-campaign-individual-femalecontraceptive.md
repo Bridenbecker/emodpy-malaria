@@ -1,4 +1,4 @@
-﻿# FemaleContraceptive
+# FemaleContraceptive
 
 
 The **FemaleContraceptive** intervention class models contraceptive use among women.
@@ -38,29 +38,26 @@ example that follows shows one potential configuration.
     "Events": [
         {
             "class": "CampaignEvent",
-            "Start_Day": 1,
+            "Start_Day": 730,
             "Nodeset_Config": {
                 "class": "NodeSetAll"
             },
             "Event_Coordinator_Config": {
                 "class": "StandardInterventionDistributionEventCoordinator",
+                "Target_Demographic": "ExplicitGender",
+                "Target_Gender": "Female",
+                "Demographic_Coverage": 0.1,
                 "Intervention_Config": {
-                    "class": "NodeLevelHealthTriggeredIV",
-                    "Trigger_Condition_List": ["NewClinicalCase"],
-                    "Demographic_Coverage": 0.5,
-                    "Target_Gender": "Female",
-                    "Actual_IndividualIntervention_Config": {
-                        "class": "FemaleContraceptive",
-                        "Cost_To_Consumer": 5,
-                        "Usage_Duration_Distribution": "CONSTANT_DISTRIBUTION",
-                        "Usage_Duration_Constant": 180,
-                        "Usage_Expiration_Event": "ContraceptiveExpired",
-                        "Waning_Config": {
-                            "class": "WaningEffectBox",
-                            "Box_Duration": 180,
-                            "Initial_Effect": 0.95
-                        }
-                    }
+                    "class": "FemaleContraceptive",
+                    "Cost_To_Consumer": 1,
+                    "Waning_Config": {
+                        "class": "WaningEffectBox",
+                        "Box_Duration": 180,
+                        "Initial_Effect": 0.95
+                    },
+                    "Usage_Duration_Distribution": "CONSTANT_DISTRIBUTION",
+                    "Usage_Duration_Constant": 150,
+                    "Usage_Expiration_Event": "StopUsingContraceptive"
                 }
             }
         }

@@ -1,4 +1,4 @@
-﻿# IRSHousingModification
+# IRSHousingModification
 
 
 The **IRSHousingModification** intervention class includes Indoor Residual Spraying (IRS) in the

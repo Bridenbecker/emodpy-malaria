@@ -1,11 +1,11 @@
-Time,NodeID,IndividualID,Gender,AgeYears,InfectionID,Infectiousness,Duration,Hepatocytes,IRBCs,Gametocytes
-3860,340461476,2,F,10.5781,43849,0.0284654,150,0,0,139192
-3860,340461476,2,F,10.5781,45545,0.0284654,64,0,27840,1210790
-3860,340461476,2,F,10.5781,46841,0.0284654,40,0,49135672,19844972
-3860,340461476,3,F,10.5781,46552,0.00504362,45,0,968087656,5840196
-3860,340461476,3,F,10.5781,48748,0.00504362,1,2,0,0
-3860,340461476,4,F,10.5781,45360,0.000424559,70,0,94828401,9362813
-3860,340461476,4,F,10.5781,45739,0.000424559,59,0,3597469,120976
-3860,340461476,4,F,10.5781,47844,0.000424559,21,0,54126224439,33138
-3860,340461476,5,F,10.5781,45218,0.00516956,76,0,792561893,268984
-3860,340461476,5,F,10.5781,47272,0.00516956,32,0,2885685,41081329
+Parameter,Data type,Min,Max,Default,Description
+`Filename_Suffix`,string,NA,NA,(empty string),Suffix appended to the report filename. Required when configuring multiple instances of this report to prevent them from overwriting each other.
+`Start_Day`,float,0,3.40E+38,0,The day of the simulation to start collecting data.
+`End_Day`,float,0,3.40E+38,3.40E+38,The day of the simulation to stop collecting data.
+`Reporting_Interval`,float,1,1000000,1,The number of time steps between data collection periods. Increasing this value reduces output file size.
+`Include_Column_Hepatocyte`,boolean,NA,NA,1,"If set to true (1), a column is added to the report with the count of infected hepatocytes for the infection."
+`Include_Column_IRBC`,boolean,NA,NA,1,"If set to true (1), a column is added to the report with the number of infected red blood cells (IRBCs) for the infection."
+`Include_Column_Gametocyte`,boolean,NA,NA,1,"If set to true (1), a column is added to the report with the total number of mature gametocytes (male and female combined) for the infection."
+`Include_Data_Threshold_Hepatocytes`,float,0,3.40E+38,0,"Minimum hepatocyte count an infection must have for its row to be written. Only applies when **Include_Column_Hepatocyte** is true. A value of 0 disables this threshold. If this threshold is not met, the entire row is omitted even if other thresholds are met."
+`Include_Data_Threshold_IRBC`,float,0,3.40E+38,0,"Minimum IRBC count an infection must have for its row to be written. Only applies when **Include_Column_IRBC** is true. A value of 0 disables this threshold. If this threshold is not met, the entire row is omitted even if other thresholds are met."
+`Include_Data_Threshold_Gametocytes`,float,0,3.40E+38,0,"Minimum gametocyte count an infection must have for its row to be written. Only applies when **Include_Column_Gametocyte** is true. A value of 0 disables this threshold. If this threshold is not met, the entire row is omitted even if other thresholds are met."

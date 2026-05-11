@@ -9,9 +9,9 @@ contain values in the **Vector_Species_Params** configuration parameter. For exa
 **Vector_Species_Params** contained "funestus" and "gambiae", you could be able to see the average
 number of female vectors per node for both *A. funestus* and *A. gambiae*.
 
-To generate this report, you must set **Enable_Vector_Species_Report** to 1 in the config.json file.
+## Configuration
 
-
+To generate the report, set the **Enable_Vector_Species_Report** configuration parameter to 1.
 
 ## Header
 

@@ -1,4 +1,4 @@
-﻿# AntimalarialDrug
+# AntimalarialDrug
 
 
 The **AntimalarialDrug** intervention is used to apply drug-based control efforts to malaria

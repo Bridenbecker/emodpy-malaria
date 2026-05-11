@@ -13,12 +13,7 @@ contain information about malaria parasite counts.
 
 To generate this report, the following parameters must be configured in the custom_reports.json file:
 
-| Parameter | Data type | Min | Max | Default | Description |
-| --- | --- | --- | --- | --- | --- |
-| `Age_Bins` | array of floats | -3.04E+38 | 3.04E+38 | [] | The age bins (in years, in ascending order) to aggregate within and report. An empty array does not stratify by age. |
-| `IP_Key_To_Collect` | string | NA | NA | (empty string) | The name of the **IndividualProperties** (IP) key by which to stratify the report. An empty string means the report is not stratified by IP. |
-| `Stratify_By_Gender` | boolean | 0 | 1 | 1 | Set to true (1) to stratify by gender; a value of 0 will not stratify by gender. |
-| `Stratify_By_Has_Clinical_Symptoms` | boolean | NA | NA | 1 | If set to 1, the data will have an extra stratification for people who have clinical symptoms and those that do not. Default is 0 or no extra stratification. |
+{{ read_csv('../csv/report-malaria-node-demographics.csv', keep_default_na=False) }}
 
 ```json
 {

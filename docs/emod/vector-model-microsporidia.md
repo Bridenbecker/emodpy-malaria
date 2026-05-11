@@ -1,4 +1,4 @@
-﻿# Microsporidia Infection Model
+# Microsporidia Infection Model
 
 
 The model extends the standard VECTOR_SIM model to track endosymbiont infections and their

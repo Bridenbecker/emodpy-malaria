@@ -1,4 +1,4 @@
-﻿# UsageDependentBednet
+# UsageDependentBednet
 
 
 The **UsageDependentBednet** intervention class is similar to [parameter-campaign-individual-simplebednet](parameter-campaign-individual-simplebednet.md),

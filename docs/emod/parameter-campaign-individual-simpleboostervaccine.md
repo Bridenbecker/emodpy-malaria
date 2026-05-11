@@ -1,4 +1,4 @@
-﻿# SimpleBoosterVaccine
+# SimpleBoosterVaccine
 
 
 The **SimpleBoosterVaccine** intervention class is derived from [parameter-campaign-individual-simplevaccine](parameter-campaign-individual-simplevaccine.md)

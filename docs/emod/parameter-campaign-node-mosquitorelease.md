@@ -1,4 +1,4 @@
-﻿# MosquitoRelease
+# MosquitoRelease
 
 
 The **MosquitoRelease** intervention class adds mosquito release vector control programs to the simulation.

@@ -1,4 +1,4 @@
-﻿# MigrateFamily
+# MigrateFamily
 
 
 The **MigrateFamily** intervention class tells family groups of residents of the targeted node to go

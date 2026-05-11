@@ -1,33 +1,4 @@
-Time, NodeID, Gender, AgeYears, IndividualProp=Risk, NumIndividuals, NumInfected
-0,2,M,40, High,1455,0
-0,2,M,40, Low,627,0
-0,2,M,125, High,47,0
-0,2,M,125, Low,24,0
-0,2,F,40, High,1390,0
-0,2,F,40, Low,609,0
-0,2,F,125, High,43,0
-0,2,F,125, Low,22,0
-0,1,M,40, High,459,0
-0,1,M,40, Low,1630,0
-0,1,M,125, High,18,0
-0,1,M,125, Low,47,0
-0,1,F,40, High,439,0
-0,1,F,40, Low,1597,0
-0,1,F,125, High,17,0
-0,1,F,125, Low,67,0
-1,2,M,40, High,1455,0
-1,2,M,40, Low,627,0
-1,2,M,125, High,47,0
-1,2,M,125, Low,24,0
-1,2,F,40, High,1390,0
-1,2,F,40, Low,609,0
-1,2,F,125, High,43,0
-1,2,F,125, Low,22,0
-1,1,M,40, High,459,0
-1,1,M,40, Low,1630,26
-1,1,M,125, High,18,0
-1,1,M,125, Low,47,0
-1,1,F,40, High,439,1
-1,1,F,40, Low,1597,17
-1,1,F,125, High,17,0
-1,1,F,125, Low,67,0
+Parameter,Data type,Min,Max,Default,Description
+`Age_Bins`,array of floats,-3.04E+38,3.04E+38,[],"The age bins (in years, in ascending order) to aggregate within and report. An empty array does not stratify by age."
+`IP_Key_To_Collect`,string,NA,NA,(empty string),The name of the **IndividualProperties** (IP) key by which to stratify the report. An empty string means the report is not stratified by IP.
+`Stratify_By_Gender`,boolean,NA,NA,1,Set to true (1) to stratify by gender; a value of 0 will not stratify by gender.

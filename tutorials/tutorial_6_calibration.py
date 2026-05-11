@@ -71,6 +71,8 @@ from emodpy_malaria.reporters.builtin import add_malaria_summary_report
 
 import manifest
 
+_tutorials_dir = os.path.dirname(os.path.realpath(__file__))
+
 sim_years = 5
 
 CALIBRATION_PARAMETERS = [
@@ -83,8 +85,8 @@ CALIBRATION_PARAMETERS = [
     }
 ]
 
-N_SAMPLES    = 10   # parameter samples per iteration
-N_ITERATIONS =  5   # number of calibration iterations
+N_SAMPLES    = manifest.n_calibration_samples    # parameter samples per iteration
+N_ITERATIONS = manifest.n_calibration_iterations  # number of calibration iterations
 
 
 def constrain_sample(sample):
@@ -302,7 +304,7 @@ class TutorialCalibSite(CalibSite):
     """
 
     def __init__(self):
-        self.reference = pd.read_csv("tutorial_6_reference_pfpr.csv")
+        self.reference = pd.read_csv(os.path.join(_tutorials_dir, "tutorial_6_reference_pfpr.csv"))
         super().__init__(name="Tutorial_Site")
 
     def get_reference_data(self, reference_type=None):
@@ -381,7 +383,7 @@ def build_campaign():
     """
     import emod_api.campaign as campaign
 
-    campaign.set_schema(manifest.schema_file)
+    campaign.set_schema(manifest.schema_path)
     return campaign
 
 
@@ -449,12 +451,14 @@ def run_calibration():
         config_path="config.json",
         eradication_path=manifest.eradication_path,
         campaign_builder=build_campaign,
-        schema_path=manifest.schema_file,
+        schema_path=manifest.schema_path,
         ep4_custom_cb=None,
         param_custom_cb=build_config,
         demog_builder=build_demog,
         plugin_report=None
     )
+
+    task.config.parameters.x_Base_Population *= manifest.x_Base_Population_scale
 
     # set_sif() tells EMOD which container image to use to run the executable.
     # For COMPS and SLURM, the image is a Singularity Image File (SIF);

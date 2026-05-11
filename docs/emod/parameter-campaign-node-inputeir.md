@@ -1,4 +1,4 @@
-﻿# InputEIR
+# InputEIR
 
 
 The **InputEIR** intervention class enables the Entomological Inoculation Rate (EIR) to be

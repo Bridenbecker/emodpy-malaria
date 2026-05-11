@@ -1,4 +1,4 @@
-﻿# HumanHostSeekingTrap
+# HumanHostSeekingTrap
 
 
 The **HumanHostSeekingTrap** intervention class applies a trap that attracts and kills indoor host-seeking

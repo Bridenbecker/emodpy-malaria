@@ -1,4 +1,4 @@
-﻿# ControlledVaccine
+# ControlledVaccine
 
 
 The **ControlledVaccine** intervention class is a subclass of [parameter-campaign-individual-simplevaccine](parameter-campaign-individual-simplevaccine.md)
