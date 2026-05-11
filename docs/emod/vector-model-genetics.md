@@ -13,7 +13,7 @@ the inheritance and phenotypic effects of genetic loci in mosquito populations. 
 carries a diploid genome composed of up to 9 genetic loci with up to 8 alleles per locus. The
 system supports Mendelian inheritance, germline mutations, insecticide resistance, gene drives,
 sex-ratio distortion, and releases of genetically modified mosquitoes — all operating within the
-standard vector lifecycle described in [vector-model-transmission](vector-model-transmission.md). This allows researchers
+standard vector lifecycle described in [Vector transmission](vector-model-transmission.md). This allows researchers
 to investigate the spread of insecticide resistance, evaluate gene drive deployment strategies,
 and explore the interaction between vector genetics and malaria transmission in a spatially and
 temporally explicit setting.
@@ -263,7 +263,7 @@ Insecticide resistance is modeled through the interaction of vector genotype wit
 properties. Each insecticide in the simulation defines resistance profiles that specify which
 allele combinations confer resistance and how much protection they provide.
 
-Please see [vector-model-insecticide-resistance](vector-model-insecticide-resistance.md) for more information on configuring insecticide resistance.
+Please see [Insecticide resistance](vector-model-insecticide-resistance.md) for more information on configuring insecticide resistance.
 
 
 ## Gene drives
@@ -277,7 +277,7 @@ Note that gene drive is applied before gamete creation. A single parent genome i
 into a set of weighted genome-probability pairs by the drive, and Mendelian segregation then
 operates on those possibilities.
 
-Please see [vector-model-gene-drives](vector-model-gene-drives.md) for more information on configuring gene drives.
+Please see [Gene drives](vector-model-gene-drives.md) for more information on configuring gene drives.
 
 
 
@@ -293,7 +293,7 @@ Note that maternal deposition uses the mother's genome to modify both the female
 sets. The Cas9-driven allele changes originate from the mother regardless of which set of gametes
 is being modified.
 
-Please see [vector-model-maternal-deposition](vector-model-maternal-deposition.md) for full details on how maternal deposition
+Please see [Maternal deposition](vector-model-maternal-deposition.md) for full details on how maternal deposition
 works, configuration parameters, and validation rules.
 
 
@@ -348,12 +348,12 @@ chromosome pair).
 When gene drive alleles are released, the drive mechanics take effect during subsequent mating
 and fertilization events, propagating the driven alleles through the population.
 
-See [parameter-campaign-node-mosquitorelease](parameter-campaign-node-mosquitorelease.md) for more information on configuring mosquito releases.
+See [MosquitoRelease](parameter-campaign-node-mosquitorelease.md) for more information on configuring mosquito releases.
 
 ## Output
 
 
-[software-report-vector-genetics](software-report-vector-genetics.md) (`ReportVectorGenetics`) is the primary report for
+[ReportVectorGenetics](software-report-vector-genetics.md) (`ReportVectorGenetics`) is the primary report for
 tracking vector genetics. It produces a CSV file with vector counts stratified by genome, allele,
 or allele frequency at each time step, node, and vector state (eggs, larvae, immature, adult,
 infected, infectious, male).

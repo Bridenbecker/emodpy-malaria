@@ -9,7 +9,7 @@ genotype. This allows simulations to capture the emergence and spread of resista
 vector populations and their impact on intervention effectiveness.
 
 Insecticide resistance operates through the vector genetics system described in
-[vector-model-genetics](vector-model-genetics.md). Resistance alleles are defined as ordinary alleles in the `Genes`
+[Vector genetics](vector-model-genetics.md). Resistance alleles are defined as ordinary alleles in the `Genes`
 configuration; what makes them confer resistance is the `Resistances` configuration on the
 insecticide that maps specific allele combinations to reduced effectiveness.
 
@@ -173,7 +173,7 @@ targeting only meal-seeking females.
 
 
 Insecticide effects are applied during the vector feeding cycle described in
-[vector-model-transmission](vector-model-transmission.md). Each feeding attempt branches through a decision tree where the
+[Vector transmission](vector-model-transmission.md). Each feeding attempt branches through a decision tree where the
 vector may be repelled, blocked, killed, or successfully feed. Insecticide resistance modifies
 the probabilities at each branch point.
 
@@ -222,7 +222,7 @@ A typical workflow for modeling resistance dynamics involves:
 4. **Deploy interventions** via campaign events. Selection pressure from the interventions favors
    resistant genotypes, increasing resistance allele frequency over time.
 
-5. **Track resistance** using [software-report-vector-genetics](software-report-vector-genetics.md) to monitor allele frequencies
+5. **Track resistance** using [ReportVectorGenetics](software-report-vector-genetics.md) to monitor allele frequencies
    and genotype distributions across time and space.
 
 For example, a simulation might define a `kdr` allele at 5% initial frequency with a 10%
@@ -346,8 +346,8 @@ With this configuration:
 
 Insecticide resistance dynamics can be tracked through the following reports:
 
-- [software-report-vector-genetics](software-report-vector-genetics.md) — monitors allele frequencies and genotype counts over
+- [ReportVectorGenetics](software-report-vector-genetics.md) — monitors allele frequencies and genotype counts over
   time, allowing direct observation of resistance allele spread.
-- [software-report-inset-chart](software-report-inset-chart.md) —  tracks population-level metrics such as vector counts and
+- [InsetChart report](software-report-inset-chart.md) —  tracks population-level metrics such as vector counts and
   human biting rates, which reflect the aggregate impact of resistance on intervention
   effectiveness.
